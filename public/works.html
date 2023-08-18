@@ -5,7 +5,7 @@
   <meta charset="UTF-8">
   <title id="works">Works</title>
   <script src="jquery-3.7.0.min.js"></script>
-  <link rel="stylesheet" href="./style.css">
+  <link rel="stylesheet" href="style.css">
   <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
   <link rel="icon" href="media/favicon.ico">
 </head>
@@ -48,29 +48,34 @@
 .aclass:focus { text-decoration: none; color:turquoise; }
 .aclass:active { text-decoration: none; color:teal; }
 
-.headerClass {
+.headerClass1 {
   color: rgb(58, 42, 131)
 }
 </style>
 
-<h1 class="headerClass"> Works </h1>
+<h1 class="headerClass1"> Works </h1>
 
 <!-- <br> -->
 <label for="instruments">Search by category/instrument</label>
 
 <select name="instr" id="instruments">
     <option value="">--choose an option--</option>
-    <option value="le">Live Electronics</option>
-    <option value="windE">Wind Ensemble</option>
-    <option value="musicForD">Music For Dance</option>
+    <option value="liveE">Live Electronics</option>
     <option value="flex">Flexible Instrumentation</option>
     <option value="accordion">Accordion</option>
     <option value="cello">Cello</option>
+    <option value="clarinet">Clarinet</option>
     <option value="doubleBass">Double Bass</option>
     <option value="flute">Flute</option>
+    <option value="guitar">Guitar</option>
+    <option value="percussion">Percussion</option>
+    <option value="piano">Piano</option>
+    <option value="sax">Saxophone</option>
     <option value="viola">Viola</option>
     <option value="violin">Violin</option>
     <option value="voice">Voice</option>
+    <option value="windE">Wind Ensemble</option>
+
 </select>
 
 <div id="putOptions"></div>
@@ -99,8 +104,8 @@
   <p id="tms"> <a class="aclass" href="tms.html"> <b>Things Mum Says</b></a> for voice, viola, and tube</p>
   <p id="imbu"><a class="aclass" href="imbu.html"> <b>I Might Be Underwater</b></a> for flute and live electronics </p>
   <p id="g"> <a class="aclass" href="gf.html">  <b>Girlfriend</b> </a>for flute and cello  </p>
-  <p><a class="aclass" href="gt.html"> <b>Grand Time</b></a> for prepared piano</p>
-  <br>
+  <p id="gt"><a class="aclass" href="gt.html"> <b>Grand Time</b></a> for prepared piano</p>
+
 </div>
 <p></p>
 <button type="button" class="collapsible" id="fixed">Fixed Media & Audiovisual</button>
@@ -121,9 +126,9 @@
 </p>
 <button type="button" class="collapsible" id="large">Large Ensemble</button>
 <div class="content">
-  <p> <a class="aclass" href="prayer.html"> <b>Prayer for my Father as a Child</b> </a> for choir </p>
+  <!-- <p> <a class="aclass" href="prayer.html"> <b>Prayer for my Father as a Child</b> </a> for choir </p> -->
 
-  <p> <a class="aclass" href="ttfocl.html"> <b>To the Frogs of College Lake</b></a> for wind ensemble</p>
+  <p id="ttfocl"> <a class="aclass" href="ttfocl.html"> <b>To the Frogs of College Lake</b></a> for wind ensemble</p>
 
 
   
@@ -175,14 +180,24 @@ for (i = 0; i < coll.length; i++) {
   mySelect.onchange = () => {
     $(optionDiv).empty();
     
-    let i = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
-    let j = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+    let i = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+    let j = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
     
     let accordionArray = [];
     let celloArray = [];
+    let clarinetArray = [];
     let doubleBassArray = [];
-    let violinArray = [];
+    let fluteArray = [];
+    let guitarArray = [];
+    let percussionArray = [];
+    let pianoArray = [];
+    let saxophoneArray = [];
     let violaArray = [];
+    let violinArray = [];
+    let voiceArray = [];
+    let flexArray = [];
+    let liveEArray = [];
+    let windEArray = [];
 
     pieces.accordion.forEach(() => {
       accordionArray.push(pieces.accordion[i[0]].cloneNode(true));
@@ -192,20 +207,59 @@ for (i = 0; i < coll.length; i++) {
      celloArray.push(pieces.cello[i[1]].cloneNode(true));
      i[1]++
     })
-    pieces.doubleBass.forEach(() => {
-     doubleBassArray.push(pieces.doubleBass[i[2]].cloneNode(true));
+    pieces.clarinet.forEach(() => {
+     clarinetArray.push(pieces.clarinet[i[2]].cloneNode(true));
      i[2]++
     })
-    pieces.viola.forEach(() => {
-     violaArray.push(pieces.viola[i[3]].cloneNode(true));
+    pieces.doubleBass.forEach(() => {
+     doubleBassArray.push(pieces.doubleBass[i[3]].cloneNode(true));
      i[3]++
     })
-    pieces.violin.forEach(() => {
-     violinArray.push(pieces.violin[i[4]].cloneNode(true));
+    pieces.flute.forEach(() => {
+     fluteArray.push(pieces.flute[i[4]].cloneNode(true));
      i[4]++
     })
+    pieces.guitar.forEach(() => {
+     guitarArray.push(pieces.guitar[i[5]].cloneNode(true));
+     i[5]++
+    })
+    pieces.percussion.forEach(() => {
+     percussionArray.push(pieces.percussion[i[6]].cloneNode(true));
+     i[6]++
+    })
+    pieces.piano.forEach(() => {
+     pianoArray.push(pieces.piano[i[7]].cloneNode(true));
+     i[7]++
+    })
+    pieces.saxophone.forEach(() => {
+     saxophoneArray.push(pieces.saxophone[i[8]].cloneNode(true));
+     i[8]++
+    })
+    pieces.viola.forEach(() => {
+     violaArray.push(pieces.viola[i[9]].cloneNode(true));
+     i[9]++
+    })
+    pieces.violin.forEach(() => {
+     violinArray.push(pieces.violin[i[10]].cloneNode(true));
+     i[10]++
+    })
+    pieces.voice.forEach(() => {
+     voiceArray.push(pieces.voice[i[11]].cloneNode(true));
+     i[11]++
+    })
+    pieces.flexible.forEach(() => {
+     flexArray.push(pieces.flexible[i[12]].cloneNode(true));
+     i[12]++
+    })
+    pieces.windE.forEach(() => {
+     windEArray.push(pieces.windE[i[13]].cloneNode(true));
+     i[13]++
+    })
+    pieces.liveE.forEach(() => {
+     liveEArray.push(pieces.liveE[i[14]].cloneNode(true));
+     i[14]++
+    })
    
-
     if (mySelect.value == "accordion") {
       accordionArray.forEach(()=> {
       optionDiv.appendChild(accordionArray[j[0]])
@@ -216,20 +270,70 @@ for (i = 0; i < coll.length; i++) {
       optionDiv.appendChild(celloArray[j[1]])
       j[1]++
     })
+    } else if (mySelect.value == "clarinet") {
+      clarinetArray.forEach(() => {
+        optionDiv.appendChild(clarinetArray[j[2]])
+        j[2]++
+      })
     } else if (mySelect.value == "doubleBass") {
-      violaArray.forEach(()=> {
-      optionDiv.appendChild(doubleBassArray[j[2]])
-    j[2]++
+      doubleBassArray.forEach(()=> {
+      optionDiv.appendChild(doubleBassArray[j[3]])
+    j[3]++
+    })
+    } else if (mySelect.value == "flute") {
+      fluteArray.forEach(()=> {
+      optionDiv.appendChild(fluteArray[j[4]])
+    j[4]++
+    })
+    } else if (mySelect.value == "guitar") {
+      guitarArray.forEach(()=> {
+      optionDiv.appendChild(guitarArray[j[5]])
+    j[5]++
+    })
+    } else if (mySelect.value == "percussion") {
+      percussionArray.forEach(()=> {
+      optionDiv.appendChild(percussionArray[j[6]])
+    j[6]++
+    })
+    } else if (mySelect.value == "piano") {
+      pianoArray.forEach(()=> {
+      optionDiv.appendChild(pianoArray[j[7]])
+    j[7]++
+    })
+    } else if (mySelect.value == "sax") {
+      saxophoneArray.forEach(()=> {
+      optionDiv.appendChild(saxophoneArray[j[8]])
+    j[8]++
     })
     } else if (mySelect.value == "viola") {
     violaArray.forEach(()=> {
-      optionDiv.appendChild(violaArray[j[3]])
-    j[3]++
+      optionDiv.appendChild(violaArray[j[9]])
+    j[9]++
     })
     } else if (mySelect.value == "violin") {
     violinArray.forEach(()=> {
-      optionDiv.appendChild(violinArray[j[4]])
-    j[4]++
+      optionDiv.appendChild(violinArray[j[10]])
+    j[10]++
+    })
+    }  else if (mySelect.value == "voice") {
+    voiceArray.forEach(()=> {
+      optionDiv.appendChild(voiceArray[j[11]])
+    j[11]++
+    })
+    }  else if (mySelect.value == "flex") {
+    flexArray.forEach(()=> {
+      optionDiv.appendChild(flexArray[j[12]])
+    j[12]++
+    })
+    }  else if (mySelect.value == "windE") {
+    windEArray.forEach(()=> {
+      optionDiv.appendChild(windEArray[j[13]])
+    j[13]++
+    })
+    }  else if (mySelect.value == "liveE") {
+    liveEArray.forEach(()=> {
+      optionDiv.appendChild(liveEArray[j[14]])
+    j[14]++
     })
     } 
   
@@ -253,25 +357,28 @@ let laune = document.querySelector("#l"); //solo cello
 let dm = document.querySelector("#dm"); // guitar, clarinet, drumset, double bass
 let imbu = document.querySelector("#imbu"); //flute & lE
 let yfbow = document.querySelector("#yfbow")
+let gt = document.querySelector("#gt")
+let ttfocl = document.querySelector("#ttfocl")
 
 //Categories of Pieces
 
 let pieces = {
   accordion: [ydb, yfbow],
   cello: [laune, tor, sn, g, pd],
-  clarinet: [tor, nm, dm], 
-  doubleBass: [tor, sn, pd, dm],
+  clarinet: [tor, nm], 
+  doubleBass: [tor, sn, pd],
   flute: [tor, g],
   guitar: [ydb, dm],
-  percussion: [mf, tor, nm, ydb, dm],
-  piano: [tor, ctp],
+  percussion: [mf, tor, nm, ydb],
+  piano: [tor, ctp, gt],
   saxophone: [mf, hr, ydb],
-  viola: [tor, tms, sn, pd],
+  viola: [tor, tms, sn, pd, nm],
   violin: [tor, nm, sn, pd],
   voice: [tor, tms],
   flexible: [soaw],
   liveE: [laune, mf, imbu],
   musicForD: [],
+  windE: [ttfocl]
 }
 
 
@@ -279,7 +386,7 @@ let pieces = {
 
 
 </script>
-<script src='tone.js'></script><script src="./script.js"></script>
+<script src='tone.js'></script><script src="script.js"></script>
 
 </body>
 

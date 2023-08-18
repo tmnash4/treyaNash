@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <title> Dear Mother Father God </title>
-  <link rel="stylesheet" href="/style.css">
+  <link rel="stylesheet" href="style.css">
   <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
   <link rel="icon" href="media/favicon.ico">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -231,7 +231,8 @@ img.hover-shadow {
   #flex1 {
     margin-left: 5vw;
     margin-right: 3vw;
-    font-size: 18px;
+    font-size: 16px;
+    margin-top: -12px
     /* min-width: 30% */
   }
 
@@ -309,7 +310,7 @@ img.hover-shadow {
     <p>
      <i>Dear Mother Father God</i> is a 6-channel piece which reframes Miriam Nash's poem "Dear Mother Father God", from the collection <i>All the Prayers in the House</i>, available from <a href="https://www.bloodaxebooks.com/ecs/product/all-the-prayers-in-the-house-1150">Bloodaxe Books</a>.
      <br> 
-     I wanted to give the poem a sonic life, and create new meaning from the words and form, while preserving the order of the text. The voices are those of Deepmala Tiwari, Asher Sizemore, Lihuen Sirvent, and me. The piece was premiered in 2018, and presented at the 2022 <a href="https://espaciossonoros.com.ar/espacios">Espacios Sonoros</a> festival.
+     I wanted to give the poem a sonic life, and create new meaning from the words and form, while preserving the order of the text. The voices are those of Deepmala Tiwari, Asher Sizemore, Lihuen Sirvent, and me. The piece was premiered in 2018, and presented at the 2022 <a href="https://www.espaciossonoros.com.ar/festival/2022">Espacios Sonoros</a> festival.
     </p>
 
   </div>
@@ -324,7 +325,6 @@ img.hover-shadow {
   <iframe  src="https://www.youtube.com/embed/r95jOQxnASs" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 </div>
 <!-- <figcaption class="figcap" id="hiddenFigCap"> Diana Wade and Jen Beattie of SpacePants</figcaption> -->
-<hr>  </hr>
 <!-- <h2 style="text-align:center" class="scoreP">Score Preview</h2>
 <div class="row">
   <div class="column">
@@ -393,49 +393,49 @@ img.hover-shadow {
 </div> -->
 
 <script>
-  function openModal() {
-  document.getElementById("myModal").style.display = "block";
-}
+//   function openModal() {
+//   document.getElementById("myModal").style.display = "block";
+// }
 
-function closeModal() {
-  document.getElementById("myModal").style.display = "none";
-}
+// function closeModal() {
+//   document.getElementById("myModal").style.display = "none";
+// }
 
-var slideIndex = 1;
-showSlides(slideIndex);
+// var slideIndex = 1;
+// showSlides(slideIndex);
 
-function plusSlides(n) {
-  showSlides(slideIndex += n);
-}
+// function plusSlides(n) {
+//   showSlides(slideIndex += n);
+// }
 
-function currentSlide(n) {
-  showSlides(slideIndex = n);
-}
+// function currentSlide(n) {
+//   showSlides(slideIndex = n);
+// }
 
-function showSlides(n) {
-  var i;
-  var slides = document.getElementsByClassName("mySlides");
-  var dots = document.getElementsByClassName("demo");
-  var captionText = document.getElementById("caption");
-  if (n > slides.length) {slideIndex = 1}
-  if (n < 1) {slideIndex = slides.length}
-  for (i = 0; i < slides.length; i++) {
-      slides[i].style.display = "none";
-  }
-  for (i = 0; i < dots.length; i++) {
-      dots[i].className = dots[i].className.replace(" active", "");
-  }
-  slides[slideIndex-1].style.display = "block";
-  dots[slideIndex-1].className += " active";
-  captionText.innerHTML = dots[slideIndex-1].alt;
-}
+// function showSlides(n) {
+//   var i;
+//   var slides = document.getElementsByClassName("mySlides");
+//   var dots = document.getElementsByClassName("demo");
+//   var captionText = document.getElementById("caption");
+//   if (n > slides.length) {slideIndex = 1}
+//   if (n < 1) {slideIndex = slides.length}
+//   for (i = 0; i < slides.length; i++) {
+//       slides[i].style.display = "none";
+//   }
+//   for (i = 0; i < dots.length; i++) {
+//       dots[i].className = dots[i].className.replace(" active", "");
+//   }
+//   slides[slideIndex-1].style.display = "block";
+//   dots[slideIndex-1].className += " active";
+//   captionText.innerHTML = dots[slideIndex-1].alt;
+// }
 
 </script>
 
 
 </body>
 
-<script src='tone.js'></script><script  src="./script.js"></script>
+<script src='tone.js'></script><script  src="script.js"></script>
 
 
 </html>
