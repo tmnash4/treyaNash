@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <title>Bio</title>
+  <script src="jquery-3.7.0.min.js"></script>
   <link rel="stylesheet" href="style.css">
   <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
   <link rel="icon" href="media/favicon.ico">
@@ -50,7 +51,10 @@
 
 
 <h1 class="headerClass1" id="bioHeader"> Bio </h1>
-
+<div id="linksDiv">
+<a href ="media/treya_nash_bio.pdf" attributes-list download ="treya-nash-bio" > Download Bio </a> |
+<a onclick="goTo()" id="myA"> Go to Gallery </a>  
+</div> 
   <div class="flex-boxt1">
     <div class="flex-items2" >
         <div id="biotext">
@@ -61,7 +65,7 @@
  
     </div>
 
-    <div class="row">
+    <div class="row" id="myRow">
         <div class="column">
           <img src="media/bioImgs/1.png" style="width:100%" onclick="openModal();currentSlide(1)" class="hover-shadow cursor">
         </div>
@@ -431,8 +435,9 @@ if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(naviga
     document.getElementById("mySidenav").style.width = "0";
     document.getElementById("main").style.marginLeft= "0";
   }
-      
-
+  function goTo() {
+  jQuery('html,body').animate({scrollTop: jQuery('#myRow').offset().top}, 800)
+  }
 /////////////Tone stuff
 
 
@@ -517,6 +522,8 @@ if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(naviga
   cursor: pointer;
 }
 
+
+
 /* Next & previous buttons */
 .prev,
 .next {
@@ -584,6 +591,89 @@ img.hover-shadow {
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
+#linksDiv {
+  text-align: center
+}
+
+#myA {
+  text-decoration: none;
+}
+
+@media screen and (min-height:1000px) {
+  .flex-boxt1 {
+  display: flex;
+  flex-direction: row; /* change this to row instead of 'column' */
+  flex-wrap:wrap; /* added flex-wrap */
+  justify-content: center;
+  align-content: center;
+  text-align: center;
+  /* background-color: lightblue; */
+
+
+  
+}
+
+.row > .column {
+  padding: 0 2px;
+  /* margin: 4.3px; */
+  text-align: center;
+
+}
+
+.row {
+  /* margin-right: -60px; */
+  text-align: center;
+}
+
+/* .row > column {
+  margin: 
+} */
+
+.flex-items2 {
+  position: relative;
+  /* flex: 1; */
+  width:70%;
+  margin: 5px;
+  /* height: 70vh; */
+  /* max-height: 75vh; */
+  /* min-height: 600px; */
+  text-align: center;
+  height: 800px;
+  margin-bottom: 50px
+  /* background-color: blue; */
+
+  /* position: relative; */
+  /* width: 50vw; */
+}
+
+
+#biotext {
+    /* position: absolute; */
+  padding: 50px 0;
+  font-size: 1.3em;
+  color: black;
+  margin-right: 30px;
+  /* margin-left: 10px; */
+  /* height: 450px */
+}
+/* 
+#biotext:hover {
+  transition: color 30s ease;
+  color: green
+
+  MAKE AN INSIDE DIV!!!
+} */
+
+
+
+
+.w3-button {
+  background:  #29ab73;
+  border: none;
+  font-size: 25px
+}
+
+}
 
 @media screen and (min-width:1100px) {
 
@@ -625,7 +715,7 @@ img.hover-shadow {
   /* max-height: 75vh; */
   /* min-height: 600px; */
   text-align: center;
-  height: 70vh;
+  height: 550px;
   margin-bottom: 50px
   /* background-color: blue; */
 
@@ -640,7 +730,7 @@ img.hover-shadow {
   font-size: 1.3em;
   color: black;
   margin-right: 30px;
-  margin-left: 10px;
+  /* margin-left: 10px; */
   /* height: 450px */
 }
 /* 
