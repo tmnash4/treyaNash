@@ -61,6 +61,15 @@
 
   /* Add a black background color to the top navigation */
 
+body {
+  -webkit-touch-callout:none;
+-webkit-user-select:none;
+-khtml-user-select:none;
+-moz-user-select:none;
+-ms-user-select:none;
+user-select:none;
+}
+
 #outsideDiv {
   /* position: relative; */
   display: flex;
@@ -85,11 +94,16 @@
   -webkit-text-fill-color: transparent;
 }
 
+img {
+  -webkit-touch-callout: none;
+
+}
 
 
 #composer {
   margin: 0px;
   padding: 0px;
+  font-size: 16px;
   /* margin-bottom: 5px; */
   /* position: relative; */
   /* top: 500px */
@@ -121,7 +135,7 @@
 <div id="outsideDiv">
 
 <h1 id="myName" class="flex-items" onclick="startAudio()"> Treya Nash   </h1>
-<h2 id="composer" class="flex-items"> composer </h2>
+<h2 id="composer" class="flex-items"> composer | creative coder</h2>
 <div class="social-icons">
   <a href="https://www.youtube.com/@treyanash8745" title="youtube">
     <i class="fa fa-youtube-square" aria-hidden="true"></i>

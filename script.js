@@ -15,6 +15,8 @@ let playCrick = new Tone.Player(oneLonelyCricket);
 playCrick.connect(mainGain);
 playCrick.loop = true;
 
+document.addEventListener('contextmenu', event => event.preventDefault());
+
 
 // var player = new Tone.Player("data/audio/singingbird_audio.mp3").toMaster();
 // var whale = new Tone.Player("data/audio/whale.mp3").toMaster();
@@ -48,6 +50,69 @@ function myFunction() {
 
 
   
+ 
+
+
+let myName = document.getElementById("myName");
+let comp = document.getElementById("composer")
+
+if (window.screen.width >= 1024) {
+
+myName.onmouseover = () => {
+  // myName.style.-webkit-background-clip: text;
+  // myName.style.color = "-webkit-linear-gradient(#60d44f, #3a04ba)";
+  myName.innerHTML = "Neya Trash"
+}
+
+myName.onmouseout = () => {
+  // myName.style.color = "-webkit-linear-gradient(#3a04ba, #60d44f)";
+  myName.innerHTML = "Treya Nash"
+}
+// comp.onmouseover = () => {
+//   comp.style.on
+// }
+
+}
+if (window.screen.width <= 1024) {
+  mainImg.style.width = "80vw";
+  console.log(window.screen.width)
+
+  myName.ontouchstart = () => {
+    // myName.style.-webkit-background-clip: text;
+    // myName.style.color = "-webkit-linear-gradient(#60d44f, #3a04ba)";
+    myName.innerHTML = "Neya Trash"
+
+  }
+  
+  myName.ontouchend = () => {
+    // myName.style.color = "-webkit-linear-gradient(#3a04ba, #60d44f)";
+    myName.innerHTML = "Treya Nash"
+
+  }
+  mainImg.ontouchstart = () => {
+    mainImg.src = "media/Trey.jpg"
+    if (playCrick.state == "stopped") {
+      Tone.Transport.start();
+      mainGain.gain.rampTo(0.1, 3);
+    }
+  }
+ 
+
+
+
+
+
+mainImg.ontouchend = () => {
+  mainImg.src = "media/Treya_1.jpg"
+  if (playCrick.state == "started") {
+      Tone.Transport.pause();
+      mainGain.gain = 0
+  }
+}
+  
+  
+
+} else {
   mainImg.onmouseover = () => {
     mainImg.src = "media/Trey.jpg"
     if (playCrick.state == "stopped") {
@@ -71,45 +136,6 @@ mainImg.onmouseout = () => {
   }
   
 }
-
-
-let myName = document.getElementById("myName");
-let comp = document.getElementById("composer")
-
-if (window.screen.width >= 1024) {
-
-myName.onmouseover = () => {
-  // myName.style.-webkit-background-clip: text;
-  // myName.style.color = "-webkit-linear-gradient(#60d44f, #3a04ba)";
-  myName.style.fontStyle = "italic"
-}
-
-myName.onmouseout = () => {
-  // myName.style.color = "-webkit-linear-gradient(#3a04ba, #60d44f)";
-  myName.style.fontStyle = "normal"
-}
-
-// comp.onmouseover = () => {
-//   comp.style.on
-// }
-
-}
-if (window.screen.width <= 1024) {
-  mainImg.style.width = "80vw";
-  console.log(window.screen.width)
-
-  myName.ontouchstart = () => {
-    // myName.style.-webkit-background-clip: text;
-    // myName.style.color = "-webkit-linear-gradient(#60d44f, #3a04ba)";
-    myName.style.fontStyle = "italic"
-  }
-  
-  myName.ontouchend = () => {
-    // myName.style.color = "-webkit-linear-gradient(#3a04ba, #60d44f)";
-    myName.style.fontStyle = "normal"
-  }
-  
-
 }
 
 // console.log(window.screen.width)
@@ -145,18 +171,19 @@ if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(naviga
     document.getElementById("main").style.marginLeft= "0";
   }
 
+
   function backToWorksFunction() {
-    if (document.referrer == "http://127.0.0.1:8500/works.html") {
+    if (document.referrer == (window.location.origin + "/works.html")) {
       history.back()
     } else {
-      window.location = "http://127.0.0.1:8500/works.html"
+      window.location = "works.html"
     }
   }
 
   function backToRnp() {
-    if (document.referrer == "http://127.0.0.1:8500/rnp.html") {
+    if (document.referrer == "rnp.html") {
       history.back()
     } else {
-      window.location = "http://127.0.0.1:8500/rnp.html"
+      window.location = "rnp.html"
     }
   }
