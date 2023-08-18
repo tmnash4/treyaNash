@@ -1,0 +1,707 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>Whisper</title>
+  <link rel="stylesheet" href="style.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+  <link rel="icon" href="media/favicon.ico">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Quicksand&display=swap');
+  </style>
+    <meta http-equiv="Permissions-Policy" content="interest-cohort=()">
+</head>
+<script src='tone.js'></script>
+<body>
+  <div class="topnav" id="myTopnav">
+    <a href="index.html" >Home</a>
+    <a href="works.html" >Works</a>
+    <a href="rnp.html" class="active">Research and Projects</a>
+    <a href="bio.html">Bio</a>
+    <a href="contact.html">Contact</a>
+    <a href="index.html" >Home</a>
+  </div>
+  <div id="mySidenav" class="sidenav">
+    <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+    <a href="index.html" >Home</a>
+    <a href="works.html">Works</a>
+    <a href="rnp.html">Research and Projects</a>
+    <a href="bio.html">Bio</a>
+    <a href="contact.html">Contact</a>
+</div>
+<div id="main"> 
+    <span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776; </span>
+</div>
+<style>
+
+.flex-boxt {
+  display: flex;
+  flex-direction: row; /* change this to row instead of 'column' */
+  flex-wrap:wrap; /* added flex-wrap */
+  /* text-align: center */
+  /* height: 150vh */
+  
+}
+
+.flex-items1 {
+  flex: 1;
+  width:100%;
+  margin: 5px;
+}
+    
+.figcap {
+  text-align: center;
+}
+
+.flex-box2 {
+  display: flex;
+}
+
+.flex-items2 {
+  flex-wrap: nowrap;
+  width: 20%;
+  height: auto
+}
+
+.imgClass {
+  max-width: 100%;
+  max-height: auto;
+  border: black 2px solid;
+  z-index: 10;
+}
+
+.flex-items2:hover {
+  width: 75%;
+  flex-wrap: wrap;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+.row > .column {
+  padding: 0 8px;
+}
+
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+.column {
+  float: left;
+  width: 20%;
+}
+
+/* The Modal (background) */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  padding-top: 100px;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: black;
+}
+
+/* Modal Content */
+.modal-content {
+  position: relative;
+  background-color: #fefefe;
+  margin: auto;
+  padding: 0;
+  width: 80%;
+  max-width: 700px;
+}
+
+/* The Close Button */
+.close {
+  color: white;
+  position: absolute;
+  top: 10px;
+  right: 25px;
+  font-size: 35px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: #999;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.mySlides {
+  display: none;
+  height: 50%
+}
+
+.cursor {
+  cursor: pointer;
+}
+
+/* Next & previous buttons */
+.prev,
+.next {
+  cursor: pointer;
+  position: absolute;
+  top: 50%;
+  width: auto;
+  padding: 16px;
+  margin-top: -50px;
+  color: rgb(152, 145, 145);
+  font-weight: bold;
+  font-size: 20px;
+  transition: 0.6s ease;
+  border-radius: 0 3px 3px 0;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+/* Position the "next button" to the right */
+.next {
+  right: 0;
+  border-radius: 3px 0 0 3px;
+}
+
+/* On hover, add a black background color with a little bit see-through */
+.prev:hover,
+.next:hover {
+  background-color: rgba(0, 0, 0, 0.8);
+}
+
+/* Number text (1/3 etc) */
+.numbertext {
+  color: #f2f2f2;
+  font-size: 12px;
+  padding: 8px 12px;
+  position: absolute;
+  top: 0;
+}
+
+img {
+  margin-bottom: -4px;
+}
+
+.caption-container {
+  text-align: center;
+  background-color: black;
+  padding: 2px 16px;
+  color: white;
+}
+
+.demo {
+  opacity: 0.6;
+}
+
+.active,
+.demo:hover {
+  opacity: 1;
+}
+
+img.hover-shadow {
+  transition: 0.3s;
+}
+
+.hover-shadow:hover {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.para {
+    height: 12em
+}
+
+/* #poem {
+
+} */
+
+.paraClass {
+    opacity: 0;
+    transition: opacity 2s;
+}
+
+#poemLink {
+  text-decoration: none;
+}
+
+
+
+@media screen and (min-width: 1152px) {
+
+  .flex-boxt {
+    margin-top: 5vh;
+  }
+
+  .demo  {
+   visibility: hidden;
+   height: 2px;
+
+  }
+
+  #yt {
+    width: 840px;
+    height: 525px;
+  }
+
+  #flex1 {
+    margin-left: 5vw;
+    margin-right: 3vw;
+    font-size: 16px;
+    /* min-width: 30% */
+  }
+
+  #flex2 {
+    margin-right: 5vw;
+  }
+
+  #flex3 {
+    margin-left: 5vw;
+    margin-right: 3vw;
+    margin-bottom: 5vw;
+    /* margin-left: 5vw; */
+  }
+
+  #flex4 {
+    margin-right: 5vw;
+    margin-bottom: 5vw;
+
+
+  }
+  iframe {
+  position:absolute;
+  width: 840px;
+  /* height: 525px; */
+  }
+
+  #whisperLayout {
+    width: 600px;
+    margin-top: -5px;
+  }
+
+  #iframe1 {
+    justify-content: center;
+    text-align: center;
+  }
+
+  embed {
+  position:absolute;
+  width: 840px;
+
+  }
+
+
+  #hiddenFigCap {
+  display: none;
+  }
+
+  #iframe2 {
+  display: none;
+  }
+  #iframe3 {
+  display: none;
+  }
+  #iframe4 {
+  display: none;
+  }
+
+  #myImg1 {
+    display: none;
+  }
+
+
+  .titleSm {
+    display: none;
+  }
+
+  .sm {
+    display: none;
+  }
+
+}
+
+.iframe-container{
+  position: relative;
+  width: 100%;
+  padding-bottom: 56.25%; 
+  height: 0;
+}
+.iframe-container iframe{
+  position: absolute;
+  top:0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.iframe-container embed{
+  position: absolute;
+  top:0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+
+@media screen and (max-width: 1152px) {
+  .flex-boxt  {
+  display: flex;
+  flex-direction: row; /* change this to row instead of 'column' */
+  flex-wrap:nowrap; /* added flex-wrap */
+  /* flex-shrink: 0; */
+  height: auto;
+  margin-bottom: 5px;
+  }
+
+  #flex2 {
+  display: none;
+  }
+
+  #flex3 {
+  display: none;
+  }
+
+  #flex4 {
+  display: none;
+  }
+
+  #myImg1 {
+    width: 100%
+  }
+
+  #poem {
+    height:100vh
+  }
+
+  #myImg1 img {
+    width: 100%
+  }
+
+  .flex-items1 {
+  /* position: relative; */
+  width:100%;
+  flex-shrink: 0;
+  margin: 0px;
+  }
+
+  .titleSm {
+    margin-top: 30px;
+    /* background-color: blue */
+  }
+}
+
+</style>
+
+<form >
+  <input type="button" value="back" onclick="backToRnp()" class="backButton">
+</form>
+<h1 class="headerClass">Whisper</h1>
+<div id="myImg1">
+<img src="media/images/whisperLayout.png" id="whisperLayout">  
+</div>
+<div class="flex-boxt">
+  <div class="flex-items1" id="flex1">
+    <p>
+        <b>Year:</b> 2023
+      </p>
+    <p>
+ 
+       <i> Whisper </i> is a whispering gallery-inspired web app designed for collaborative performance between audience cell phones and a performer. The audience record themselves whispering into their cellphones, then upload their audio samples to a server. The performer controls a separate webpage through which they diffuse the samples into multichannel space, using the JSAmbisonics library. The piece is intended to engage the audience and give them agency through the use of their voice and the choice of whether to upload or delete their recording. The soundworld of the piece is designed to create a highly inti-mate and immersive experience which plays with the intelligibility of speech.      </p>
+       <p> 
+        Whisper uses the poem <i>In a Whispering Gallery </i>  by Thomas Hardy
+       </p>
+       <p id="hover">
+        <a href="#poem" id="poemLink">Click for poem</a>
+       </p>
+       <p id="poem">
+
+       </p>
+ 
+   
+    </div>
+  <div class="flex-items1" id="flex2">
+    <div class="iframe-container" id="iframe1">
+        <img src="media/images/whisperLayout.png" id="whisperLayout">
+        <figcaption class="figcap">Whisper Connections</figcaption>
+
+    </div>   
+  </div>
+</div>
+<div class="flex-boxt" style="display: none">
+  <div class="flex-items1" id="flex3">
+    <div class="para">
+    <p ><b>Static Version</b></p>
+    <p> This version is static (no connection between your cell phone and the webpage). You can create more frogs by using the left and right arrows on your keyboard, or clicking on the frogs on your cellphone. If you're on a computer, Try using the "f" key as well!</p>
+    <!-- <p><a href="http://staticfrog.treyanash.com/" target="_blank">Open in a new tab</a></p> -->
+</div>
+    <div class="iframe-container">
+      <!-- <embed  src="http://staticfrog.treyanash.com/" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></embed> -->
+    </div>   
+  </div>
+  <div class="flex-items1" id="flex4">
+    <div class="para">
+    <p ><b>Interactive Version</b></p>
+    <p> You can connect to this version with your cellphone if you are on a computer. First, make a couple extra frogs on the computer version (right arrow again!). Then, visit frog.treyanash.com on your cellphone. You should be able to create frogs on your cellphone and the computer at the same time! Use the plus key to allow more frogs on the computer version.</p>
+    <!-- <p><a href="https://frog.treyanash.com/" target="_blank">Open in a new tab</a></p> -->
+</div>
+    <div class="iframe-container">
+      <img src="media/images/whisperLayout.png" id="whisperLayout">    </div>   
+ 
+  </div>
+</div>
+
+
+
+
+
+
+<script>
+ let poem = document.querySelector("#poem");
+ let hover = document.querySelector("#hover")
+ 
+ let poemArray = [
+"That whisper takes the voice",
+"Of a Spirit, speaking to me,",
+"Close, but invisible,",
+"And throws me under a spell",
+"At the kindling vision it brings;",
+"And for a moment I rejoice,",
+"And believe in transcendent things",
+"That would make of this muddy earth",
+"A spot for the splendid birth",
+"Of everlasting lives,",
+"Whereto no night arrives;",
+"And this gaunt gray gallery",
+"A tabernacle of worth",
+"On this drab-aired afternoon,",
+"When you can barely see",
+"Across its hazed lacune",
+"If opposite aught there be",
+"Of fleshed humanity",
+"Wherewith I may commune;",
+"Or if the voice so near",
+"Be a soul’s voice floating here."
+]
+
+let body = document.querySelector('body')
+let i = 0;
+let n = 2;
+let para = document.createElement("p");
+body.appendChild(para)
+para.id = "myPara"
+let myInt;
+
+// para.style.opacity = 0
+let w = 0;
+let m = 10;
+let q = 0;
+let button1 = false;
+
+function revealPoem() {
+    if (i == poemArray.length) {
+      // console.log("hello")
+      if (button1) {
+        console.log("hello")
+         return clearInterval(myInt);
+      } else {
+        console.log("h")
+        // console.log(poemArray.length)
+        button1 = document.createElement("button");
+        button1.innerHTML = "run again"
+        button1.classList.add("backButton")
+        button1.style.marginTop = "30px"
+        button1.style.opacity = 0;
+        button1.style.transition = "opacity 2s"
+        setTimeout(() => {
+          button1.style.opacity = 1
+        }, 1000)
+        button1.onclick = () => {
+          poem.innerHTML = ""
+          w = 0;
+          m = 10;
+          q = 0;
+          poemArray.push("That whisper takes the voice",
+"Of a Spirit, speaking to me,",
+"Close, but invisible,",
+"And throws me under a spell",
+"At the kindling vision it brings;",
+"And for a moment I rejoice,",
+"And believe in transcendent things",
+"That would make of this muddy earth",
+"A spot for the splendid birth",
+"Of everlasting lives,",
+"Whereto no night arrives;",
+"And this gaunt gray gallery",
+"A tabernacle of worth",
+"On this drab-aired afternoon,",
+"When you can barely see",
+"Across its hazed lacune",
+"If opposite aught there be",
+"Of fleshed humanity",
+"Wherewith I may commune;",
+"Or if the voice so near",
+"Be a soul’s voice floating here.")
+          setTimeout(() => {
+            runIt1()
+          }, 500)
+          setTimeout(() => {
+          
+         button1.style.visibility = "hidden"
+         return button1 = false;
+
+          }, 550)
+          
+        }
+        
+         poem.appendChild(button1);
+      }
+    } else {
+    let para1 = para.cloneNode(true);
+    para1.style.margin = "-15px 0 -15px 0";
+    para1.classList.add("paraClass")
+    poem.appendChild(para1);
+    para1.innerHTML += "<br>" + poemArray.shift();
+    para1.style.transition = `opacity ${n}s`
+    // para1.style.transitionTimingFunction = "cubic-bezier(0.1, 0.7, 0.1, 1.0)"
+    para1.style.visibility = "hidden"
+    itsId = `para${m}`
+    para1.id = itsId
+    console.log(para1.id)
+ 
+// the position related to the viewport
+
+    m++
+    setTimeout(() => {
+
+        let randNum3 = Math.random() * (Math.round(Math.random()) ? 1 : -1)
+        let randNum4 = Math.random() * (Math.round(Math.random()) ? 1 : -1)
+        para1.style.visibility = "visible"
+        para1.style.opacity = 1
+        let playWhis = new Tone.Player(bufferArray[w]);
+        playWhis.connect(panner);
+        panner.pan.rampTo(randNum3, randNum4) //Moves the panner around
+        playWhis.start()
+        w++
+        
+   
+    }, 500)
+    document.getElementById(itsId).onclick = (e) => {
+      let myEl = document.getElementById(e.target.id)
+      myEl.style.color = "rgb(75, 14, 208)";
+      setTimeout(()=> {
+        myEl.style.color = "black"
+      }, 200)
+   
+      setTimeout(() => {
+        let randNum1 = Math.random() * (Math.round(Math.random()) ? 1 : -1)
+        let randNum2 = Math.random() * (Math.round(Math.random()) ? 1 : -1)
+        let sliced = e.target.id.slice(4,6)
+        let slicedNum = parseInt(sliced)
+        let slicedNum1 = slicedNum - 10
+        // let playWhis1 = new Tone.Player(bufferArray[slicedNum1]);
+        // playWhis1.connect(mainGain);
+        let myGrainPlayer = new Tone.GrainPlayer(bufferArray[slicedNum1])
+        myGrainPlayer.grainSize = 2.0;
+        myGrainPlayer.overlap = 0.7;
+    //myGrainPlayer.loop = true;
+        myGrainPlayer.reverse = true;
+        myGrainPlayer.fadeIn = 0.5;
+        myGrainPlayer.fadeOut = 0.5
+        myGrainPlayer.connect(panner)
+        panner.pan.rampTo(randNum1, randNum2) //Moves the panner around
+        myGrainPlayer.start()
+
+        // playWhis1.start()
+        // console.log(itsId)
+        console.log(e.target.id);
+
+        q++
+      }, 500)
+    }
+    // n += 5
+    // window.scrollTo(para1)
+  }
+}
+
+async function startAudio() {  //This code starts the audio 
+  await Tone.start()
+  console.log("ready")
+}
+
+let mainGain = new Tone.Gain(0.5).toDestination()
+mainGain.gain = 0.5
+let panner = new Tone.Panner(0).connect(mainGain); //This is the panner, it sends ALL the audio to its output. 
+
+
+let whisperBufferArray = ["media/whisperAudio/line1.mp3","media/whisperAudio/line2.mp3","media/whisperAudio/line3.mp3","media/whisperAudio/line4.mp3","media/whisperAudio/line5.mp3","media/whisperAudio/line6.mp3","media/whisperAudio/line7.mp3","media/whisperAudio/line8.mp3","media/whisperAudio/line21.mp3","media/whisperAudio/line9.mp3","media/whisperAudio/line10.mp3","media/whisperAudio/line11.mp3","media/whisperAudio/line12.mp3","media/whisperAudio/line13.mp3","media/whisperAudio/line14.mp3","media/whisperAudio/line15.mp3","media/whisperAudio/line16.mp3","media/whisperAudio/line17.mp3","media/whisperAudio/line18.mp3","media/whisperAudio/line19.mp3","media/whisperAudio/line20.mp3"]
+let whisperBuffer1 = new Tone.Buffer(whisperBufferArray[0])
+let whisperBuffer2 = new Tone.Buffer(whisperBufferArray[1])
+let whisperBuffer3 = new Tone.Buffer(whisperBufferArray[2])
+let whisperBuffer4 = new Tone.Buffer(whisperBufferArray[3])
+let whisperBuffer5 = new Tone.Buffer(whisperBufferArray[4])
+let whisperBuffer6 = new Tone.Buffer(whisperBufferArray[5])
+let whisperBuffer7 = new Tone.Buffer(whisperBufferArray[6])
+let whisperBuffer8 = new Tone.Buffer(whisperBufferArray[7])
+let whisperBuffer9 = new Tone.Buffer(whisperBufferArray[8])
+let whisperBuffer10 = new Tone.Buffer(whisperBufferArray[9])
+let whisperBuffer11 = new Tone.Buffer(whisperBufferArray[10])
+let whisperBuffer12 = new Tone.Buffer(whisperBufferArray[11])
+let whisperBuffer13 = new Tone.Buffer(whisperBufferArray[12])
+let whisperBuffer14 = new Tone.Buffer(whisperBufferArray[13])
+let whisperBuffer15 = new Tone.Buffer(whisperBufferArray[14])
+let whisperBuffer16 = new Tone.Buffer(whisperBufferArray[15])
+let whisperBuffer17 = new Tone.Buffer(whisperBufferArray[16])
+let whisperBuffer18 = new Tone.Buffer(whisperBufferArray[17])
+let whisperBuffer19 = new Tone.Buffer(whisperBufferArray[18])
+let whisperBuffer20 = new Tone.Buffer(whisperBufferArray[19])
+let whisperBuffer21 = new Tone.Buffer(whisperBufferArray[20])
+
+let flexContainer = document.querySelector(".flex-boxt")
+
+let bufferArray = [whisperBuffer1, whisperBuffer2, whisperBuffer3, whisperBuffer4, whisperBuffer5, whisperBuffer6, whisperBuffer7, whisperBuffer8, whisperBuffer9, whisperBuffer10, whisperBuffer11, whisperBuffer12, whisperBuffer13, whisperBuffer14, whisperBuffer15, whisperBuffer16, whisperBuffer17, whisperBuffer18, whisperBuffer19, whisperBuffer20, whisperBuffer21]
+
+function runIt() {
+  // if ( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
+  //   flexContainer.style.height = "100vh"
+  // } else {
+ poem.style.height = "100vh"
+  
+  revealPoem()
+  myInt = setInterval(revealPoem, 5000);
+
+}
+ 
+function runIt1() {
+  revealPoem()
+  myInt = setInterval(revealPoem, 5000)
+}
+
+hover.onclick = () => {
+ runIt()
+ 
+ hover.style.visibility = "hidden"
+}
+
+
+
+function backToRnp() {
+
+      window.location = "rnp.html"
+ 
+  }
+
+
+
+</script>
+
+
+</body>
+
+<!-- <script src='tone.js'></script> -->
+
+
+</html>
