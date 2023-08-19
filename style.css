@@ -9,9 +9,12 @@ body, html {
   -moz-user-select:none;
   -ms-user-select:none;
   user-select:none;
+  touch-action: manipulation;
   }
   
-
+  * {
+    touch-action: manipulation;
+}
 
 
 body {
@@ -89,7 +92,11 @@ body {
     background-color: #f1f1f1;
   }
 
- 
+img {
+  touch-action: manipulation
+}
+
+
 #instruments {
   font-family: inherit;
 }
@@ -294,9 +301,10 @@ a {
 @media screen and (max-height: 450px) {
   /* .sidenav {padding-top: 15px;} */
   .sidenav a {font-size: 18px;}
+  
 }
 
-@media screen and (min-width: 1152px) {
+@media screen and (min-width: 800px) {
   .sidenav {
     display: none
     /* height: 2px */
@@ -312,9 +320,9 @@ a {
 
 
 
-@media screen and (max-width: 1152px) {
+@media screen and (max-width: 800px) {
   .topnav {
-    height: 2px;
+
     display: none
   }
 

@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <title>Treya Nash</title>
   <link rel="stylesheet" href="style.css">
-  
+
   <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
   <link rel="icon" href="media/favicon.ico">
   <!-- <link rel="script" href="./script.js"> -->
@@ -96,6 +96,8 @@ user-select:none;
 
 img {
   -webkit-touch-callout: none;
+  touch-action: manipulation
+
 
 }
 
@@ -125,7 +127,7 @@ img {
 }
 
 #mainPic {
-  width: 30vw;
+  width: 400px;
 }
 
   </style>
@@ -155,7 +157,7 @@ img {
 
 
 <!-- <img src="media/treya.png" id="logo" height="100"> -->
-<img src="media/Treya_1.jpg" width="400px" id="mainPic" class="flex-items">
+<img src="media/Treya_1.jpg" width="400px" id="mainPic" class="flex-items" onclick="{e => e.preventDefault()}">
 <!-- <audio controls="controls" class="flex-items">
   Hello
   <source src="media/OneLonelyCricket.wav">

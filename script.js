@@ -47,8 +47,6 @@ function myFunction() {
   let button = document.querySelector("#outsideDiv")
   let num = 1
 
-
-
   
  
 
@@ -73,9 +71,11 @@ myName.onmouseout = () => {
 // }
 
 }
-if (window.screen.width <= 1024) {
-  mainImg.style.width = "80vw";
+if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
+
+  mainImg.style.width = "80%";
   console.log(window.screen.width)
+  mainImg.style.touchAction = "manipulation"
 
   myName.ontouchstart = () => {
     // myName.style.-webkit-background-clip: text;
@@ -187,3 +187,4 @@ if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(naviga
       window.location = "rnp.html"
     }
   }
+
