@@ -89,6 +89,7 @@
   <p  id="seeN"><a class="aclass" href="seeN.html"> <b>See Nothing</b> </a> for string quartet, double bass, and fixed media</p>
   <p  id="nm"> <a class="aclass" href="nm.html"> <b>Nothing Motorised</b></a> for b-flat clarinet, violin, and percussion</p>
   <p id="ydb"> <a class="aclass" href="ydb.html"> <b>Yellow Dollar Blue</b></a> for saxophone, accordion, electric guitar, and percussion </p>
+  <p id="tdhw"> <a class="aclass" href="tdhw.html"><b>The Dead Hand Wanders</b></a>  for two alto saxophones, double bass, and percussion</p>
   <p id="pd"> <a class="aclass" href="pd.html"> <b>Plot Device</b></a>  for string quartet and double bass</p>
   <p id="dm"style="display: none"> <a class="aclass" href="dagmar.html" > <b>Dagmar</b></a> for clarinet, electric guitar, double bass, and drumset </p>
 
@@ -359,6 +360,7 @@ let imbu = document.querySelector("#imbu"); //flute & lE
 let yfbow = document.querySelector("#yfbow")
 let gt = document.querySelector("#gt")
 let ttfocl = document.querySelector("#ttfocl")
+let tdhw = document.querySelector("#tdhw")
 
 //Categories of Pieces
 
@@ -366,12 +368,12 @@ let pieces = {
   accordion: [ydb, yfbow],
   cello: [laune, tor, sn, g, pd],
   clarinet: [tor, nm], 
-  doubleBass: [tor, sn, pd],
+  doubleBass: [tor, sn, tdhw, pd],
   flute: [tor, g],
   guitar: [ydb, dm],
-  percussion: [mf, tor, nm, ydb],
+  percussion: [mf, tor, nm, ydb, tdhw],
   piano: [tor, ctp, gt],
-  saxophone: [mf, hr, ydb],
+  saxophone: [mf, hr, ydb, tdhw],
   viola: [tor, tms, sn, pd, nm],
   violin: [tor, nm, sn, pd],
   voice: [tor, tms],

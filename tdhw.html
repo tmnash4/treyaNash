@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title> The Dead Hand Wanders </title>
+  <link rel="stylesheet" href="style.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+  <link rel="icon" href="media/favicon.ico">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Quicksand&display=swap');
+  </style>
+    <meta http-equiv="Permissions-Policy" content="interest-cohort=()">
+</head>
+<body>
+  <div class="topnav" id="myTopnav">
+    <a href="index.html" >Home</a>
+    <a href="works.html" class="active">Works</a>
+    <a href="rnp.html">Research and Projects</a>
+    <a href="bio.html">Bio</a>
+    <a href="contact.html">Contact</a>
+    <a href="index.html" >Home</a>
+  </div>
+  <div id="mySidenav" class="sidenav">
+    <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+    <a href="index.html" >Home</a>
+    <a href="works.html">Works</a>
+    <a href="rnp.html">Research and Projects</a>
+    <a href="bio.html">Bio</a>
+    <a href="contact.html">Contact</a>
+</div>
+<div id="main"> 
+    <span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776; </span>
+</div>
+<style>
+
+.flex-boxt {
+  display: flex;
+  flex-direction: row; /* change this to row instead of 'column' */
+  flex-wrap:wrap; /* added flex-wrap */
+  /* text-align: center */
+  /* height: 80vh */
+  
+}
+
+.flex-items1 {
+  flex: 1;
+  width:100%;
+  margin: 5px;
+}
+    
+.figcap {
+  text-align: center;
+}
+
+.flex-box2 {
+  display: flex;
+}
+
+.flex-items2 {
+  flex-wrap: nowrap;
+  width: 20%;
+  height: auto
+}
+
+.imgClass {
+  max-width: 100%;
+  max-height: auto;
+  border: black 2px solid;
+  z-index: 10;
+}
+
+.flex-items2:hover {
+  width: 75%;
+  flex-wrap: wrap;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+.row > .column {
+  padding: 0 8px;
+}
+
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+.column {
+  float: left;
+  width: 25%;
+}
+
+/* The Modal (background) */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  padding-top: 100px;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: black;
+}
+
+/* Modal Content */
+.modal-content {
+  position: relative;
+  background-color: #fefefe;
+  margin: auto;
+  padding: 0;
+  width: 80%;
+  max-width: 700px;
+}
+
+/* The Close Button */
+.close {
+  color: white;
+  position: absolute;
+  top: 10px;
+  right: 25px;
+  font-size: 35px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: #999;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.mySlides {
+  display: none;
+  height: 50%
+}
+
+.cursor {
+  cursor: pointer;
+}
+
+/* Next & previous buttons */
+.prev,
+.next {
+  cursor: pointer;
+  position: absolute;
+  top: 50%;
+  width: auto;
+  padding: 16px;
+  margin-top: -50px;
+  color: rgb(152, 145, 145);
+  font-weight: bold;
+  font-size: 20px;
+  transition: 0.6s ease;
+  border-radius: 0 3px 3px 0;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+/* Position the "next button" to the right */
+.next {
+  right: 0;
+  border-radius: 3px 0 0 3px;
+}
+
+/* On hover, add a black background color with a little bit see-through */
+.prev:hover,
+.next:hover {
+  background-color: rgba(0, 0, 0, 0.8);
+}
+
+/* Number text (1/3 etc) */
+.numbertext {
+  color: #f2f2f2;
+  font-size: 12px;
+  padding: 8px 12px;
+  position: absolute;
+  top: 0;
+}
+
+img {
+  margin-bottom: -4px;
+}
+
+.caption-container {
+  text-align: center;
+  background-color: black;
+  padding: 2px 16px;
+  color: white;
+}
+
+.demo {
+  opacity: 0.6;
+}
+
+.active,
+.demo:hover {
+  opacity: 1;
+}
+
+img.hover-shadow {
+  transition: 0.3s;
+}
+
+.hover-shadow:hover {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+@media screen and (min-width: 1152px) {
+
+  .flex-boxt {
+    margin-top: 10vh;
+    margin-bottom: 100px
+  }
+
+  .demo  {
+   visibility: hidden;
+   height: 2px;
+
+  }
+
+  #yt {
+    width: 840px;
+    height: 525px;
+  }
+
+  #flex1 {
+    margin-left: 5vw;
+    margin-right: 3vw;
+    font-size: 16px;
+    margin-top: -10px;
+    /* min-width: 30% */
+  }
+
+  #flex2 {
+    margin-right: 5vw;
+  }
+
+  iframe {
+  position:absolute;
+  width: 840px;
+  height: 525px;
+  }
+
+  #hiddenFigCap {
+  display: none;
+  }
+
+  #iframe2 {
+  display: none;
+  }
+
+}
+
+.iframe-container{
+  position: relative;
+  width: 100%;
+  padding-bottom: 56.25%; 
+  height: 0;
+}
+.iframe-container iframe{
+  position: absolute;
+  top:0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+
+@media screen and (max-width: 1152px) {
+  .flex-boxt  {
+  display: flex;
+  flex-direction: row; /* change this to row instead of 'column' */
+  flex-wrap:nowrap; /* added flex-wrap */
+  /* flex-shrink: 0; */
+  height: auto;
+  margin-bottom: 5px;
+  }
+
+  #flex2 {
+  display: none;
+  }
+
+  .flex-items1 {
+  /* position: relative; */
+  width:100%;
+  flex-shrink: 0;
+  margin: 0px;
+  }
+}
+
+</style>
+
+<form >
+  <input type="button" value="back to works" onclick="history.back()" class="backButton">
+</form>
+<h1 class="headerClass">The Dead Hand Wanders</h1>
+<div class="flex-boxt">
+  <div class="flex-items1" id="flex1">    
+    <p>
+      <p><strong>Instrumentation: </strong>two alto saxophones, double bass, percussion</p>
+    </p>
+    <p>
+      <b>Year:</b> 2021 | <b>Duration: </b> 4'40"
+    </p>
+    <p>
+    <p>Written for Margaret Atwood's visit to UNCG</p>
+    <p>Performed by: <br>
+        Steve Stusek & Phillip Black, alto saxophone <br>
+        Lorenzo Nigrelli, double bass <br>
+        Xin Yin, percussion</p>
+
+
+
+    </p>
+    <p> 
+      <b>Program Note: </b>
+      <i>The Dead Hand Wanders</i> is inspired by Margaret Atwood’s short story The Dead Hand Loves You. In this story, an elderly writer reflects on the one horror novel he wrote about a disembodied hand that made him a success. In addition to the writer’s story, we also get his story within the story; the comical, macabre, slightly sexist in an old fashioned way (as the writer himself is), satisfying tale of the disembodied hand of a jilted man, hell-bent on tormenting its ex-lover. The image in my mind while writing this piece was of the hand scuttling around, fingers functioning as five tiny legs, like a grotesque flesh spider. Could the hand break free of the fragile ego of its former owner? What would it do on its own? What if it found some greater, loftier purpose? How would it avoid detection? This piece is a theme for the hand.
+    </p>
+  </div>
+  <div class="flex-items1" id="flex2">
+    <div class="iframe-container">
+      <iframe  src="https://www.youtube.com/embed/5A9acnrayGs" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+    </div>   
+    <!-- <figcaption class="figcap"> Mar</figcaption> -->
+  </div>
+</div>
+<div class="iframe-container" id="iframe2">
+  <iframe  src="https://www.youtube.com/embed/5A9acnrayGs" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+</div>
+<!-- <figcaption class="figcap" id="hiddenFigCap">  LSU Faculty and Grad Student Recital</figcaption> -->
+<!-- <hr>  </hr> -->
+<!-- <h2 style="text-align:center" class="scoreP">Score Preview</h2>
+<div class="row">
+  <div class="column">
+    <img src="media/scores/jpgs/hedge_1.jpeg" style="width:100%" onclick="openModal();currentSlide(1)" class="hover-shadow cursor">
+  </div>
+  <div class="column">
+  <img src="media/scores/jpgs/hedge_2.jpeg" style="width:100%" onclick="openModal();currentSlide(2)" class="hover-shadow cursor">
+  </div>
+  <div class="column">
+    <img src="media/scores/jpgs/hedge_3.jpeg" style="width:100%" onclick="openModal();currentSlide(3)" class="hover-shadow cursor">
+  </div>
+  <div class="column">
+    <img src="media/scores/jpgs/hedge_4.jpeg" style="width:100%" onclick="openModal();currentSlide(4)" class="hover-shadow cursor">
+  </div>
+  
+
+<div id="myModal" class="modal">
+  <span class="close cursor" onclick="closeModal()">&times;</span>
+  <div class="modal-content">
+    <div class="mySlides">
+      <div class="numbertext">1 / 4</div>
+      <img src="media/scores/jpgs/hedge_1.jpeg" style="width:100%">
+    </div>
+    <div class="mySlides">
+      <div class="numbertext">2 / 4</div>
+      <img src="media/scores/jpgs/hedge_2.jpeg" style="width:100%">
+    </div>
+    <div class="mySlides">
+      <div class="numbertext">3 / 4</div>
+      <img src="media/scores/jpgs/hedge_3.jpeg" style="width:100%">
+    </div>
+    <div class="mySlides">
+      <div class="numbertext">4 / 4</div>
+      <img src="media/scores/jpgs/hedge_4.jpeg" style="width:100%">
+    </div>
+   <div class="mySlides">
+      <div class="numbertext">5 / 5</div>
+      <img src="media/scores/jpgs/TMS6.jpg" style="width:100%">
+    </div> -->
+    <!-- <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+    <a class="next" onclick="plusSlides(1)">&#10095;</a>
+    <div class="caption-container">
+      <p id="caption"></p>
+    </div> -->
+
+
+    <!-- <div class="column">
+      <img class="demo cursor" src="media/scores/jpgs/hedge_1.jpeg" style="width:100%" onclick="currentSlide(1)" alt="1">
+    </div>
+    <div class="column">
+      <img class="demo cursor" src="media/scores/jpgs/hedge_2.jpeg" style="width:100%" onclick="currentSlide(2)" alt="2">
+    </div>
+    <div class="column">
+      <img class="demo cursor" src="media/scores/jpgs/hedge_3.jpeg" style="width:100%" onclick="currentSlide(3)" alt="3">
+    </div>
+    <div class="column">
+      <img class="demo cursor" src="media/scores/jpgs/hedge_4.jpeg" style="width:100%" onclick="currentSlide(4)" alt="4">
+    </div>
+    <div class="column">
+      <img class="demo cursor" src="media/scores/jpgs/TMS6.jpg" style="width:100%" onclick="currentSlide(5)" alt="5">
+    </div> 
+  </div>
+</div> -->
+
+<script>
+//   function openModal() {
+//   document.getElementById("myModal").style.display = "block";
+// }
+
+// function closeModal() {
+//   document.getElementById("myModal").style.display = "none";
+// }
+
+// var slideIndex = 1;
+// showSlides(slideIndex);
+
+// function plusSlides(n) {
+//   showSlides(slideIndex += n);
+// }
+
+// function currentSlide(n) {
+//   showSlides(slideIndex = n);
+// }
+
+// function showSlides(n) {
+//   var i;
+//   var slides = document.getElementsByClassName("mySlides");
+//   var dots = document.getElementsByClassName("demo");
+//   var captionText = document.getElementById("caption");
+//   if (n > slides.length) {slideIndex = 1}
+//   if (n < 1) {slideIndex = slides.length}
+//   for (i = 0; i < slides.length; i++) {
+//       slides[i].style.display = "none";
+//   }
+//   for (i = 0; i < dots.length; i++) {
+//       dots[i].className = dots[i].className.replace(" active", "");
+//   }
+//   slides[slideIndex-1].style.display = "block";
+//   dots[slideIndex-1].className += " active";
+//   captionText.innerHTML = dots[slideIndex-1].alt;
+// }
+
+</script>
+
+
+</body>
+
+<script src='tone.js'></script><script  src="script.js"></script>
+
+
+</html>
