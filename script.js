@@ -65,12 +65,22 @@ myName.onmouseover = () => {
 myName.onmouseout = () => {
   // myName.style.color = "-webkit-linear-gradient(#3a04ba, #60d44f)";
   myName.innerHTML = "Treya Nash"
+
+
 }
 // comp.onmouseover = () => {
 //   comp.style.on
 // }
 
 }
+
+let linkArray = ["media/bioImgs/T2.png","media/bioImgs/T3.png","media/bioImgs/T4.png","media/bioImgs/T5.png","media/bioImgs/T6.png","media/bioImgs/T7.png","media/bioImgs/T8.png","media/bioImgs/T9.png","media/bioImgs/T10.png","media/bioImgs/T11.png", "media/bioImgs/T10.png", "media/bioImgs/T9.png","media/bioImgs/T8.png","media/bioImgs/T7.png","media/bioImgs/T6.png","media/bioImgs/T5.png","media/bioImgs/T4.png","media/bioImgs/T3.png","media/bioImgs/T2.png","media/bioImgs/T1.png"]
+let num1 = 0;
+let num2 = 0;
+let myFunc = 0;
+let myTime = 100;
+
+
 if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
 
   mainImg.style.width = "80%";
@@ -81,6 +91,7 @@ if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(naviga
     // myName.style.-webkit-background-clip: text;
     // myName.style.color = "-webkit-linear-gradient(#60d44f, #3a04ba)";
     myName.innerHTML = "Neya Trash"
+    
 
   }
   
@@ -90,31 +101,56 @@ if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(naviga
 
   }
   mainImg.ontouchstart = () => {
-    mainImg.src = "media/Trey.jpg"
+    //mainImg.src = "media/Trey.jpg"
     if (playCrick.state == "stopped") {
       Tone.Transport.start();
       mainGain.gain.rampTo(0.1, 3);
     }
+    myFunc = setInterval(()=> {
+      mainImg.src = linkArray[num1]
+      num2++
+      console.log(num2)
+      if (num2 >= linkArray.length) {
+        num2 = 0
+      }
+    }, 1000)
+  
   }
  
 
 
 
 
-
 mainImg.ontouchend = () => {
-  mainImg.src = "media/Treya_1.jpg"
+ // mainImg.src = "media/Treya_1.jpg"
+ 
   if (playCrick.state == "started") {
       Tone.Transport.pause();
       mainGain.gain = 0
   }
+  clearInterval(myFunc)
+  console.log("ended")
 }
   
+ 
   
 
 } else {
   mainImg.onmouseover = () => {
-    mainImg.src = "media/Trey.jpg"
+   
+   myFunc = setInterval(()=> {
+      mainImg.src = linkArray[num2]
+      num2++
+      if (num2 >= linkArray.length) {
+        num2 = 0
+        console.log(num1)
+      }
+    }, myTime)
+    //mainImg.src = "media/Trey.jpg"
+    // for (i=0;i<linkArray.length;i++) {
+    // }
+   
+
     if (playCrick.state == "stopped") {
       Tone.Transport.start();
       mainGain.gain.rampTo(0.1, 3);
@@ -129,7 +165,9 @@ mainImg.ontouchend = () => {
 
 
 mainImg.onmouseout = () => {
-  mainImg.src = "media/Treya_1.jpg"
+  clearInterval(myFunc)
+
+  //mainImg.src = "media/Treya_1.jpg"
   if (playCrick.state == "started") {
       Tone.Transport.pause();
       mainGain.gain = 0
