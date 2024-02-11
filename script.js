@@ -77,7 +77,10 @@ myName.onmouseout = () => {
 let linkArray = ["media/bioImgs/T2.png","media/bioImgs/T3.png","media/bioImgs/T4.png","media/bioImgs/T5.png","media/bioImgs/T6.png","media/bioImgs/T7.png","media/bioImgs/T8.png","media/bioImgs/T9.png","media/bioImgs/T10.png","media/bioImgs/T11.png", "media/bioImgs/T10.png", "media/bioImgs/T9.png","media/bioImgs/T8.png","media/bioImgs/T7.png","media/bioImgs/T6.png","media/bioImgs/T5.png","media/bioImgs/T4.png","media/bioImgs/T3.png","media/bioImgs/T2.png","media/bioImgs/T1.png"]
 let num1 = 0;
 let num2 = 0;
+let num11 = 0;
+let num22 = 0;
 let myFunc = 0;
+let myFunc1;
 let myTime = 100;
 
 
@@ -106,14 +109,15 @@ if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(naviga
       Tone.Transport.start();
       mainGain.gain.rampTo(0.1, 3);
     }
-    myFunc = setInterval(()=> {
-      mainImg.src = linkArray[num1]
-      num2++
-      console.log(num2)
-      if (num2 >= linkArray.length) {
-        num2 = 0
+    myFunc1 = setInterval(()=> {
+      mainImg.src = linkArray[num22]
+      num22++
+      console.log(num22)
+      if (num22 >= linkArray.length) {
+        num22 = 0
       }
-    }, 1000)
+      console.log("hello")
+    }, 500)
   
   }
  
@@ -128,7 +132,7 @@ mainImg.ontouchend = () => {
       Tone.Transport.pause();
       mainGain.gain = 0
   }
-  clearInterval(myFunc)
+  clearInterval(myFunc1)
   console.log("ended")
 }
   
