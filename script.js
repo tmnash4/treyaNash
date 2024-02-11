@@ -105,6 +105,7 @@ if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(naviga
 
   }
   mainImg.ontouchstart = () => {
+    startAudio()
     //mainImg.src = "media/Trey.jpg"
     if (playCrick.state == "stopped") {
       Tone.Transport.start();
@@ -142,7 +143,7 @@ mainImg.ontouchend = () => {
 
 } else {
   mainImg.onmouseover = () => {
-   
+   startAudio()
    myFunc = setInterval(()=> {
       mainImg1.src = linkArray[num2]
       num2++
