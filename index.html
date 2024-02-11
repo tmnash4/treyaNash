@@ -5,14 +5,16 @@
   <title>Treya Nash</title>
   <link rel="canonical" href="https://treyanash.com"/>
   <link rel="stylesheet" href="style.css">
-  <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+  <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
   <link rel="icon" href="media/favicon.ico">
   <meta property="og:image" content="media/ogimg.png"/>
   <meta property="og:title" content="Treya Nash" />
   <meta property=”og:type” content=”website” />
   <meta property=”og:url” content=”https://treyanash.com” />
   <meta property="og:description" content="Treya Nash is a composer and creative coder based in Baton Rouge, Louisiana." />
-  <style>
+
+ <style>
     @import url('https://fonts.googleapis.com/css2?family=Quicksand&display=swap');
   </style>
 </head>
@@ -38,18 +40,24 @@
   </div>
   <style> 
   body {
+    
+    /* touch-action:manipulation; */
+
     -webkit-touch-callout:none;
     -webkit-user-select:none;
     -khtml-user-select:none;
     -moz-user-select:none;
     -ms-user-select:none;
     user-select:none;
+
   }
 
   #outsideDiv {
     display: flex;
     flex-direction: column;
     align-items: center;
+
+
   }
 
   #myName {
@@ -65,7 +73,10 @@
 
   img {
     -webkit-touch-callout: none;
-    touch-action: manipulation
+    
+    touch-action: manipulation;
+    touch-action: none;
+  
   }
 
 
@@ -107,7 +118,7 @@
       <i class="fa fa-linkedin-square" aria-hidden="true"></i>
     </a>
   </div>
-  <img src="media/bioImgs/T1.png"  width="700px" id="mainPic" class="flex-items" onclick="{e => e.preventDefault()}">
+  <img src="media/bioImgs/T1.png" width="700px" id="mainPic" class="flex-items" onclick="{e => e.preventDefault()}" >
   <p>Photo by <a href="https://www.teregulovcello.com/">Eduard Teregulov</a></p>
 </div>
 </meta>

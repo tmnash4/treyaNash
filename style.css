@@ -217,6 +217,11 @@ img {
   color: white
 }
 
+#cell {
+  background-image: linear-gradient(to right, rgb(75, 14, 208), rgb(56, 226, 110));
+  color: white
+  
+}
 
 .container {
   background-image: linear-gradient(to right , rgb(56, 226, 110), rgb(75, 14, 208));

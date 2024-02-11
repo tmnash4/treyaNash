@@ -55,12 +55,15 @@
 
 <h1 class="headerClass1"> Works </h1>
 
-<!-- <br> -->
+<br>
+<br>
+
 <label for="instruments">Search by category/instrument</label>
 
 <select name="instr" id="instruments">
     <option value="">--choose an option--</option>
     <option value="liveE">Live Electronics</option>
+    <option value="audience"> Audience Participation </option>
     <option value="flex">Flexible Instrumentation</option>
     <option value="accordion">Accordion</option>
     <option value="cello">Cello</option>
@@ -81,6 +84,14 @@
 <div id="putOptions"></div>
 
 <br>
+<button type="button" class="collapsible" id="cell">Cell Phone Pieces</button>
+<div class="content">
+  <p id="wh"> <a class="aclass" href="whisper1.html"> <b>Whisper</b></a></p>
+  <p id="fa"><a class="aclass" href="face.html" visibility="hidden"> <b>Face</b></a> </p>
+  <p id="fr"> <a class="aclass" href="frog2.html"> <b>Frog</b></a> </p>
+  
+</div>
+<p></p>
 <button type="button" class="collapsible" id="chamber">Chamber</button>
 <div class="content">
   <p id="tor"> <a class="aclass" href="tor.html"> <b>Tor</b></a> for variable pierrot ensemble </p>
@@ -181,10 +192,11 @@ for (i = 0; i < coll.length; i++) {
   mySelect.onchange = () => {
     $(optionDiv).empty();
     
-    let i = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
-    let j = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+    let i = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+    let j = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
     
     let accordionArray = [];
+    let audienceArray = [];
     let celloArray = [];
     let clarinetArray = [];
     let doubleBassArray = [];
@@ -259,6 +271,10 @@ for (i = 0; i < coll.length; i++) {
     pieces.liveE.forEach(() => {
      liveEArray.push(pieces.liveE[i[14]].cloneNode(true));
      i[14]++
+    })
+    pieces.audience.forEach(() => {
+      audienceArray.push(pieces.audience[i[15]].cloneNode(true));
+      i[15]++
     })
    
     if (mySelect.value == "accordion") {
@@ -336,7 +352,12 @@ for (i = 0; i < coll.length; i++) {
       optionDiv.appendChild(liveEArray[j[14]])
     j[14]++
     })
-    } 
+    } else if (mySelect.value == "audience") {
+      audienceArray.forEach(() => {
+        optionDiv.appendChild(audienceArray[j[15]])
+        j[15]++
+      })
+    }
   
   }
 
@@ -361,6 +382,10 @@ let yfbow = document.querySelector("#yfbow")
 let gt = document.querySelector("#gt")
 let ttfocl = document.querySelector("#ttfocl")
 let tdhw = document.querySelector("#tdhw")
+let wh = document.querySelector("#wh")
+let fa = document.querySelector("#fa")
+let fr = document.querySelector("#fr")
+
 
 //Categories of Pieces
 
@@ -380,7 +405,8 @@ let pieces = {
   flexible: [soaw],
   liveE: [laune, mf, imbu],
   musicForD: [],
-  windE: [ttfocl]
+  windE: [ttfocl],
+  audience: [wh, fa, fr, mf]
 }
 
 

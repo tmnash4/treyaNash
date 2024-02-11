@@ -1,0 +1,549 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title> Face </title>
+  <link rel="stylesheet" href="style.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+  <link rel="icon" href="media/favicon.ico">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/tone/14.5.44/Tone.js'></script>
+
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Quicksand&display=swap');
+  </style>
+    <meta http-equiv="Permissions-Policy" content="interest-cohort=()">
+</head>
+<body>
+  <div class="topnav" id="myTopnav">
+    <a href="index.html" >Home</a>
+    <a href="works.html" class="active">Works</a>
+    <a href="rnp.html">Research and Projects</a>
+    <a href="bio.html">Bio</a>
+    <a href="contact.html">Contact</a>
+  </div>
+  <div id="mySidenav" class="sidenav">
+    <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+    <a href="index.html" >Home</a>
+    <a href="works.html">Works</a>
+    <a href="rnp.html">Research and Projects</a>
+    <a href="bio.html">Bio</a>
+    <a href="contact.html">Contact</a>
+</div>
+<div id="main"> 
+    <span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776; </span>
+</div>
+<style>
+
+.flex-boxt {
+  display: flex;
+  flex-direction: row; /* change this to row instead of 'column' */
+  flex-wrap:wrap; /* added flex-wrap */
+  /* text-align: center */
+  /* height: 80vh */
+  
+}
+
+.flex-items1 {
+  flex: 1;
+  width:100%;
+  margin: 5px;
+  
+}
+    
+.figcap {
+  text-align: center;
+}
+
+.flex-box2 {
+  display: flex;
+}
+
+.flex-items2 {
+  flex-wrap: nowrap;
+  width: 20%;
+  height: auto
+}
+
+.imgClass {
+  max-width: 100%;
+  max-height: auto;
+  border: black 2px solid;
+  z-index: 10;
+}
+
+.flex-items2:hover {
+  width: 75%;
+  flex-wrap: wrap;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+
+
+/* The Modal (background) */
+
+
+
+
+
+
+@media screen and (min-width: 700px) {
+
+    #myImg1 {
+    display: none;
+  }
+
+  #whisperLayout {
+    width: 300px;
+    /* margin-top: -5px; */
+  }
+
+  .flex-boxt {
+    margin-top: 10vh;
+  }
+
+  .demo  {
+  display: none
+  }
+
+  #yt {
+    width: 840px;
+    height: 525px;
+  }
+
+  #flex1 {
+    margin-left: 5vw;
+    margin-right: 3vw;
+    font-size: 16px;
+    /* min-width: 30% */
+  }
+
+  #flex2 {
+    margin-right: 5vw;
+    /* align-content: center;
+    align-items: center;
+    justify-content: center; */
+    text-align: center;
+    height: 450px
+  }
+
+  iframe {
+  position:absolute;
+  width: 840px;
+  height: 525px;
+  }
+
+  #hiddenFigCap {
+  display: none;
+  }
+
+  #iframe2 {
+  display: none;
+  }
+
+}
+
+/* .iframe-container{
+  position: relative;
+  width: 100%;
+  padding-bottom: 56.25%; 
+  height: 0;
+}
+.iframe-container iframe{
+  position: absolute;
+  top:0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+} */
+
+
+@media screen and (max-width: 700px) {
+
+    #myImg1 {
+    width: 100%
+  }
+
+  #myImg1 img {
+    width: 100%
+  }
+
+  .flex-boxt  {
+  display: flex;
+  flex-direction: row; /* change this to row instead of 'column' */
+  flex-wrap:nowrap; /* added flex-wrap */
+  /* flex-shrink: 0; */
+  height: auto;
+  margin-bottom: 5px;
+  }
+
+  #flex2 {
+  display: none;
+  }
+
+  .flex-items1 {
+  /* position: relative; */
+  width:100%;
+  flex-shrink: 0;
+  margin: 0px;
+  }
+}
+
+
+body {
+    touch-action: manipulation;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: pan-y; 
+    /* touch-action:none; */
+
+}
+
+.flex-face {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.inside-flex {
+    display: flex;
+    justify-content: space-around;
+    flex-direction: column;
+    align-items: center;
+}
+
+.inside-inside-flex {
+    display: flex;
+    justify-content: space-around;
+    width: 100%
+}
+
+.eye-flex {
+    top: 25%;
+    width: 80px;
+    height: 80px;
+    border: 25px solid white;
+    background-color: black;
+}
+
+#face{
+    width: 100%;
+    height: 100%;
+    background-color: var(--backColor);
+    border: darkgreen 2px dashed
+}
+
+#face1 {
+    width: 100%;
+    height: 500px;
+    background-color: var(--backColor)
+}
+
+#main-face {
+    position: relative;
+    width: 90%;
+    /* max-width: 600px;
+    min-width: 400px; */
+    height: 80%;
+    background-color: var(--backColor1);
+    border-radius: 50%
+}
+
+#main-face1 {
+    position: relative;
+    width: 90%;
+    max-width: 400px;
+    /* min-width: 400px; */ 
+    height: 80%;
+    background-color: var(--backColor1);
+    border-radius: 50%
+}
+
+
+#left-eye {
+    position: absolute;
+    border-radius: 50%;
+    left: 10%
+}
+#left-eye1 {
+    position: absolute;
+    border-radius: 50%;
+    left: 10%
+}
+
+#right-eye {
+    position: absolute;
+    border-radius: 50%;
+    right: 10%
+}
+#right-eye1 {
+    position: absolute;
+    border-radius: 50%;
+    right: 10%
+}
+
+#mouth {
+    position: relative;
+    top: 30px;
+    border-radius: 0 0 200px 200px;
+    /* transform: translate(-50%, -50%); */
+    height: 100px;
+    width: 200px;
+    background-color: var(--backColor);
+    user-select: none;
+    -webkit-user-select: none;
+
+}
+
+#mouth1 {
+    position: relative;
+    top: 30px;
+    border-radius: 0 0 200px 200px;
+    /* transform: translate(-50%, -50%); */
+    height: 100px;
+    width: 200px;
+    background-color: var(--backColor);
+    user-select: none;
+    -webkit-user-select: none;
+
+}
+
+
+@media screen and (min-width: 800px) {
+    #main-face {
+    width: 60%;
+    max-width: 500px;
+    min-width: 350px;
+    height: 90%;
+    /* background-color: red; */
+    border-radius: 50%
+}
+
+
+
+}
+
+
+
+
+</style>
+
+<form >
+  <input type="button" value="back to works" onclick="history.back()" class="backButton">
+</form>
+<h1 class="headerClass">Face</h1>
+<div class="flex-boxt">
+  <div class="flex-items1" id="flex1">
+    <p>
+      For audience with cellphones
+    </p>
+    <p>
+      <b>Year:</b> 2024 | <b>Duration: </b> flexible
+    </p>
+    <p> 
+      <b> Description: </b>
+      <i>Face</i> is an in-progress project. The audience load a web app. A face appears on their screen. Using it, they can "sing". Have a go with the example on this page! The performance version features various surprises. 
+    </p>
+  </div>
+  <div class="flex-items1" id="flex2">
+    <!-- <div class="iframe-container" id="iframe1"> -->
+        <!-- <img src="media/faceImg.png" id="whisperLayout"> -->
+        <div class="flex-face" id="face">
+          <div class="inside-flex" id="main-face">
+              <div class="inside-inside-flex" id="eyeline">
+                  <div class="eye-flex" id="left-eye"> </div>
+                  <div class="eye-flex" id="right-eye"> </div>
+          </div>
+          <div id="mouth"></div>
+          </div>
+        
+      <!-- </div> -->
+    
+
+    </div>  
+  </div>
+</div>
+
+<div id="iframe2">
+  <div class="flex-face" id="face1">
+    <div class="inside-flex" id="main-face1">
+        <div class="inside-inside-flex" id="eyeline1">
+            <div class="eye-flex" id="left-eye1"> </div>
+            <div class="eye-flex" id="right-eye1"> </div>
+    </div>
+    <div id="mouth1"></div>
+    </div>
+
+</div>
+
+  </div>
+  
+</div> 
+
+
+<script>
+
+async function startAudio1() {  //This code starts the audio 
+  await Tone.start()
+  console.log("ready")
+}
+
+
+let redsAndYellows = ["#FF0D0D","#FD5C12","#B1241B","#FF9B36","#FFD30B","#FFF115","#E00707","#DE1445","#DE146A","#DE1491","#DE14C8","#B914DE","#69069D","#FF5B14","#E87800","#DCAE00"];
+  let bluesAndGreens = ["#93FF00","#5FF012","#32C614","#10A226","#18E76C","#009F41","#08F787","#25996D","#14A88F","#1DFFF8","#00C6C0","#2EE9FF","#00CDFF","#3A7D8D","#27C7FF","#16789A","#89D8FF","#89C6FF","#89ABFF","#0049FF","#0022BB","#0C238C","#BEADFF","#D5BDFF","#DAB7FF","#FDB7FF"]
+  let randColor = Math.floor(Math.random() * (redsAndYellows.length - 1));
+  let randColor1 = Math.floor(Math.random() * (bluesAndGreens.length - 1))
+  let faceBackground = document.getElementById("face");
+  let faceBackground1 = document.getElementById("face1");
+  faceBackground.style.setProperty('--backColor', redsAndYellows[randColor]);
+  faceBackground1.style.setProperty('--backColor', redsAndYellows[randColor]);
+  let faceProper = document.getElementById('main-face');
+  let faceProper1 = document.getElementById('main-face1');
+  faceProper.style.setProperty('--backColor1', bluesAndGreens[randColor1]);
+  faceProper1.style.setProperty('--backColor1', bluesAndGreens[randColor1]);
+  let mouth = document.getElementById("mouth");
+  let mouth1 = document.getElementById("mouth1");
+  mouth.style.setProperty('--backColor', redsAndYellows[randColor])
+  mouth1.style.setProperty('--backColor', redsAndYellows[randColor])
+
+
+
+  let eyes = document.getElementById("left-eye")
+  let eyes1 = document.getElementById("left-eye1")
+  eyes.addEventListener("click", startAudio1)
+  eyes1.addEventListener("click", startAudio1)
+
+
+
+
+
+let synthIsPlaying = false
+
+
+    let synth, rand, rand1, f1, lpfilt, env, x, y, cnv;
+
+
+   let screamIsPlaying = false;
+   mouth.addEventListener("mousedown", () => {
+        mouth.style.borderRadius = "200px 200px 200px 200px"
+        mouth.style.height = "150px"
+        mouth.style.width = "150px"
+        if (!screamIsPlaying) {
+            playSound()
+        } else if (screamIsPlaying) {
+            playScream()
+            console.log("aaaahhh")
+        }
+    })
+
+
+    mouth1.addEventListener("touchstart", () => {
+        mouth1.style.borderRadius = "200px 200px 200px 200px"
+        mouth1.style.height = "150px"
+        mouth1.style.width = "150px"
+        if (!screamIsPlaying) {
+            playSound()
+        } else if (screamIsPlaying) {
+            playScream()
+            console.log("aaaahhh")
+        }
+    })
+
+    mouth.addEventListener("mouseup", () => {
+        mouth.style.borderRadius = "0 0 200px 200px"
+        mouth.style.height = "100px"
+        mouth.style.width = "200px"
+        stopSound()
+    })
+
+    mouth1.addEventListener("touchend", () => {
+        mouth1.style.borderRadius = "0 0 200px 200px"
+        mouth1.style.height = "100px"
+        mouth1.style.width = "200px"
+        stopSound()
+    })
+
+
+
+rand1 = 300;
+lpfilt = new Tone.Filter(100, "lowpass", -12).toDestination()
+let lpfilt1 = new Tone.Filter(100, "lowpass", -12).toDestination()
+lpfilt.detune.value = 50;
+synth = new Tone.Synth().connect(lpfilt)
+synth1 = new Tone.Synth().connect(lpfilt1)
+synth.envelope.attack = 0.4
+synth.envelope.decay = 0.4
+synth.envelope.sustain = 1
+synth.envelope.release = 0.4
+synth1.envelope.attack = 0.4
+synth1.envelope.decay = 0.4
+synth1.envelope.sustain = 1
+synth1.envelope.release = 0.4
+
+function playSound() {
+  synthIsPlaying = true;
+  let rand = Math.random() * 3000
+  let rand3 = (Math.random() * 1000) + 1000
+  let rand4 = (Math.random() * 2) - 1
+  let rand2 = (Math.random() * 10) + 1
+  pitches = [386.314, 498.045, 590.224, 609.777, 701.955]
+  let pitches1 = [155, 204, 386, 471, 551, 702, 738, 857, 969, 1088]
+  let pitches2 = [200, 225, 250, 275, 300, 325, 350, 375, 400, 425, 450, 475, 500, 525, 550, 575, 600, 625, 650, 675, 700]
+  let pitches3 = [367.92, 392.44, 418.60, 436.05, 470.93, 490.55, 523.25, (261.63 * 2), (272.54 * 2), (294.33 * 2), (313.96 * 2), (327.03 * 2), (348.83 * 2), (367.92 * 2), (392.44 * 2), (418.60 * 2), (436.05 * 2), (470.93 * 2), (490.55 * 2), (523.25 * 2)]
+  rand1 = Math.floor(Math.random() * pitches3.length)
+  let synth2Pitch = pitches3[rand1]
+  synth.triggerAttack(pitches3[rand1]);
+  synth1.triggerAttack(synth2Pitch);
+
+  setTimeout(() => {
+    if (synthIsPlaying) {
+    synth.triggerAttack(pitches3[rand1] + rand2);
+    synth.envelope.attack = 0.6
+    }
+    setTimeout(() => {
+        if (synthIsPlaying) {
+            synth.triggerAttack((pitches3[rand1] + rand2) + rand4);
+            synth.envelope.attack = 0.6
+        }
+    }, rand + 1)
+  }, rand + 3)
+
+//   synth.fadeIn = 1
+//   synth.fadeOut = 1
+}
+
+// let scream1 = new Tone.Buffer("scream1.mp3");
+// let playScream1= new Tone.Player(scream1).toDestination();
+// // playScream1.fadeIn = 0.05
+
+// function playScream() {
+//     playScream1.start()
+//     console.log("hello")
+// }
+
+function stopSound() {
+    synthIsPlaying = false
+    synth.triggerRelease();
+    synth1.triggerRelease();
+}
+
+
+
+
+
+
+
+
+
+</script>
+
+
+</body>
+
+<!-- <script src='tone.js'></script><script  src="script.js"></script> -->
+
+
+</html>
