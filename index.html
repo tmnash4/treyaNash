@@ -99,6 +99,11 @@
   #mainPic {
     width: 600px;
   }
+
+  #mainPic1 {
+    width: 600px;
+    pointer-events: none;
+  }
 </style>
 
 <div id="outsideDiv">
@@ -118,8 +123,10 @@
       <i class="fa fa-linkedin-square" aria-hidden="true"></i>
     </a>
   </div>
-  <img src="media/bioImgs/T1.png" width="700px" id="mainPic" class="flex-items" unselectable="on" onclick="{e => e.preventDefault()}" >
-  <p>Photo by <a href="https://www.teregulovcello.com/">Eduard Teregulov</a></p>
+  <div  id="mainPic">
+  <img id="mainPic1" src="media/bioImgs/T1.png" width="700px" class="flex-items" unselectable="on" onclick="{e => e.preventDefault()}" >
+  <p style="text-align: center;">Photo by <a href="https://www.teregulovcello.com/">Eduard Teregulov</a></p>
+</div>
 </div>
 </meta>
   <!-- <script src="/socket.io/socket.io.js"></script> -->

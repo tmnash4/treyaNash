@@ -44,6 +44,7 @@ function myFunction() {
 
 
   let mainImg = document.querySelector("#mainPic");
+  let mainImg1 = document.querySelector("#mainPic1");
   let button = document.querySelector("#outsideDiv")
   let num = 1
 
@@ -85,8 +86,9 @@ let myTime = 100;
 
 
 if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
-
-  mainImg.style.width = "80%";
+  mainImg.style.width = "100%";
+  mainImg1.style.width = "100%";
+  mainImg1.style.textAlign = "center"
   console.log(window.screen.width)
   mainImg.style.touchAction = "manipulation"
 
@@ -110,14 +112,14 @@ if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(naviga
       mainGain.gain.rampTo(0.1, 3);
     }
     myFunc1 = setInterval(()=> {
-      mainImg.src = linkArray[num22]
+      mainImg1.src = linkArray[num22]
       num22++
       console.log(num22)
       if (num22 >= linkArray.length) {
         num22 = 0
       }
       console.log("hello")
-    }, 500)
+    }, 100)
   
   }
  
@@ -143,7 +145,7 @@ mainImg.ontouchend = () => {
   mainImg.onmouseover = () => {
    
    myFunc = setInterval(()=> {
-      mainImg.src = linkArray[num2]
+      mainImg1.src = linkArray[num2]
       num2++
       if (num2 >= linkArray.length) {
         num2 = 0
