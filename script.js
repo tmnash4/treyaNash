@@ -80,9 +80,8 @@ let num1 = 0;
 let num2 = 0;
 let num11 = 0;
 let num22 = 0;
-let myFunc = 0;
+let myFunc;
 let myFunc1;
-let myTime = 100;
 
 
 if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
@@ -147,14 +146,12 @@ mainImg.ontouchend = () => {
    myFunc = setInterval(()=> {
       mainImg1.src = linkArray[num2]
       num2++
+      console.log(num2)
       if (num2 >= linkArray.length) {
         num2 = 0
-        console.log(num1)
       }
-    }, myTime)
-    //mainImg.src = "media/Trey.jpg"
-    // for (i=0;i<linkArray.length;i++) {
-    // }
+    }, 100)
+
    
 
     if (playCrick.state == "stopped") {
@@ -172,8 +169,6 @@ mainImg.ontouchend = () => {
 
 mainImg.onmouseout = () => {
   clearInterval(myFunc)
-
-  //mainImg.src = "media/Treya_1.jpg"
   if (playCrick.state == "started") {
       Tone.Transport.pause();
       mainGain.gain = 0
