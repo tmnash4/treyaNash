@@ -1,0 +1,639 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>Calendar</title>
+  <link rel="stylesheet" href="style.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+  <link rel="icon" href="media/favicon.ico">
+  <!-- <link rel="script" href="./script.js"> -->
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Quicksand&display=swap');
+  </style>
+</head>
+
+
+<body>
+
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+  <div class="topnav" id="myTopnav">
+    <a href="index.html" >Home</a>
+    <a href="works.html">Works</a>
+    <a href="rnp.html" >Research and Projects</a>
+    <a href="bio.html">Bio</a>
+    <a href="calendar.html" class="active">Calendar</a>
+    <a href="contact.html">Contact</a>
+  </div>
+  <div id="mySidenav" class="sidenav">
+    <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+    <a href="index.html" >Home</a>
+    <a href="works.html">Works</a>
+    <a href="rnp.html">Research and Projects</a>
+    <a href="bio.html">Bio</a>
+    <a href="calendar.html">Calendar</a>
+    <a href="contact.html">Contact</a>
+  </div>
+  <div id="main">
+        <span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776; </span>
+  </div>
+<h1 class="headerClass1"> Calendar </h1>
+<!-- <div class="flexOut"> -->
+<div id="upEvents" style="width: 50%; margin: auto">
+    <b>Upcoming Events</b>
+    <p id="upComing"></p>
+</div>
+<div id="pastEvents" style="width: 50%; margin: auto">
+    <b>Past Events</b>
+    <p id="past"></p>
+</div>
+
+
+
+<script>
+
+body = document.querySelector("body")
+
+
+let up = document.getElementById("upEvents");
+let pa = document.getElementById("pastEvents")
+let upComing = document.getElementById("upComing");
+let past = document.getElementById("past")
+
+
+if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
+  up.style.width = "80%"
+  pa.style.width = "80%"
+  }
+
+let today = new Date();
+let color1 = "#DFFFF4"
+
+let myEvent2 = {
+   div: document.createElement("p"),
+   date: new Date(2024, 4, 6), 
+   time: function() {
+    this.date.setHours(19)
+    this.date.setMinutes(30)
+   },
+   eventTime: "19:30",
+   ensemble: "<a href='https://www.ensemblevim.org/'>Ensemble Vim</a>",
+   event: "<a href='https://www.ensemblevim.org/events/season-closer'>Museum of Contemporary Art Georgia</a>",
+   venue: "Purdue University",
+   location: "",
+   piece: "<i></i>",
+   linkCreation: document.createElement("a"),
+   eventText: function () {
+     this.div.innerHTML = ("<b>" + this.date.toLocaleDateString()+ " at " + this.eventTime + "</b>" 
+        + "<br>" + "Performance by " + this.ensemble + " at the " + this.event)
+    },
+   addEventToDOM: function () {
+    this.div.style.backgroundColor = color1
+    if (this.date.getTime() > today.getTime()) {
+   upComing.appendChild(this.div)
+    } else {
+    past.appendChild(this.div)
+    }
+   }
+}
+myEvent2.time()
+myEvent2.eventText()
+myEvent2.addEventToDOM()
+
+let myEvent3 = {
+   div: document.createElement("p"),
+   date: new Date(2024, 2, 18), 
+   time: function() {
+    this.date.setHours(18)
+   },
+   eventTime: "18:00",
+   event: "<a href='https://seamusonline.org/conference-2024-40th-a-constellation-of-regional-hosts/'>Soundscapes for Inner Peace</a>",
+   venue: "NYU’s Bobst Library",
+   location: "",
+   piece: "<i>Frog</i>",
+   linkCreation: document.createElement("a"),
+   eventText: function () {
+     this.div.innerHTML = ("<b>" + this.date.toLocaleDateString()+ " at " + this.eventTime + "</b>"
+        + "<br>" + "Performance of " + this.piece + " at " + this.event + " at " + this.venue + " as part of SEAMUS 2024")
+    },
+   addEventToDOM: function () {
+    this.div.style.backgroundColor = color1
+    if (this.date.getTime() > today.getTime()) {
+   upComing.appendChild(this.div)
+    } else {
+    past.appendChild(this.div)
+    }
+   }
+}
+myEvent3.time()
+myEvent3.eventText()
+myEvent3.addEventToDOM()
+
+
+let myEvent1 = {
+   div: document.createElement("p"),
+   date: new Date(2024, 2, 14), 
+   time: function() {
+    this.date.setHours(20)
+   },
+   eventTime: "20:00",
+   event: "<a href='https://www.cla.purdue.edu/academic/rueffschool/music/events/conferences-festivals/wac-24/wac-24.html'>Web Audio Conference</a>",
+   venue: "Purdue University",
+   location: "",
+   piece: "<i>Whisper</i>",
+   linkCreation: document.createElement("a"),
+   eventText: function () {
+     this.div.innerHTML = ("<b>" + this.date.toLocaleDateString()+ "</b>"
+        + "<br>" + "Presentation of " + this.piece + " as a piece and paper at the " + this.event + " at " + this.venue)
+    },
+   addEventToDOM: function () {
+    this.div.style.backgroundColor = color1
+    if (this.date.getTime() > today.getTime()) {
+   upComing.appendChild(this.div)
+    } else {
+    past.appendChild(this.div)
+    }
+   }
+}
+myEvent1.time()
+myEvent1.eventText()
+myEvent1.addEventToDOM()
+
+
+let myEvent = {
+   div: document.createElement("p"),
+   date: new Date(2024, 2, 1), 
+   time: function() {
+    myEvent.date.setHours(20)
+   },
+   eventTime: "20:00",
+   event: "<a href='https://www.emmfestival.org/concerts.php'>Electronic Music Midwest</a>",
+   venue: "Philip Lynch Theatre",
+   location: "",
+   piece: "<i>Frog</i>",
+   linkCreation: document.createElement("a"),
+   eventText: function () {
+     myEvent.div.innerHTML = ("<b>" + myEvent.date.toLocaleDateString()+ " at "+ myEvent.eventTime + "</b>"
+        + "<br>" + "performance of " + myEvent.piece + " at " + myEvent.event + " at Lewis University")
+    },
+   addEventToDOM: function () {
+    myEvent.div.style.backgroundColor = color1
+    if (myEvent.date.getTime() > today.getTime()) {
+   upComing.appendChild(myEvent.div)
+    } else {
+    past.appendChild(myEvent.div)
+    }
+   }
+}
+myEvent.time()
+myEvent.eventText()
+myEvent.addEventToDOM()
+
+let myEvent4 = {
+   div: document.createElement("p"),
+   date: new Date(2024, 1, 29), 
+   time: function() {
+    this.date.setHours(18)
+   },
+   eventTime: "18:00",
+   event: "<a href='https://www.lsumoa.org/calendar-1/rozinreception'>Mirror Mirror Closing Reception & Artist Talk</a>",
+   venue: "<a href='https://www.lsumoa.org/'>LSU Museum of Art</a>",
+   location: "",
+   piece: "<i>Face</i>",
+   linkCreation: document.createElement("a"),
+   eventText: function () {
+     this.div.innerHTML = ("<b>" + this.date.toLocaleDateString()+ " at " + this.eventTime + "</b>"
+        + "<br>" + "Premiere of " + this.piece + " at the " + this.venue + " as part of the " + this.event)
+    },
+   addEventToDOM: function () {
+    this.div.style.backgroundColor = color1
+    if (this.date.getTime() > today.getTime()) {
+   upComing.appendChild(this.div)
+    } else {
+    past.appendChild(this.div)
+    }
+   }
+}
+myEvent4.time()
+myEvent4.eventText()
+myEvent4.addEventToDOM()
+
+let myEvent5 = {
+   div: document.createElement("p"),
+   date: new Date(2024, 0, 27), 
+   time: function() {
+    this.date.setHours(18)
+   },
+   eventTime: "18:00",
+   event: "<a href='https://emdm.cct.lsu.edu/happenings/electric-latex-festival-23/electric-latex-2023-2024-concert-4-saturday-january-27-600-pm-digital-media-center-theatre/'>Electric LaTex 2024</a>",
+   venue: "LSU Digital Media Center Theater",
+   piece: "<i>Whisper</i>",
+   linkCreation: document.createElement("a"),
+   eventText: function () {
+     this.div.innerHTML = ("<b>" + this.date.toLocaleDateString()+ " at " + this.eventTime + "</b>"
+        + "<br>" + "Premiere of " + this.piece + " at the " + this.venue + " as part of " + this.event)
+    },
+   addEventToDOM: function () {
+    this.div.style.backgroundColor = color1
+    if (this.date.getTime() > today.getTime()) {
+    upComing.appendChild(this.div)
+    } else {
+    past.appendChild(this.div)
+    }
+   }
+}
+myEvent5.time()
+myEvent5.eventText()
+myEvent5.addEventToDOM()
+
+let myEvent6 = {
+   div: document.createElement("p"),
+   date: new Date(2023, 10, 27), 
+   time: function() {
+    this.date.setHours(19)
+    this.date.setMinutes(30)
+   },
+   eventTime: "19:30",
+   event: "Really New Music Marathon",
+   venue: "LSU School of Music Recital Hall",
+   piece: "<i>String Improv</i>",
+   performers: "<a href=https://drewmfarrar.wixsite.com/home>Drew Farrar</a> and Wagner Duarte",
+   linkCreation: document.createElement("a"),
+   eventText: function () {
+     this.div.innerHTML = ("<b>" + this.date.toLocaleDateString()+ " at " + this.eventTime + "</b>"
+        + "<br>" + "Performance of " + this.piece + " with " + this.performers + " at the " + this.venue + " as part of the " + this.event)
+    },
+   addEventToDOM: function () {
+    this.div.style.backgroundColor = color1
+    if (this.date.getTime() > today.getTime()) {
+    upComing.appendChild(this.div)
+    } else {
+    past.appendChild(this.div)
+    }
+   }
+}
+myEvent6.time()
+myEvent6.eventText()
+myEvent6.addEventToDOM()
+
+let myEvent7 = {
+   div: document.createElement("p"),
+   date: new Date(2023, 10, 27), 
+   time: function() {
+    this.date.setHours(19)
+    this.date.setMinutes(30)
+   },
+   eventTime: "19:30",
+   event: "Really New Music Marathon",
+   venue: "LSU School of Music Recital Hall",
+   piece: "<i>Pitch Pipes</i>",
+   composer: "<a href=https://www.erindemastes.com/>Erin Demastes</a>",
+   performers: "Erin Demastes, Drew Farrar, and Dylan Burchett",
+   linkCreation: document.createElement("a"),
+   eventText: function () {
+     this.div.innerHTML = ("<b>" + this.date.toLocaleDateString()+ " at " + this.eventTime + "</b>"
+        + "<br>" + "Performance of " + this.piece + " by " + this.composer + " with " + this.performers + " at the " + this.venue + " as part of the " + this.event)
+    },
+   addEventToDOM: function () {
+    this.div.style.backgroundColor = color1
+    if (this.date.getTime() > today.getTime()) {
+    upComing.appendChild(this.div)
+    } else {
+    past.appendChild(this.div)
+    }
+   }
+}
+myEvent7.time()
+myEvent7.eventText()
+myEvent7.addEventToDOM()
+
+let myEvent8 = {
+   div: document.createElement("p"),
+   date: new Date(2023, 10, 24), 
+   time: function() {
+    this.date.setHours(19)
+   },
+   eventTime: "19:00 CST",
+   event: "<a href=https://youtu.be/p9D8289m2vs?si=fMSqmCfu0dkwVA1Q&t=244>Timbre Vol. 3</a>",
+   venue: "LSU School of Music Recital Hall",
+   piece: "<i>Cursory Glance</i>",
+   ensemble: "<a href=https://nmmosaic.wixsite.com/new-music-mosaic>New Music Mosaic's</a>",
+   performers: "<a href=https://www.matchstickpercussion.com/about-us>Malcolm Taylor</a>",
+   linkCreation: document.createElement("a"),
+   eventText: function () {
+     this.div.innerHTML = ("<b>" + this.date.toLocaleDateString()+ " at " + this.eventTime + "</b>"
+        + "<br>" + "Online premiere of " + this.piece + " created in collaboration with " + this.performers + " for " + this.ensemble + " event " + this.event)
+    },
+   addEventToDOM: function () {
+    this.div.style.backgroundColor = color1
+    if (this.date.getTime() > today.getTime()) {
+    upComing.appendChild(this.div)
+    } else {
+    past.appendChild(this.div)
+    }
+   }
+}
+myEvent8.time()
+myEvent8.eventText()
+myEvent8.addEventToDOM()
+
+
+let myEvent9 = {
+   div: document.createElement("p"),
+   date: new Date(2023, 10, 1), 
+   time: function() {
+    this.date.setHours(19)
+    this.date.setMinutes(30)
+   },
+   eventTime: "19:30",
+   event: "LSU Experimental Music Ensemble",
+   venue: "Digital Media Center Theater",
+   piece: "<i>Cursory Glance</i>",
+   linkCreation: document.createElement("a"),
+   eventText: function () {
+     this.div.innerHTML = ("<b>" + this.date.toLocaleDateString()+ " at " + this.eventTime + "</b>"
+        + "<br>" + "Performance as part of the " + this.event + " at the " + this.venue)
+    },
+   addEventToDOM: function () {
+    this.div.style.backgroundColor = color1
+    if (this.date.getTime() > today.getTime()) {
+    upComing.appendChild(this.div)
+    } else {
+    past.appendChild(this.div)
+    }
+   }
+}
+myEvent9.time()
+myEvent9.eventText()
+myEvent9.addEventToDOM()
+
+let myEvent10 = {
+   div: document.createElement("p"),
+   date: new Date(2023, 9, 28), 
+   time: function() {
+    this.date.setHours(19)
+    this.date.setMinutes(30)
+   },
+   event: "Halloween Art and Nature Festival",
+   venue: "<a href=https://www.atelierdelanature.org>Atelier de la Nature</a>",
+   eventText: function () {
+     this.div.innerHTML = ("<b>" + this.date.toLocaleDateString()+ "</b>"
+        + "<br>" + "Running sound activities with the LSU EMDM department at the " + this.event + " at " + this.venue)
+    },
+   addEventToDOM: function () {
+    myEvent10.time()
+    myEvent10.eventText()
+    this.div.style.backgroundColor = color1
+    if (this.date.getTime() > today.getTime()) {
+    upComing.appendChild(this.div)
+    } else {
+    past.appendChild(this.div)
+    }
+   }
+}
+
+myEvent10.addEventToDOM()
+
+let myEvent11 = {
+   div: document.createElement("p"),
+   date: new Date(2023, 9, 9), 
+   time: function() {
+    this.date.setHours(19)
+    this.date.setMinutes(30)
+   },
+   eventTime: "19:30",
+   event: "<a href=https://www.une.edu.au/about-une/faculty-of-humanities-arts-social-sciences-and-education/hass/news-and-events/australasian-computer-music-conference-2023>Australasian Computer Music Conference 2023</a>",
+   venue: "University of New England, Parramatta",
+   piece: "<i>Whisper</i>",
+   linkCreation: document.createElement("a"),
+   eventText: function () {
+     this.div.innerHTML = ("<b>" + this.date.toLocaleDateString()+ "</b>"
+        + "<br>" + "Presentation of " + this.piece + " at the " + this.event + " at the " + this.venue)
+    },
+   addEventToDOM: function () {
+    this.time()
+    this.eventText()
+    this.div.style.backgroundColor = color1
+    if (this.date.getTime() > today.getTime()) {
+    upComing.appendChild(this.div)
+    } else {
+    past.appendChild(this.div)
+    }
+   }
+}
+myEvent11.addEventToDOM()
+
+let myEvent12 = {
+   div: document.createElement("p"),
+   date: new Date(2023, 6, 15), 
+   time: function() {
+    this.date.setHours(19)
+    this.date.setMinutes(30)
+   },
+   eventTime: "19:30",
+   event: "",
+   venue: "HopKins Black Box Theater at LSU",
+   piece: "<i>Horde</i>",
+   composer: "<a href=https://austinfranklinmusic.com/>Austin Franklin</a>",
+   performers: "Austin Franklin and Drew Farrar",
+   linkCreation: document.createElement("a"),
+   eventText: function () {
+     this.div.innerHTML = ("<b>" + this.date.toLocaleDateString()+ " at " + this.eventTime + "</b>"
+        + "<br>" + "Performance of " + this.piece + " by " + this.composer + " with "+ this.performers + " at the " + this.venue)
+    },
+   addEventToDOM: function () {
+    this.time()
+    this.eventText()
+    this.div.style.backgroundColor = color1
+    if (this.date.getTime() > today.getTime()) {
+    upComing.appendChild(this.div)
+    } else {
+    past.appendChild(this.div)
+    }
+   }
+}
+myEvent12.addEventToDOM()
+
+let myEvent13 = {
+   div: document.createElement("p"),
+   date: new Date(2023, 5, 30), 
+   time: function() {
+    this.date.setHours(18)
+    // this.date.setMinutes(30)
+   },
+   eventTime: "19:30",
+   event: "<a href=https://splicemusic.org/calendar/institute/23/participant-concert1> SPLICE Institute 2023 </a> ",
+   piece: "<i>More Frogs</i>",
+   ensemble: "<a href=https://popebama.com/>Popebama</a>",
+   performers: "Erin Rogers, saxophone; Dennis Sullivan, percussion",
+   linkCreation: document.createElement("a"),
+   eventText: function () {
+     this.div.innerHTML = ("<b>" + this.date.toLocaleDateString()+ " at " + this.eventTime + "</b>"
+        + "<br>" + this.piece + " performed by " + this.ensemble + " ("+ this.performers + ") at " + this.event)
+    },
+   addEventToDOM: function () {
+    this.time()
+    this.eventText()
+    this.div.style.backgroundColor = color1
+    if (this.date.getTime() > today.getTime()) {
+    upComing.appendChild(this.div)
+    } else {
+    past.appendChild(this.div)
+    }
+   }
+}
+myEvent13.addEventToDOM()
+
+let myEvent14 = {
+   div: document.createElement("p"),
+   date: new Date(2023, 5, 30), 
+   time: function() {
+    this.date.setHours(18)
+    // this.date.setMinutes(30)
+   },
+   eventTime: "19:30",
+   event: "<a href=https://www.ipsemusic.com/concerts>Ensemble Ipse 2023 Call for Scores</a> ",
+   venue: "<a href=https://dimennacenter.org/>Dimenna Center</a>",
+   piece: "<i>Tor</i>",
+   ensemble: "<a href=https://www.ipsemusic.com/>Ensemble Ipse</a>",
+   performers: "Erin Rogers, saxophone; Dennis Sullivan, percussion",
+   linkCreation: document.createElement("a"),
+   eventText: function () {
+     this.div.innerHTML = ("<b>" + this.date.toLocaleDateString()+ " at " + this.eventTime + "</b>"
+        + "<br>" + "US Premiere of " + this.piece + " performed by " + this.ensemble + " at the " + this.venue + " as a winner of the " + this.event)
+    },
+   addEventToDOM: function () {
+    this.time()
+    this.eventText()
+    this.div.style.backgroundColor = color1
+    if (this.date.getTime() > today.getTime()) {
+    upComing.appendChild(this.div)
+    } else {
+    past.appendChild(this.div)
+    }
+   }
+}
+myEvent14.addEventToDOM()
+
+</script>
+
+<style>
+
+
+
+@media screen and (min-width: 800px) {
+  #fs {
+  max-width: 100%;
+  max-height: 30%;
+}
+
+#eoi {
+  max-width: 100%;
+  max-height: 30%;
+}
+
+#eoi1 {
+  max-width: 100%;
+  max-height: 30%;
+}
+
+#eoi2 {
+  max-width: 100%;
+  max-height: 30%;
+}
+
+.flexOut {
+  display: flex;
+  flex-direction: row; /* change this to row instead of 'column' */
+  flex-wrap:wrap; /* added flex-wrap */
+  justify-content: center;
+  /* justify-items: center; */
+  align-items: center;
+  /* height: 40vh; */
+  
+}
+
+.flex-items2 {
+  /* flex: 1;  */
+  width:25%;
+  /* margin: 5px; */
+  position: relative; 
+  /* width: 49vw; */
+  height: 30%;
+  background-color: rgb(253, 253, 253);
+  text-align: center;
+  margin-top: 10vh;
+  
+
+}
+
+}
+
+
+
+@media screen and (max-width: 700px) {
+  .flexOut {
+  display: flex;
+  flex-wrap:wrap; /* added flex-wrap */
+  justify-content: center;
+  align-items: center;
+
+  
+}
+  .topnav {
+    height: 2px;
+    visibility: hidden
+  }
+
+  .flex-items2 {
+    /* width: 100%; 
+    height: auto */
+    width: 100vw;
+    position: relative;
+    margin: none;
+    height: auto
+  }
+
+  #fs {
+    width: 100%;
+    height: auto
+  /* max-width: 100vw;
+  max-height: 100vh; */
+  }
+
+#eoi {
+  width: 100%;
+  height: auto
+}
+
+#eoi1 {
+  width: 100%;
+  height: auto
+}
+
+#eoi2 {
+  width: 100%;
+  height: auto
+}
+
+}
+
+img:hover {
+  box-shadow: 0 8px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+
+}
+
+
+
+/* 
+.figcap {
+  position: absolute;
+  font-size: 1.3em;
+  
+} */
+
+</style>
+<script src='tone.js'></script><script  src="script.js"></script>
+
+</body>

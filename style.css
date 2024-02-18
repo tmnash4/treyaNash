@@ -29,7 +29,7 @@ body {
 .topnav {
     background-image: linear-gradient(to right, rgb(75, 14, 208), rgb(56, 226, 110));
     overflow: hidden;
-    color: white
+    color: white;
   }
   
   /* Style the links inside the navigation bar */
@@ -40,6 +40,7 @@ body {
     padding: 14px 16px;
     text-decoration: rgb(255, 255, 255);
     font-size: 15px;
+    text-decoration: none;
     
   }
   
@@ -269,6 +270,7 @@ body {
   overflow-x: hidden;
   transition: 0.5s;
   padding-top: 60px;
+  text-decoration: none;
 }
 
 .sidenav a {
@@ -278,6 +280,7 @@ body {
   color: #ffffff;
   display: block;
   transition: 0.3s;
+  text-decoration: none;
 }
 
 .sidenav a:hover {
@@ -305,6 +308,9 @@ a {
   color: black
   /* text-decoration-line: line-through; */
 }
+
+
+
 @media screen and (max-height: 450px) {
   /* .sidenav {padding-top: 15px;} */
   .sidenav a {font-size: 18px;}
