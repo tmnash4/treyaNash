@@ -101,6 +101,68 @@ myEvent2.time()
 myEvent2.eventText()
 myEvent2.addEventToDOM()
 
+let myEvent16 = {
+   div: document.createElement("p"),
+   date: new Date(2023, 29, 4), 
+   time: function() {
+    this.date.setHours(10)
+    // this.date.setMinutes(30)
+   },
+   eventTime: "18:00",
+   event: "Really Really New Music Marathon",
+   venue: "LSU MDA Black Box Theater",
+   piece: "<i>Face</i>",
+   ensemble: "",
+   performers: "",
+   linkCreation: document.createElement("a"),
+   eventText: function () {
+     this.div.innerHTML = ("<b>" + this.date.toLocaleDateString()+ " at " + this.eventTime + "</b>"
+        + "<br>" + "Performance of " + this.piece + " at " + this.venue + " as part of the " + this.event)
+    },
+   addEventToDOM: function () {
+    this.time()
+    this.eventText()
+    this.div.style.backgroundColor = color1
+    if (this.date.getTime() > today.getTime()) {
+    upComing.appendChild(this.div)
+    } else {
+    past.appendChild(this.div)
+    }
+   }
+}
+myEvent16.addEventToDOM()
+
+let myEvent14 = {
+   div: document.createElement("p"),
+   date: new Date(2023, 3, 4), 
+   time: function() {
+    this.date.setHours(20)
+    // this.date.setMinutes(30)
+   },
+   eventTime: "20:00",
+   event: "<a href=https://yeswecannibal.org/encounters/post-seamus-jam/>SEAMUS Extra-Institutional Post-Conference New Instrument Jam</a> ",
+   venue: "<a href=https://yeswecannibal.org/>Yes We Cannibal</a>",
+   piece: "<i>Face</i>",
+   ensemble: "",
+   performers: "",
+   linkCreation: document.createElement("a"),
+   eventText: function () {
+     this.div.innerHTML = ("<b>" + this.date.toLocaleDateString()+ " at " + this.eventTime + "</b>"
+        + "<br>" + "Performance of " + this.piece + " at " + this.event + " at " + this.venue)
+    },
+   addEventToDOM: function () {
+    this.time()
+    this.eventText()
+    this.div.style.backgroundColor = color1
+    if (this.date.getTime() > today.getTime()) {
+    upComing.appendChild(this.div)
+    } else {
+    past.appendChild(this.div)
+    }
+   }
+}
+myEvent14.addEventToDOM()
+
 let myEvent3 = {
    div: document.createElement("p"),
    date: new Date(2024, 2, 18), 
@@ -485,7 +547,10 @@ let myEvent13 = {
 }
 myEvent13.addEventToDOM()
 
-let myEvent14 = {
+
+
+
+let myEvent15 = {
    div: document.createElement("p"),
    date: new Date(2023, 5, 30), 
    time: function() {
@@ -514,7 +579,9 @@ let myEvent14 = {
     }
    }
 }
-myEvent14.addEventToDOM()
+myEvent15.addEventToDOM()
+
+
 
 </script>
 
