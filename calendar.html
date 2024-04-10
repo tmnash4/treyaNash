@@ -132,6 +132,37 @@ let myEvent16 = {
 }
 myEvent16.addEventToDOM()
 
+let myEvent17 = {
+   div: document.createElement("p"),
+   date: new Date(2024, 3, 15), 
+   time: function() {
+    this.date.setHours(10)
+    // this.date.setMinutes(30)
+   },
+   eventTime: "10:00",
+   event: "CMDA Research Expo",
+   venue: "LSU MDA Lobby",
+   piece: "Poster presentation",
+   ensemble: "",
+   performers: "",
+   linkCreation: document.createElement("a"),
+   eventText: function () {
+     this.div.innerHTML = ("<b>" + this.date.toLocaleDateString()+ " at " + this.eventTime + "</b>"
+        + "<br>" + "Poster presentation at the " +  this.event)
+    },
+   addEventToDOM: function () {
+    this.time()
+    this.eventText()
+    this.div.style.backgroundColor = color1
+    if (this.date.getTime() > today.getTime()) {
+    upComing.appendChild(this.div)
+    } else {
+    past.appendChild(this.div)
+    }
+   }
+}
+myEvent17.addEventToDOM()
+
 let myEvent14 = {
    div: document.createElement("p"),
    date: new Date(2024, 3, 4), 
@@ -140,7 +171,7 @@ let myEvent14 = {
     // this.date.setMinutes(30)
    },
    eventTime: "20:00",
-   event: "<a href=https://yeswecannibal.org/encounters/post-seamus-jam/>SEAMUS Extra-Institutional Post-Conference New Instrument Jam</a> ",
+   event: "<a href=https://yeswecannibal.org/encounters/post-seamus-jam/>SEAMUS Extra-Institutional Pre-Conference New Instrument Jam</a> ",
    venue: "<a href=https://yeswecannibal.org/>Yes We Cannibal</a>",
    piece: "<i>Face</i>",
    ensemble: "",
