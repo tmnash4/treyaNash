@@ -101,6 +101,37 @@ myEvent2.time()
 myEvent2.eventText()
 myEvent2.addEventToDOM()
 
+let myEvent18 = {
+   div: document.createElement("p"),
+   date: new Date(2024, 4, 5), 
+   time: function() {
+    this.date.setHours(20)
+    // this.date.setMinutes(30)
+   },
+   eventTime: "20:00",
+   event: "Soundscapes II",
+   venue: "Tulane University's <a href=https://g.co/kgs/VTkmbww>Dixon Concert Hall</a>",
+   piece: "<i>More Frogs</i>",
+   ensemble: "<a href=https://versipel.org/about/>Versipel New Music</a>",
+   performers: "",
+   linkCreation: document.createElement("a"),
+   eventText: function () {
+     this.div.innerHTML = ("<b>" + this.date.toLocaleDateString()+ " at " + this.eventTime + "</b>"
+        + "<br>" + this.ensemble + " will perform " + this.piece + " at " + this.venue + " as part of their " + this.event + " concert.")
+    },
+   addEventToDOM: function () {
+    this.time()
+    this.eventText()
+    this.div.style.backgroundColor = color1
+    if (this.date.getTime() > today.getTime()) {
+    upComing.appendChild(this.div)
+    } else {
+    past.appendChild(this.div)
+    }
+   }
+}
+myEvent18.addEventToDOM()
+
 let myEvent16 = {
    div: document.createElement("p"),
    date: new Date(2024, 3, 29), 
