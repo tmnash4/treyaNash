@@ -70,6 +70,38 @@ if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(naviga
 let today = new Date();
 let color1 = "#DFFFF4"
 
+let myEvent19 = {
+   div: document.createElement("p"),
+   date: new Date(2024, 5, 27), 
+   time: function() {
+    this.date.setHours(20)
+    // this.date.setMinutes(30)
+   },
+   eventTime: "19:30",
+   event: "SPLICE Alumnx Concert",
+   venue: "Western Michigan University",
+   piece: "<i>Whisper</i>",
+   ensemble: "",
+   performers: "",
+   linkCreation: document.createElement("a"),
+   eventText: function () {
+     this.div.innerHTML = ("<b>" + this.date.toLocaleDateString()+ "</b>"
+        + this.piece + "will be performed at the " + this.event + " at " + this.location)
+    },
+   addEventToDOM: function () {
+    this.time()
+    this.eventText()
+    this.div.style.backgroundColor = color1
+    if (this.date.getTime() > today.getTime()) {
+    upComing.appendChild(this.div)
+    } else {
+    past.appendChild(this.div)
+    }
+   }
+}
+myEvent19.addEventToDOM()
+
+
 let myEvent2 = {
    div: document.createElement("p"),
    date: new Date(2024, 4, 6), 
