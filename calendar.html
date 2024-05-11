@@ -85,8 +85,8 @@ let myEvent19 = {
    performers: "",
    linkCreation: document.createElement("a"),
    eventText: function () {
-     this.div.innerHTML = ("<b>" + this.date.toLocaleDateString()+ "</b>"
-        + this.piece + "will be performed at the " + this.event + " at " + this.location)
+     this.div.innerHTML = ("<b>" + this.date.toLocaleDateString()+ "</b>" + "<br>"
+        + this.piece + "will be performed at the " + this.event + " at " + this.venue)
     },
    addEventToDOM: function () {
     this.time()
