@@ -1,0 +1,623 @@
+<!DOCTYPE html>
+<head>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Quicksand&display=swap');
+      </style>
+    
+</head>
+<html>
+<body>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <div class="topnav" id="myTopnav">
+      <a href="index.html" >Home</a>
+      <a href="works.html">Works</a>
+      <a href="rnp.html" >Research and Projects</a>
+      <a href="bio.html">Bio</a>
+      <a href="calendar.html" class="active">Calendar</a>
+      <a href="contact.html">Contact</a>
+      <a href="formArt.html">Form Music</a>
+    </div>
+    <div id="mySidenav" class="sidenav">
+      <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+      <a href="index.html" >Home</a>
+      <a href="works.html">Works</a>
+      <a href="rnp.html">Research and Projects</a>
+      <a href="bio.html">Bio</a>
+      <a href="calendar.html">Calendar</a>
+      <a href="contact.html">Contact</a>
+      <a href="formArt.html">Form Music</a>
+    </div>
+   
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tone/15.0.4/Tone.js" integrity="sha512-uXz2Ei+QJ4i9e32kXNq+rX/MBgiEEn0wESna9ebpNFStqpfFGEiq1QRfqwXMBZMoU5ZRD3iqQp539jXNFTLlgQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<button onclick="startAudio()">Start Audio Context</button>
+<form name="checkbox1">
+    <input type="checkbox" id="myCheckbox" onclick="checkIt()"><br>
+    <input type="checkbox" id="myCheckbox1" onclick="checkIt1()"><br>
+</form>
+<button id="music_button">Is this music?</button>
+<button id="timerButton">Start the Clock</button>
+<div id="clock" class="clockClass" style="visibility: hidden"></div>
+<input type="radio" id="myRadio">
+<p></p>
+<table id="myTable" style="background-color: black; visibility: hidden;">
+    <tr>
+        <th>Who</th>
+        <th>What</th>
+        <th>Where</th>
+    </tr>
+    <tr>
+        <td>Are</td>
+        <td>You</td>
+        <td>Having</td>
+      </tr>
+</table>
+
+<script>
+  async function startAudio() {  //This code starts the audio 
+  await Tone.start()
+  console.log("ready")
+  hasBeenCalled = true;
+  voicePlay.start(0)
+}
+
+function inverseValue(value) {
+    if (value < -1 || value > 1) {
+        value = 1
+    }
+    return -value;
+}
+
+class NoiseCheckBox {
+    constructor(top, left, fontSize, pan, panTo, time, noiseType, id, accentColor, vibFreq = 20, vibDepth = 1) {
+        this.checkbox = document.createElement("input");
+        this.top = top;
+        this.left = left;
+        this.fontSize = fontSize;
+        this.panner = new Tone.Panner(pan).toDestination();
+        this.pan = pan;
+        this.vibrato = new Tone.Vibrato().connect(this.panner)
+        this.synth = new Tone.NoiseSynth().connect(this.vibrato);
+        this.panTo = panTo;
+        this.time = time;
+        this.noiseType = noiseType;
+        this.id = id;
+        this.accentColor = accentColor
+        this.vibFreq = vibFreq
+        this.vibDepth = vibDepth
+    }
+    createInput() {
+        this.checkbox.type = "checkbox";
+        this.checkbox.setAttribute("id", this.id);
+        document.body.appendChild(this.checkbox);
+        this.checkbox.style.position = "absolute";
+        this.checkbox.style.top = this.top;
+        this.checkbox.style.left = this.left;
+        this.checkbox.style.width = this.fontSize;
+        this.checkbox.style.height = this.fontSize;
+        this.checkbox.style.accentColor = this.accentColor;
+    }
+
+    addCheck() {
+        this.checkbox.addEventListener("click", this.checkIt.bind(this));
+    }
+
+    checkIt() {
+        let myCheck = document.getElementById(this.id);
+        if (myCheck.checked) {
+            this.checkbox.style.content = ""
+            // console.log("WOOOO!");
+            // console.log(this.synth);
+            // console.log(this.time);
+            this.synth.envelope.attack = 0.4;
+            this.synth.envelope.sustain = 1;
+            this.synth.envelope.decay = 0.0001;
+            this.synth.envelope.release = 0.5
+            this.synth.noise.type = this.noiseType;
+            this.vibrato.frequency.value = this.vibFreq
+            this.vibrato.depth.value = this.vibDepth
+            this.synth.triggerAttack();
+            this.panner.pan.rampTo(this.panTo, this.time);
+            console.log(this.panner.pan.value)
+            let checkPanner = () => {
+            
+            if (this.panner.pan.value == this.panTo) {
+                console.log("Hello!")
+                this.panner.pan.rampTo(inverseValue(this.panTo), this.time)
+            } else if (this.panner.pan.value == inverseValue(this.panTo)) {
+                this.panner.pan.rampTo(this.panTo, this.time)
+            } else {
+                //alert("oops")
+            }
+        }
+        setInterval(checkPanner, (this.time * 1000 + 1000))
+        } else {
+            console.log("oooo!");
+            this.synth.triggerRelease();
+         
+        }
+    }
+
+}
+
+
+let noiseCheckbox1 = new NoiseCheckBox("30%", "70%", "100px", -1, 1, 4, "pink", "ch1", "orange", 30)
+noiseCheckbox1.createInput()
+noiseCheckbox1.addCheck()
+
+let noiseCheckbox2 = new NoiseCheckBox("30%", "70%", "80px", 0.5, -0.4, 3, "brown", "ch2", "lightblue", 20)
+noiseCheckbox2.createInput()
+noiseCheckbox2.addCheck()
+
+let noiseCheckbox3 = new NoiseCheckBox("30%", "70%", "60px", 1, -1, 10, "white", "ch3", "purple", 50)
+noiseCheckbox3.createInput()
+noiseCheckbox3.addCheck()
+
+let noiseCheckbox4 = new NoiseCheckBox("30%", "70%", "40px", -0.8, 0.8, 15, "pink", "ch4", "indigo", 100)
+noiseCheckbox4.createInput()
+noiseCheckbox4.addCheck()
+
+let noiseCheckbox5 = new NoiseCheckBox("30%", "70%", "20px", -0.9, 0.9, 40, "brown", "ch5", "pink", 200)
+noiseCheckbox5.createInput()
+noiseCheckbox5.addCheck()
+
+function makeCheckboxGrid() {
+    let noiseCheckbox6 = new NoiseCheckBox("300px", "300px", "20px", -0.9, 0.9, 5, "white", "ch6", "yellow", 30)
+    noiseCheckbox6.createInput()
+    noiseCheckbox6.addCheck()
+
+    let noiseCheckbox7 = new NoiseCheckBox("300px", "320px", "20px", -0.9, 0.9, 10, "pink", "ch7", "black", 100)
+    noiseCheckbox7.createInput()
+    noiseCheckbox7.addCheck()
+
+    let noiseCheckbox8 = new NoiseCheckBox("300px", "340px", "20px", -0.9, 0.9, 15, "brown", "ch8", "yellow", 250)
+    noiseCheckbox8.createInput()
+    noiseCheckbox8.addCheck()
+
+    let noiseCheckbox9 = new NoiseCheckBox("320px", "300px", "20px", -0.9, 0.9, 20, "white", "ch9", "black", 200)
+    noiseCheckbox9.createInput()
+    noiseCheckbox9.addCheck()
+
+    let noiseCheckbox10 = new NoiseCheckBox("320px", "320px", "20px", -0.9, 0.9, 25, "pink", "ch10", "yellow", 350)
+    noiseCheckbox10.createInput()
+    noiseCheckbox10.addCheck()
+
+    let noiseCheckbox11 = new NoiseCheckBox("320px", "340px", "20px", -0.9, 0.9, 30, "brown", "ch11", "black", 300)
+    noiseCheckbox11.createInput()
+    noiseCheckbox11.addCheck()
+
+    let noiseCheckbox12 = new NoiseCheckBox("340px", "300px", "20px", -0.9, 0.9, 35, "white", "ch12", "yellow", 450)
+    noiseCheckbox12.createInput()
+    noiseCheckbox12.addCheck()
+
+    let noiseCheckbox13 = new NoiseCheckBox("340px", "320px", "20px", -0.9, 0.9, 40, "pink", "ch13", "black", 400)
+    noiseCheckbox13.createInput()
+    noiseCheckbox13.addCheck()
+
+    let noiseCheckbox14 = new NoiseCheckBox("340px", "340px", "20px", -0.9, 0.9, 45, "brown", "ch14", "yellow", 500)
+    noiseCheckbox14.createInput()
+    noiseCheckbox14.addCheck()
+
+}
+makeCheckboxGrid()
+
+let myCheckbox = document.getElementById("myCheckbox");
+let myCheckbox1 = document.getElementById("myCheckbox1")
+
+
+let noisePanner = new Tone.Panner(-1).toDestination()
+let noisePanner1 = new Tone.Panner(1).toDestination()
+
+
+
+let synth = new Tone.NoiseSynth().connect(noisePanner)
+let synth1 = new Tone.NoiseSynth().connect(noisePanner1)
+
+
+let metalSynth = new Tone.MetalSynth().toDestination()
+
+// synth.envelope.attack = 0.1;
+// synth.envelope.decay = 0.0001;
+// synth.envelope.sustain = 1
+// synth.envelope.release = 0.1
+// synth1.envelope.attack = 0.1
+// synth1.envelope.decay = 0.0001
+// synth1.envelope.sustain = 1
+// synth1.envelope.release = 0.1
+
+function checkIt() {
+if (myCheckbox.checked) {
+    console.log("hello")
+    synth.envelope.attack = 0.6
+    synth.envelope.sustain = 0.5
+    synth.noise.type = "brown"
+    synth.triggerAttack();
+
+
+} else {
+    console.log("goodbye")
+    synth.triggerRelease();
+}
+}
+
+function checkIt1() {
+    if (myCheckbox1.checked) {
+    console.log("hello")
+    synth1.envelope.attack = 0.6
+    synth1.envelope.sustain = 0.5
+    synth1.noise.type = "pink"
+    synth1.triggerAttack();
+} else {
+    console.log("goodbye")
+    synth1.triggerRelease();
+}
+
+}
+
+let myEmojiArray = [
+    "🍎", "🍓", "🍒", "❤️", "🌹", "🍉", "🧧", "📕", "🎈", "🚗", 
+    "🍊", "🍑", "🧡", "🏀", "🦊", "🧥", "🧶", "📙", "🎃", "🚌",  
+    "🍋", "🍌", "💛", "🌟", "🌻", "🍯", "⚠️", "📒", "🚕", "🏅",  
+    "🥬", "🍏", "💚", "🌲", "🐢", "🍀", "🟢", "📗", "🐸", "✅",  
+    "🍇", "🫐", "💙", "🌊", "🌀", "🐟", "🔵", "📘", "✈️", "🧢",  
+    "🍆", "🥔", "💜", "🏈", "☂️", "🦄", "🔮", "📔", "🎵", "💤", "❤️", "🧡", "💛", "💚", "💙", "💜", "🍎", "🍊", "🍋", "🥦", "🫐", "🍇", "🍓", "🍑", "🌻", "🌿", "🐟", "🍆",
+    "🚗", "🏀", "🧀", "🍏", "🌀", "🔮", "🍉", "🍒", "🍌", "🥒", "🔵", "👾", "🌶️", "🥕", "🌝", "🍐", "🔷", "🟣",
+    "🍅", "🧀", "🌞", "🦖", "💧", "🔷", "🌹", "🏉", "🌼", "🦋", "📘", "🎆", "🍄", "🏍️", "🐝", "🐸", "🐟", "🐙",
+    "🎒", "🦀", "🍂", "🧈", "🦖", "🚙", "🔶", "🍋", "🥑", "🔵", "👗", "🩸", "🎃", "🌼", "🥝", "🔷", "🎀", "🧵",
+    "🧃", "🏵️", "🏵️", "💡", "🦜", "🌀", "🦄", "🧢", "🔴", "🔸", "📒", "🐲", "🧢", "🟣", "🍎", "🍑", "📙", "🐢",
+    "🔹", "💠", "🦞", "🦚", "🍋", "🍏", "🔵", "🍆", "🦀", "🧡", "🍯", "🍈", "🐬", "🎀", "🥩", "🪵", "🌕", "🐊",
+    "🔷", "🐝", "🏀", "🍑", "🏅", "🧩", "🔮", "🐞", "🦁", "🔑", "🐸", "🌌", "👾", "🛑", "🦀", "⚠️", "🍈", "🚾",
+    "🔮", "🍉", "🏉", "🎗️", "🦖", "💦", "🟣", "🎈", "🔸", "📀", "🧤", "🔵", "📞", "🔮", "🌶️", "🍊", "🍋", "🥦",
+    "🫐", "🍇", "🍓", "🍑", "🌻", "🌿", "🐟", "🍆", "🚗", "🏀", "🧀", "🍏", "🌀", "🔮", "🍉", "🍒", "🍌", "🥒",
+    "🔵", "👾", "🌶️", "🥕", "🌝", "🍐", "🔷", "🟣"
+]
+
+//let randInt = Math.floor((Math.random() * 2000) + 100)
+
+function createEmoji() {
+
+    let randInt = Math.floor(Math.random() * 3000);
+    setTimeout(() => {
+    let randInt1 = Math.floor(Math.random() * 3000);
+    let randPitch = (Math.random() * 100) + 400;
+    let randPitch1 = (Math.random() * 100) + 400;
+    let rand = Math.floor(Math.random() * myEmojiArray.length) 
+    document.write(myEmojiArray[rand])
+    synth.triggerAttack(randPitch);
+    synth.envelope.attack = 0.6
+    synth1.triggerAttack(randPitch1);
+    synth1.envelope.attack = 0.3
+    console.log(randInt)
+    setTimeout(() => {
+    
+     synth1.triggerRelease();
+     synth.triggerRelease();
+    }, randInt1)
+    }, randInt)
+
+ 
+    
+   
+}
+
+function createIt() {
+    let myInt = setInterval(createEmoji, 1000)
+    setTimeout(() => {
+        confirm("Do you wish to continue?")
+        if (confirm == false) {
+            clearInterval(myInt)
+        } else {
+            setTimeout(() => {
+        confirm("Do you wish to continue?")
+        if (confirm == false) {
+            clearInterval(myInt)
+        } else {
+            setTimeout(() => {
+        confirm("Do you wish to continue?")
+        if (confirm == false) {
+            clearInterval(myInt)
+        } else {
+            alert("Ok you win! Keep going")
+        }
+    }, 50000)
+        }
+    }, 50000)
+        }
+    }, 50000)
+
+}
+
+
+let musicButton = document.getElementById("music_button");
+musicButton.addEventListener("click", createIt)
+let voice = new Tone.Buffer('AreYouHaving.mp3');
+console.log(voice)
+let voicePlay = new Tone.Player(voice).toDestination();
+
+
+// function setTheInterval() {
+//     randInt = (Math.random() * 2000) + 100
+// }
+let myRadio = document.getElementById("myRadio");
+myRadio.addEventListener("click", musicAlert);
+let myTable = document.getElementById("myTable")
+myTable.addEventListener("mouseover", () => {
+    metalSynth.triggerAttackRelease(randomNumF(150, 600), randomNumF(0.2, 5))
+    setTimeout(() => {
+        console.log("hello")
+        metalSynth.triggerRelease()
+        return voicePlay.start(0)
+        
+    }, 1000)
+})
+let radioArray = [];
+
+function randomNumI(min,max) {
+  return Math.floor(min + Math.random() * (max - min));
+}
+
+function randomNumF(min,max) {
+    return min + Math.random() * (max - min)
+}
+
+function musicAlert() {
+    myRadio.remove()
+    metalSynth.triggerAttackRelease(randomNumF(150, 600), randomNumF(0.2, 5));
+    metalSynth.harmonicity = randomNumF(0, 10);
+    metalSynth.modulationIndex = randomNumF(0, 50);
+    metalSynth.resonance = randomNumI(2000, 4000);
+    metalSynth.envelope.sustain = 0.2;
+    metalSynth.envelope.release = 0.9;
+    metalSynth.envelope.decay = 0.9;
+
+   // metalSynth.envelope.attack = 
+    alert("Music Alert!")
+    metalSynth.triggerRelease();
+    console.log(metalSynth)
+    createInput()
+
+}
+
+function createInput() {
+    let input = document.createElement("input");
+    input.type = "radio";
+    input.style.width = `${randomNumF(0, 100)}vw`
+    document.body.appendChild(input)
+    input.addEventListener("click", musicAlert);
+    radioArray.push(input);
+    if (radioArray.length > 10) {
+        radioArray.forEach((radio) => {
+            radio.remove();
+            myTable.style.visibility = "visible"
+            myTable.style.fontSize = "300px"
+        })
+    }
+}
+
+let timerButton = document.getElementById("timerButton");
+let clock = document.getElementById("clock");
+// let clockPlayer = new Tone.GrainPlayer({
+//                 url: "DoYouConsider.mp3",
+// 				loop: true,
+// 				grainSize: 0.001,
+// 				overlap: 0.02,
+//                 playbackRate: 1.5
+//             }).toDestination()
+let synthPanner = new Tone.Panner(0).toDestination()
+let synth2 = new Tone.PluckSynth().connect(synthPanner)
+
+synth2.resonance = 0.3
+let myPan = -1
+let direction = "up"
+// synth2.envelope.attack = 0.1
+// synth2.envelope.decay = 0.0001
+// synth2.envelope.sustain = 1
+// synth2.envelope.release = 0.1
+// synth2.oscillator.type = "square"
+             
+class timerObject {
+    constructor(date, interval, direction, minFreq, maxFreq, pan, position, duration, message) {
+        this.clock = document.createElement("div");
+        this.date = new Date(date);
+        this.interval = interval;
+        this.direction = direction;
+        this.panner = pan;
+        this.synthPanner = new Tone.Panner(0).toDestination();
+        this.synth = new Tone.PluckSynth().connect(this.synthPanner);
+        this.position = position;
+        this.duration = duration;
+        this.message = message;
+        this.minFreq = minFreq;
+        this.maxFreq = maxFreq;
+    }
+
+    createClock() {
+        document.body.appendChild(this.clock);
+        this.clock.classList.add("clockClass");
+        this.clock.style.position = "absolute";
+        this.clock.style.top = this.position;
+        this.clock.style.left = this.position;
+    }
+
+    returnDate = () => {
+        this.synth.triggerAttackRelease(randomNumF(this.minFreq, this.maxFreq), this.duration);
+        this.synth.resonance = randomNumF(0.1, 0.7);
+
+        if (this.direction === "up") {
+            this.panner += 0.1;
+            if (this.panner >= 0.99) {
+                this.direction = "down";
+            }
+        } else if (this.direction === "down") {
+            this.panner -= 0.1;
+            if (this.panner <= -0.99) {
+                this.direction = "up";
+            }
+        }
+
+        this.synthPanner.pan.value = this.panner;
+        let displayDate = this.date.getSeconds();
+        let displayDate1 = "0" + this.date.getMinutes();
+
+        if (this.date.getSeconds() > 0) {
+            this.date.setSeconds(this.date.getSeconds() - 1);
+        } else {
+            if (this.date.getMinutes() > 0) {
+                this.date.setMinutes(this.date.getMinutes() - 1);
+                this.date.setSeconds(59);
+            } else {
+                displayDate = ""
+                displayDate1 = ""
+                clearInterval(this.intervalId);
+             
+               
+            }
+        }
+        if (this.date.getSeconds() < 10) {
+            displayDate = "0" + this.date.getSeconds();
+        } 
+
+        if (this.date.getSeconds() == 0 && this.date.getMinutes() == 0) {
+            displayDate = this.message
+            this.clock.style.fontSize = "0.5em"
+        }
+        this.clock.innerHTML = `${displayDate1}:${displayDate}`;
+    }
+
+    setTheInterval() {
+        this.intervalId = setInterval(this.returnDate, this.interval);
+    }
+}
+
+function randomNumF(min, max) {
+    return Math.random() * (max - min) + min;
+}
+
+
+function createClock1() {
+let clockClone1 = new timerObject("2024-07-13T00:02:30", 1000, "down", 300, 400, 1, "20%", 0.1, "S Are you having fun yet?");
+clockClone1.createClock();
+clockClone1.setTheInterval();
+}
+
+function createClock2() {
+let clockClone2 = new timerObject("2024-07-13T00:01:45", 50, "up", 300, 800, -1, "30%", 0.005, ") I really want you to have fun!");
+clockClone2.createClock();
+clockClone2.setTheInterval();
+}
+
+function createClock3() {
+let clockClone3 = new timerObject("2024-07-13T00:10:45", 750, "up", 700, 900, -1, "80%", 0.075, "/ Mondays am I right?");
+clockClone3.createClock();
+clockClone3.setTheInterval();
+}
+
+function createClock4() {
+let clockClone4 = new timerObject("2024-07-13T00:03:00", 600, "up", 200, 900, -1, "60%", 0.06, "3 let's be real");
+clockClone4.createClock();
+clockClone4.setTheInterval();
+}
+
+function createClock5() {
+let clockClone5 = new timerObject("2024-07-13T00:15:00", 20, "down", 200, 900, 1, "69%", 0.002, "$ Girl!");
+clockClone5.createClock();
+clockClone5.setTheInterval();
+}
+
+function createClock6() {
+let clockClone6 = new timerObject("2024-07-13T00:15:00", 18, "up", 200, 900, -1, "55%", 0.0018, "| WHat?");
+clockClone6.createClock();
+clockClone6.setTheInterval();
+}
+
+
+
+
+
+
+
+timerButton.addEventListener("click", () => {
+    clock.style.visibility = "visible";
+    let myTimerDate = new Date(1,1,1,1,2,30);
+    let myInterval = setInterval(returnDate, 1000)
+    
+    function returnDate() {
+        synth2.triggerAttackRelease(400, 0.1);
+        synth2.resonance = randomNumF(0.1, 0.7)
+        
+        if (direction == "up") {
+            myPan += 0.1
+            if (myPan >= 0.99) {
+                direction = "down"
+            }
+        } else if (direction == "down") {
+            myPan -= 0.1
+            if (myPan <= -0.99) {
+                direction = "up"
+            }
+        }
+       
+      
+        synthPanner.pan.value = myPan
+        
+        // clockPlayer.start()
+        // setInterval(() => {clockPlayer.stop()}, 800);
+        if (myTimerDate.getSeconds() <= 30 && myTimerDate.getSeconds() >= 0 && myTimerDate.getMinutes() == 2) {
+        myTimerDate.setSeconds(myTimerDate.getSeconds() - 1)
+        } else if (myTimerDate.getSeconds() == 0 && myTimerDate.getMinutes() == 2) {
+            myTimerDate.setMinutes(1)
+            myTimerDate.setSeconds(59)
+        } else if (myTimerDate.getMinutes() == 1 && myTimerDate.getSeconds() > 0) {
+            myTimerDate.setSeconds(myTimerDate.getSeconds() - 1)
+        } else if (myTimerDate.getMinutes() == 1 && myTimerDate.getSeconds() == 0) {
+            myTimerDate.setMinutes(0)
+            myTimerDate.setSeconds(59)
+        } else if (myTimerDate.getMinutes() == 0 && myTimerDate.getSeconds() > 0) {
+            myTimerDate.setSeconds(myTimerDate.getSeconds() - 1)
+        } else if (myTimerDate.getMinutes() == 0 && myTimerDate.getSeconds() == 0) {
+            myTimerDate.setSeconds(30)
+            myTimerDate.setMinutes(5)
+            clearInterval(myInterval)
+        }
+        let displayDate = myTimerDate.getSeconds()
+        let displayDate1 = "0" + myTimerDate.getMinutes()
+        if (myTimerDate.getSeconds() < 10) {
+            displayDate = "0" + myTimerDate.getSeconds()
+        }
+        clock.innerHTML = `${displayDate1}:${displayDate}`
+    } 
+    setTimeout(createClock1, 507)
+    setTimeout(createClock3, 5000)
+    setTimeout(createClock2, 10000)
+    setTimeout(createClock4, 15000)
+    setTimeout(createClock5, 16000)
+    setTimeout(createClock6, 16000)
+})
+
+
+</script>
+
+<style>
+    .clockClass {
+        position: absolute;
+        font-size: 50px;
+        font-family: monospace;
+        /* left: 45%;
+        top: 45% */
+    }
+
+    #clock {
+        position: absolute;
+        font-size: 50px;
+        font-family: monospace;
+        left: 45%;
+        top: 45%
+    }
+
+
+</style>
+
+
+
+</body>
+</html>
