@@ -70,220 +70,85 @@ if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(naviga
 let today = new Date();
 let color1 = "#DFFFF4"
 
-let myEvent19 = {
-   div: document.createElement("p"),
-   date: new Date(2024, 5, 27), 
-   time: function() {
-    this.date.setHours(20)
-    // this.date.setMinutes(30)
-   },
-   eventTime: "19:30",
-   event: "SPLICE Alumnx Concert",
-   venue: "Western Michigan University",
-   piece: "<i>Whisper</i>",
-   ensemble: "",
-   performers: "",
-   linkCreation: document.createElement("a"),
-   eventText: function () {
-     this.div.innerHTML = ("<b>" + this.date.toLocaleDateString()+ "</b>" + "<br>"+ this.piece + " will be performed at the " + this.event + " at " + this.venue)
-    },
-   addEventToDOM: function () {
-    this.time()
-    this.eventText()
+class Entry {
+  constructor(date, eventTime, event, venue, piece, ensemble, performers) {
+    this.date = date;
+    this.eventTime = eventTime;
+    this.event = event;
+    this.venue = venue;
+    this.piece = piece;
+    this.ensemble = ensemble;
+    this.performers = performers;
+    let time = this.date.setHours(20);
+    this.div = document.createElement("p");
+    let linkCreation = document.createElement("a");
+    
+  }
+  addEventToDOM() {
     this.div.style.backgroundColor = color1
     if (this.date.getTime() > today.getTime()) {
     upComing.appendChild(this.div)
     } else {
     past.appendChild(this.div)
     }
-   }
+  }
+  
 }
-myEvent19.addEventToDOM()
 
+// let entry = new Entry(new Date(2025, 3, 2), "18:30", "concert", "place", "<i>A Piece</i>", "this ensemble", "the performers")
+// entry.div.innerHTML = ("<b>" + entry.date.toLocaleDateString() + "</b>" + "<br>"+ entry.piece + " will be performed at the " + entry.event + " at " + entry.venue)
+// entry.addEventToDOM()
+let mandyArt = new Entry(new Date(2024, 7, 9), "", "2024 Janet & Walter Sondheim Art Prize Semifinalists Exhibition", "<a href=https://www.mica.edu/galleries/meyerhoff-gallery/>Maryland Institute College of Art Decker and Meyerhoff Galleries</a>", "Push Me Pretty")
+mandyArt.div.innerHTML = ("<b>" + "08/02/2024-08/09/2024" + "</b>" + "<br>"+ "<i>" + mandyArt.piece + "</i>" + ", a short film by <a href=https://mandymorrisonart.com/>Mandy Morrison</a> with audio design by Treya Nash shown at the " + mandyArt.event + " at " + mandyArt.venue)
+mandyArt.addEventToDOM()
 
-let myEvent2 = {
-   div: document.createElement("p"),
-   date: new Date(2024, 4, 6), 
-   time: function() {
-    this.date.setHours(19)
-    this.date.setMinutes(30)
-   },
-   eventTime: "19:30",
-   ensemble: "<a href='https://www.ensemblevim.org/'>Ensemble Vim</a>",
-   event: "<a href='https://www.ensemblevim.org/events/season-closer'>Museum of Contemporary Art Georgia</a>",
-   venue: "Purdue University",
-   location: "",
-   piece: "<i></i>",
-   linkCreation: document.createElement("a"),
-   eventText: function () {
-     this.div.innerHTML = ("<b>" + this.date.toLocaleDateString()+ " at " + this.eventTime + "</b>" 
-        + "<br>" + "Performance by " + this.ensemble + " at the " + this.event)
-    },
-   addEventToDOM: function () {
-    this.div.style.backgroundColor = color1
-    if (this.date.getTime() > today.getTime()) {
-   upComing.appendChild(this.div)
-    } else {
-    past.appendChild(this.div)
-    }
-   }
-}
-myEvent2.time()
-myEvent2.eventText()
-myEvent2.addEventToDOM()
+let spliceAlum = new Entry((new Date(2024, 5, 27)), "17:00", "SPLICE Alumnx Concert", "Western Michigan University", "<i>Whisper</i>", "n/a", "n/a");
+spliceAlum.div.innerHTML = ("<b>" + spliceAlum.date.toLocaleDateString() + " at " + spliceAlum.eventTime + "</b>" + "<br>"+ "<i>" + spliceAlum.piece + "</i>" + " performed at the " + spliceAlum.event + " at " + spliceAlum.venue)
+spliceAlum.addEventToDOM()
 
-let myEvent18 = {
-   div: document.createElement("p"),
-   date: new Date(2024, 4, 5), 
-   time: function() {
-    this.date.setHours(20)
-    // this.date.setMinutes(30)
-   },
-   eventTime: "20:00",
-   event: "Soundscapes II",
-   venue: "Tulane University's <a href=https://g.co/kgs/VTkmbww>Dixon Concert Hall</a>",
-   piece: "<i>More Frogs</i>",
-   ensemble: "<a href=https://versipel.org/about/>Versipel New Music</a>",
-   performers: "",
-   linkCreation: document.createElement("a"),
-   eventText: function () {
-     this.div.innerHTML = ("<b>" + this.date.toLocaleDateString()+ " at " + this.eventTime + "</b>"
-        + "<br>" + this.ensemble + " will perform " + this.piece + " at " + this.venue + " as part of their " + this.event + " concert.")
-    },
-   addEventToDOM: function () {
-    this.time()
-    this.eventText()
-    this.div.style.backgroundColor = color1
-    if (this.date.getTime() > today.getTime()) {
-    upComing.appendChild(this.div)
-    } else {
-    past.appendChild(this.div)
-    }
-   }
-}
-myEvent18.addEventToDOM()
+let vimAlice = new Entry(new Date(2024, 4, 6), "19:30", "n/a", "<a href='https://www.ensemblevim.org/events/season-closer'>Museum of Contemporary Art Georgia</a>", "<i>Alice in Wonderland</i>", "<a href='https://www.ensemblevim.org/'>Ensemble Vim</a>", "<a href=https://www.petarmiloshevski.com/>Petar Miloshevski</a>");
+vimAlice.div.innerHTML = ("<b>" + vimAlice.date.toLocaleDateString() + " at " + vimAlice.eventTime + "</b>" + "<br>"+  vimAlice.ensemble + " and " + vimAlice.performers + " perform " + vimAlice.piece + " at the " + vimAlice.venue)
+vimAlice.addEventToDOM()
 
-let myEvent16 = {
-   div: document.createElement("p"),
-   date: new Date(2024, 3, 29), 
-   time: function() {
-    this.date.setHours(10)
-    // this.date.setMinutes(30)
-   },
-   eventTime: "18:00",
-   event: "Really Really New Music Marathon",
-   venue: "LSU MDA Black Box Theater",
-   piece: "<i>Face</i>",
-   ensemble: "",
-   performers: "",
-   linkCreation: document.createElement("a"),
-   eventText: function () {
-     this.div.innerHTML = ("<b>" + this.date.toLocaleDateString()+ " at " + this.eventTime + "</b>"
-        + "<br>" + "Performance of " + this.piece + " at " + this.venue + " as part of the " + this.event)
-    },
-   addEventToDOM: function () {
-    this.time()
-    this.eventText()
-    this.div.style.backgroundColor = color1
-    if (this.date.getTime() > today.getTime()) {
-    upComing.appendChild(this.div)
-    } else {
-    past.appendChild(this.div)
-    }
-   }
-}
-myEvent16.addEventToDOM()
+let soundScapes = new Entry(new Date(2024, 4, 5), "20:00", "Soundscapes II", "Tulane University's <a href=https://g.co/kgs/VTkmbww>Dixon Concert Hall</a>", "<i>More Frogs</i>","<a href=https://versipel.org/about/>Versipel New Music</a>",);
+soundScapes.div.innerHTML = "<b>" + soundScapes.date.toLocaleDateString()+ " at " + soundScapes.eventTime + "</b>"
+        + "<br>" + "Performance of " + soundScapes.piece + " by " + soundScapes.ensemble + " at " + soundScapes.venue + " as part of their " + soundScapes.event + " concert."
+soundScapes.addEventToDOM()
 
-let myEvent17 = {
-   div: document.createElement("p"),
-   date: new Date(2024, 3, 15), 
-   time: function() {
-    this.date.setHours(10)
-    // this.date.setMinutes(30)
-   },
-   eventTime: "10:00",
-   event: "CMDA Research Expo",
-   venue: "LSU MDA Lobby",
-   piece: "Poster presentation",
-   ensemble: "",
-   performers: "",
-   linkCreation: document.createElement("a"),
-   eventText: function () {
-     this.div.innerHTML = ("<b>" + this.date.toLocaleDateString()+ " at " + this.eventTime + "</b>"
-        + "<br>" + "Poster presentation at the " +  this.event)
-    },
-   addEventToDOM: function () {
-    this.time()
-    this.eventText()
-    this.div.style.backgroundColor = color1
-    if (this.date.getTime() > today.getTime()) {
-    upComing.appendChild(this.div)
-    } else {
-    past.appendChild(this.div)
-    }
-   }
-}
-myEvent17.addEventToDOM()
+let rrnmmSp24 = new Entry(new Date(2024, 3, 29), "18:00", "Really Really New Music Marathon", "LSU MDA Black Box Theater", "<i>Face</i>")
+rrnmmSp24.div.innerHTML = "<b>" + rrnmmSp24.date.toLocaleDateString()+ " at " + rrnmmSp24.eventTime + "</b>"
+        + "<br>" + "Performance of " + rrnmmSp24.piece + " at " + rrnmmSp24.venue + " as part of the " + rrnmmSp24.event
+rrnmmSp24.addEventToDOM()
 
-let myEvent14 = {
-   div: document.createElement("p"),
-   date: new Date(2024, 3, 4), 
-   time: function() {
-    this.date.setHours(20)
-    // this.date.setMinutes(30)
-   },
-   eventTime: "20:00",
-   event: "<a href=https://yeswecannibal.org/encounters/post-seamus-jam/>SEAMUS Extra-Institutional Pre-Conference New Instrument Jam</a> ",
-   venue: "<a href=https://yeswecannibal.org/>Yes We Cannibal</a>",
-   piece: "<i>Face</i>",
-   ensemble: "",
-   performers: "",
-   linkCreation: document.createElement("a"),
-   eventText: function () {
-     this.div.innerHTML = ("<b>" + this.date.toLocaleDateString()+ " at " + this.eventTime + "</b>"
-        + "<br>" + "Performance of " + this.piece + " at " + this.event + " at " + this.venue)
-    },
-   addEventToDOM: function () {
-    this.time()
-    this.eventText()
-    this.div.style.backgroundColor = color1
-    if (this.date.getTime() > today.getTime()) {
-    upComing.appendChild(this.div)
-    } else {
-    past.appendChild(this.div)
-    }
-   }
-}
-myEvent14.addEventToDOM()
+let posterPres = new Entry(new Date(2024, 3, 15), "10:00", "LSU CMDA Research Expo", "LSU MDA Lobby", "", "", "")
+posterPres.div.innerHTML = "<b>" + posterPres.date.toLocaleDateString()+ " at " + posterPres.eventTime + "</b>" + "<br>" + "Poster presentation at the " +  posterPres.event
+posterPres.addEventToDOM()
 
-let myEvent3 = {
-   div: document.createElement("p"),
-   date: new Date(2024, 2, 18), 
-   time: function() {
-    this.date.setHours(18)
-   },
-   eventTime: "18:00",
-   event: "<a href='https://seamusonline.org/conference-2024-40th-a-constellation-of-regional-hosts/'>Soundscapes for Inner Peace</a>",
-   venue: "NYU’s Bobst Library",
-   location: "",
-   piece: "<i>Frog</i>",
-   linkCreation: document.createElement("a"),
-   eventText: function () {
-     this.div.innerHTML = ("<b>" + this.date.toLocaleDateString()+ " at " + this.eventTime + "</b>"
-        + "<br>" + "Performance of " + this.piece + " at " + this.event + " at " + this.venue + " as part of SEAMUS 2024")
-    },
-   addEventToDOM: function () {
-    this.div.style.backgroundColor = color1
-    if (this.date.getTime() > today.getTime()) {
-   upComing.appendChild(this.div)
-    } else {
-    past.appendChild(this.div)
-    }
-   }
-}
-myEvent3.time()
-myEvent3.eventText()
-myEvent3.addEventToDOM()
+let faceCan = new Entry(
+  new Date(2024, 3, 4), // April 4, 2024 (month is 0-based)
+  "20:00",
+  '<a href="https://yeswecannibal.org/encounters/post-seamus-jam/">SEAMUS Extra-Institutional Pre-Conference New Instrument Jam</a>',
+  '<a href="https://yeswecannibal.org/">Yes We Cannibal</a>',
+  '<i>Face</i>',
+  "", // No ensemble
+  ""  // No performers
+);
+faceCan.div.innerHTML = "<b>" + faceCan.date.toLocaleDateString()+ " at " + faceCan.eventTime + "</b>" + "<br>" + "Performance of " + faceCan.piece + " at " + faceCan.event + " at " + faceCan.venue
+faceCan.addEventToDOM()
+
+const seamus1 = new Entry(
+  new Date(2024, 2, 18),
+  "18:00",
+  '<a href="https://seamusonline.org/conference-2024-40th-a-constellation-of-regional-hosts/">Soundscapes for Inner Peace</a>',
+  "NYU’s Bobst Library",
+  '<i>Frog</i>',
+  "",
+  ""
+);
+seamus1.div.innerHTML = ("<b>" + seamus1.date.toLocaleDateString()+ " at " + seamus1.eventTime + "</b>"
+        + "<br>" + "Performance of " + seamus1.piece + " at " + seamus1.event + " at " + seamus1.venue + " as part of SEAMUS 2024")
+seamus1.addEventToDOM()
+
 
 
 let myEvent1 = {
