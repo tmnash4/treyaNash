@@ -98,6 +98,10 @@ class Entry {
 // let entry = new Entry(new Date(2025, 3, 2), "18:30", "concert", "place", "<i>A Piece</i>", "this ensemble", "the performers")
 // entry.div.innerHTML = ("<b>" + entry.date.toLocaleDateString() + "</b>" + "<br>"+ entry.piece + " will be performed at the " + entry.event + " at " + entry.venue)
 // entry.addEventToDOM()
+let soloShow = new Entry(new Date(2024, 8, 21), "16:30", "Erin Demastes' <i> <a href=https://artguide.artforum.com/artguide/yes-we-cannibal-23462/solo-solo-show-231964>Solo Solo Show</a></i>","Yes We Cannibal", "A new cell phone piece") 
+soloShow.div.innerHTML = "<b>" + soloShow.date.toLocaleDateString() + " at " + soloShow.eventTime + "</b>" + "<br>" + soloShow.piece + " will be performed as part of " + soloShow.event + " at " + soloShow.venue
+soloShow.addEventToDOM()
+
 let mandyArt = new Entry(new Date(2024, 7, 9), "", "2024 Janet & Walter Sondheim Art Prize Semifinalists Exhibition", "<a href=https://www.mica.edu/galleries/meyerhoff-gallery/>Maryland Institute College of Art Decker and Meyerhoff Galleries</a>", "Push Me Pretty")
 mandyArt.div.innerHTML = ("<b>" + "08/02/2024-08/09/2024" + "</b>" + "<br>"+ "<i>" + mandyArt.piece + "</i>" + ", a short film by <a href=https://mandymorrisonart.com/>Mandy Morrison</a> with audio design by Treya Nash shown at the " + mandyArt.event + " at " + mandyArt.venue)
 mandyArt.addEventToDOM()
