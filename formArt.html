@@ -61,6 +61,14 @@
 </table>
 
 <script>
+
+if (/Mobi|Android|iPhone|iPad|iPod|Opera Mini|IEMobile|WPDesktop/.test(navigator.userAgent)) {
+        window.location.href = "formArtCell.html"; // Replace with your mobile site URL
+    }
+
+
+
+
   async function startAudio() {  //This code starts the audio 
   await Tone.start()
   console.log("ready")
