@@ -75,13 +75,17 @@ function inverseValue(value) {
     return -value;
 }
 
+const gainNode2 = new Tone.Gain().toDestination();
+gainNode2.gain.value = 0.5
+
+
 class NoiseCheckBox {
     constructor(top, left, fontSize, pan, panTo, time, noiseType, id, accentColor, vibFreq = 20, vibDepth = 1) {
         this.checkbox = document.createElement("input");
         this.top = top;
         this.left = left;
         this.fontSize = fontSize;
-        this.panner = new Tone.Panner(pan).toDestination();
+        this.panner = new Tone.Panner(pan).connect(gainNode2);
         this.pan = pan;
         this.vibrato = new Tone.Vibrato().connect(this.panner)
         this.synth = new Tone.NoiseSynth().connect(this.vibrato);
@@ -211,10 +215,13 @@ makeCheckboxGrid()
 let myCheckbox = document.getElementById("myCheckbox");
 let myCheckbox1 = document.getElementById("myCheckbox1")
 
-const gainNode = new Tone.Gain(-20).toDestination();
+const gainNode = new Tone.Gain().toDestination();
 gainNode.gain.value = 0.5
+const gainNode1 = new Tone.Gain().toDestination();
+gainNode1.gain.value = 0.3
 
-let noisePanner = new Tone.Panner(-1).toDestination()
+
+let noisePanner = new Tone.Panner(-1).connect(gainNode2)
 let noisePanner1 = new Tone.Panner(1).toDestination()
 let memPanner = new Tone.Panner(-0.7).toDestination()
 let metPanner = new Tone.Panner(0.7).connect(gainNode)
@@ -228,7 +235,7 @@ let synth3 = new Tone.MembraneSynth().connect(rev)
 let synth4 = new Tone.MetalSynth().connect(rev1)
 
 
-let metalSynth = new Tone.MetalSynth().toDestination()
+let metalSynth = new Tone.MetalSynth().connect(gainNode1)
 
 // synth.envelope.attack = 0.1;
 // synth.envelope.decay = 0.0001;
