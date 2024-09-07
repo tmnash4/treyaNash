@@ -98,6 +98,14 @@ class Entry {
 // let entry = new Entry(new Date(2025, 3, 2), "18:30", "concert", "place", "<i>A Piece</i>", "this ensemble", "the performers")
 // entry.div.innerHTML = ("<b>" + entry.date.toLocaleDateString() + "</b>" + "<br>"+ entry.piece + " will be performed at the " + entry.event + " at " + entry.venue)
 // entry.addEventToDOM()
+
+let sunCoast = new Entry(new Date(2024, 9, 7), "18:00", "Suncoast Composer Fellowship Concert", "First Congregational UCC in Sarasota, Fl", "<i>Nothing Motorised</i>", "ensembleNEWSRQ")
+sunCoast.div.innerHTML = "<b>" + sunCoast.date.toLocaleDateString() + " at " + sunCoast.eventTime + "</b>" + "<br>" + sunCoast.piece + " will be performed by " + sunCoast.ensemble + " at the " + sunCoast.event + " at " + sunCoast.venue
+sunCoast.addEventToDOM()
+
+// let edme = new Entry(new Date(2024, 9, 4), "")
+
+
 let soloShow = new Entry(new Date(2024, 8, 21), "16:30", "Erin Demastes' <i> <a href=https://artguide.artforum.com/artguide/yes-we-cannibal-23462/solo-solo-show-231964>Solo Solo Show</a></i>","Yes We Cannibal", "A new cell phone piece") 
 soloShow.div.innerHTML = "<b>" + soloShow.date.toLocaleDateString() + " at " + soloShow.eventTime + "</b>" + "<br>" + soloShow.piece + " will be performed as part of " + soloShow.event + " at " + soloShow.venue
 soloShow.addEventToDOM()
