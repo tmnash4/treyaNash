@@ -99,12 +99,13 @@ class Entry {
 // entry.div.innerHTML = ("<b>" + entry.date.toLocaleDateString() + "</b>" + "<br>"+ entry.piece + " will be performed at the " + entry.event + " at " + entry.venue)
 // entry.addEventToDOM()
 
-let sunCoast = new Entry(new Date(2024, 9, 7), "18:00", "Suncoast Composer Fellowship Concert", "First Congregational UCC in Sarasota, Fl", "<i>Nothing Motorised</i>", "ensembleNEWSRQ")
+let sunCoast = new Entry(new Date(2024, 9, 7), "18:00", "Suncoast Composer Fellowship Concert", "First Congregational UCC in Sarasota, FL", "<i>Nothing Motorised</i>", "ensembleNEWSRQ")
 sunCoast.div.innerHTML = "<b>" + sunCoast.date.toLocaleDateString() + " at " + sunCoast.eventTime + "</b>" + "<br>" + sunCoast.piece + " will be performed by " + sunCoast.ensemble + " at the " + sunCoast.event + " at " + sunCoast.venue
 sunCoast.addEventToDOM()
 
-// let edme = new Entry(new Date(2024, 9, 4), "")
-
+let edme = new Entry(new Date(2024, 9, 4), "19:00", "<a href=https://www.edmensemble.org/selected-composers>Eugene Difficult Music Ensemble 3rd Annual New Music Festival</a>", "Kesey Square in Eugene, OR","Several of my cell phone pieces")
+edme.div.innerHTML = `<b>${edme.date.toLocaleDateString()} at ${edme.eventTime} </b> <br> I will be a guest artist at the ${edme.event}. ${edme.piece} will be performed at ${edme.venue}`
+edme.addEventToDOM()
 
 let soloShow = new Entry(new Date(2024, 8, 21), "16:30", "Erin Demastes' <i> <a href=https://artguide.artforum.com/artguide/yes-we-cannibal-23462/solo-solo-show-231964>Solo Solo Show</a></i>","Yes We Cannibal", "A new cell phone piece") 
 soloShow.div.innerHTML = "<b>" + soloShow.date.toLocaleDateString() + " at " + soloShow.eventTime + "</b>" + "<br>" + soloShow.piece + " will be performed as part of " + soloShow.event + " at " + soloShow.venue
