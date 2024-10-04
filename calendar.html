@@ -99,6 +99,10 @@ class Entry {
 // entry.div.innerHTML = ("<b>" + entry.date.toLocaleDateString() + "</b>" + "<br>"+ entry.piece + " will be performed at the " + entry.event + " at " + entry.venue)
 // entry.addEventToDOM()
 
+let flTb = new Entry(new Date(2024, 10, 1), "20:00", "concert", "Lawrence Memorial Chapal in Lawrence, WI", "<i>College Lake</i>", "<a href=https://www.lawrence.edu/music-arts/performances-productions/performing-arts-lawrence/new-music-series>Lawrence University Flute and Trombone Ensembles</a>");
+flTb.div.innerHTML = `<b>${flTb.date.toLocaleDateString()} at ${flTb.eventTime}</b><br>${flTb.piece} will be premiered by the ${flTb.ensemble} at ${flTb.venue} as part of their collaboration with the <a href=https://www.mcicomposers.com/>Millenum Composers Initiative</a>`
+flTb.addEventToDOM()
+
 let cinEars = new Entry(new Date(2024, 9, 7), "19:30", "Cinema for the Ears", "LSU Digital Media Center Theater", "<i>Dear Mother Father God</i>")
 cinEars.div.innerHTML = `<b>${cinEars.date.toLocaleDateString()} at ${cinEars.eventTime} </b> <br> ${cinEars.piece} will be performed as part of ${cinEars.event} at the <a href=https://maps.app.goo.gl/ipFSGY1Y3bAYRniSA>${cinEars.venue}</a>`
 cinEars.addEventToDOM()
