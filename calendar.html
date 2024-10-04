@@ -99,6 +99,9 @@ class Entry {
 // entry.div.innerHTML = ("<b>" + entry.date.toLocaleDateString() + "</b>" + "<br>"+ entry.piece + " will be performed at the " + entry.event + " at " + entry.venue)
 // entry.addEventToDOM()
 
+let cinEars = new Entry(new Date(2024, 9, 7), "19:30", "Cinema for the Ears", "LSU Digital Media Center Theater", "<i>Dear Mother Father God</i>")
+cinEars.div.innerHTML = `<b>${cinEars.date.toLocaleDateString()} at ${cinEars.eventTime} </b> <br> ${cinEars.piece} will be performed as part of ${cinEars.event} at the <a href=https://maps.app.goo.gl/ipFSGY1Y3bAYRniSA>${cinEars.venue}</a>`
+cinEars.addEventToDOM()
 let sunCoast = new Entry(new Date(2024, 9, 7), "18:00", "Suncoast Composer Fellowship Concert", "First Congregational UCC in Sarasota, FL", "<i>Nothing Motorised</i>", "ensembleNEWSRQ")
 sunCoast.div.innerHTML = "<b>" + sunCoast.date.toLocaleDateString() + " at " + sunCoast.eventTime + "</b>" + "<br>" + sunCoast.piece + " will be performed by " + sunCoast.ensemble + " at the " + sunCoast.event + " at " + sunCoast.venue
 sunCoast.addEventToDOM()
