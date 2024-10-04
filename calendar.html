@@ -114,8 +114,8 @@ let edme = new Entry(new Date(2024, 9, 4), "19:00", "<a href=https://www.edmense
 edme.div.innerHTML = `<b>${edme.date.toLocaleDateString()} at ${edme.eventTime} </b> <br> I will be a guest artist at the ${edme.event}. ${edme.piece} will be performed at ${edme.venue}`
 edme.addEventToDOM()
 
-let soloShow = new Entry(new Date(2024, 8, 21), "16:30", "Erin Demastes' <i> <a href=https://artguide.artforum.com/artguide/yes-we-cannibal-23462/solo-solo-show-231964>Solo Solo Show</a></i>","Yes We Cannibal", "A new cell phone piece") 
-soloShow.div.innerHTML = "<b>" + soloShow.date.toLocaleDateString() + " at " + soloShow.eventTime + "</b>" + "<br>" + soloShow.piece + " will be performed as part of " + soloShow.event + " at " + soloShow.venue
+let soloShow = new Entry(new Date(2024, 8, 21), "16:30", "Erin Demastes' <i> <a href=https://artguide.artforum.com/artguide/yes-we-cannibal-23462/solo-solo-show-231964>Solo Solo Show</a></i>","Yes We Cannibal", "Cup, for cellphones and audience,") 
+soloShow.div.innerHTML = "<b>" + soloShow.date.toLocaleDateString() + " at " + soloShow.eventTime + "</b>" + "<br>" + "Premiere of" + soloShow.piece + " as part of " + soloShow.event + " at " + soloShow.venue
 soloShow.addEventToDOM()
 
 let mandyArt = new Entry(new Date(2024, 7, 9), "", "2024 Janet & Walter Sondheim Art Prize Semifinalists Exhibition", "<a href=https://www.mica.edu/galleries/meyerhoff-gallery/>Maryland Institute College of Art Decker and Meyerhoff Galleries</a>", "Push Me Pretty")
