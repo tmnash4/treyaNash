@@ -99,6 +99,13 @@ class Entry {
 // entry.div.innerHTML = ("<b>" + entry.date.toLocaleDateString() + "</b>" + "<br>"+ entry.piece + " will be performed at the " + entry.event + " at " + entry.venue)
 // entry.addEventToDOM()
 
+let flTb = new Entry(new Date(2024, 10, 1), "20:00", "concert", "Lawrence Memorial Chapal in Lawrence, WI", "<i>College Lake</i>", "<a href=https://www.lawrence.edu/music-arts/performances-productions/performing-arts-lawrence/new-music-series>Lawrence University Flute and Trombone Ensembles</a>");
+flTb.div.innerHTML = `<b>${flTb.date.toLocaleDateString()} at ${flTb.eventTime}</b><br>${flTb.piece} will be premiered by the ${flTb.ensemble} at ${flTb.venue} as part of their collaboration with the <a href=https://www.mcicomposers.com/>Millenum Composers Initiative</a>`
+flTb.addEventToDOM()
+
+let cinEars = new Entry(new Date(2024, 9, 7), "19:30", "Cinema for the Ears", "LSU Digital Media Center Theater", "<i>Dear Mother Father God</i>")
+cinEars.div.innerHTML = `<b>${cinEars.date.toLocaleDateString()} at ${cinEars.eventTime} </b> <br> ${cinEars.piece} will be performed as part of ${cinEars.event} at the <a href=https://maps.app.goo.gl/ipFSGY1Y3bAYRniSA>${cinEars.venue}</a>`
+cinEars.addEventToDOM()
 let sunCoast = new Entry(new Date(2024, 9, 7), "18:00", "Suncoast Composer Fellowship Concert", "First Congregational UCC in Sarasota, FL", "<i>Nothing Motorised</i>", "ensembleNEWSRQ")
 sunCoast.div.innerHTML = "<b>" + sunCoast.date.toLocaleDateString() + " at " + sunCoast.eventTime + "</b>" + "<br>" + sunCoast.piece + " will be performed by " + sunCoast.ensemble + " at the " + sunCoast.event + " at " + sunCoast.venue
 sunCoast.addEventToDOM()
@@ -107,8 +114,8 @@ let edme = new Entry(new Date(2024, 9, 4), "19:00", "<a href=https://www.edmense
 edme.div.innerHTML = `<b>${edme.date.toLocaleDateString()} at ${edme.eventTime} </b> <br> I will be a guest artist at the ${edme.event}. ${edme.piece} will be performed at ${edme.venue}`
 edme.addEventToDOM()
 
-let soloShow = new Entry(new Date(2024, 8, 21), "16:30", "Erin Demastes' <i> <a href=https://artguide.artforum.com/artguide/yes-we-cannibal-23462/solo-solo-show-231964>Solo Solo Show</a></i>","Yes We Cannibal", "A new cell phone piece") 
-soloShow.div.innerHTML = "<b>" + soloShow.date.toLocaleDateString() + " at " + soloShow.eventTime + "</b>" + "<br>" + soloShow.piece + " will be performed as part of " + soloShow.event + " at " + soloShow.venue
+let soloShow = new Entry(new Date(2024, 8, 21), "16:30", "Erin Demastes' <i> <a href=https://artguide.artforum.com/artguide/yes-we-cannibal-23462/solo-solo-show-231964>Solo Solo Show</a></i>","Yes We Cannibal", "Cup, for cellphones and audience,") 
+soloShow.div.innerHTML = "<b>" + soloShow.date.toLocaleDateString() + " at " + soloShow.eventTime + "</b>" + "<br>" + "Premiere of" + soloShow.piece + " as part of " + soloShow.event + " at " + soloShow.venue
 soloShow.addEventToDOM()
 
 let mandyArt = new Entry(new Date(2024, 7, 9), "", "2024 Janet & Walter Sondheim Art Prize Semifinalists Exhibition", "<a href=https://www.mica.edu/galleries/meyerhoff-gallery/>Maryland Institute College of Art Decker and Meyerhoff Galleries</a>", "Push Me Pretty")
