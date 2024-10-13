@@ -115,6 +115,7 @@ class NoiseCheckBox {
         this.checkbox.style.width = this.fontSize;
         this.checkbox.style.height = this.fontSize;
         this.checkbox.style.accentColor = this.accentColor;
+     
     }
 
     addCheck() {
@@ -150,12 +151,150 @@ class NoiseCheckBox {
             }
         }
         setInterval(checkPanner, (this.time * 1000 + 1000))
+        let moon2 = new Moon(`${randomNumI(10, 90)}%`, getRandomHexColor(), `${randomNumF(0.1, 1)}`, `${randomNumI(-180, 180)}`, randomNumF(200, 600))
+        moon2.createMoon()
+        moon2.playMoon()
         } else {
             console.log("oooo!");
             this.synth.triggerRelease();
          
         }
     }
+
+}
+
+function getRandomHexColor() {
+    const randomColor = Math.floor(Math.random() * 16777215).toString(16);
+    return `#${randomColor.padStart(6, '0')}`;
+}
+
+const moonVibrato = new Tone.Vibrato({
+    frequency: 5,
+    depth: 0.5
+}).toDestination();
+
+const moonFilter = new Tone.Filter({
+    frequency: 500,
+    type: "lowpass",
+    rolloff: -12,
+    Q: 1
+}).connect(moonVibrato);
+
+function getRandomFloat(min, max) {
+    return Math.random() * (max - min) + min;
+}
+
+let moonSynth = new Tone.FMSynth({
+    harmonicity: 3, // The ratio between the carrier and modulator frequencies
+    modulationIndex: 10, // The modulation depth
+    oscillator: {
+        type: "triangle" // Carrier waveform
+    },
+    modulation: {
+        type: "square" // Modulator waveform
+    },
+    envelope: {
+        attack: 0.1, // Smooth attack
+        decay: 0.2,
+        sustain: 0.9,
+        release: 1.5
+    },
+    modulationEnvelope: {
+        attack: 0.2,
+        decay: 0.1,
+        sustain: 1,
+        release: 0.5
+    }
+}).connect(moonFilter)
+
+
+
+
+class Moon {
+    constructor(position, color, scale, rotation, freq) {
+        this.position = position;
+        this.color = color;
+        this.scale = scale;
+        this.rotation = rotation;
+        this.moon = document.createElement("div");
+        this.freq = freq;
+
+    }
+
+    createMoon() {
+        document.body.appendChild(this.moon);
+        this.moon.classList.add("moonClass");
+        this.moon.style.position = "absolute";
+        this.moon.style.top = this.position;
+        this.moon.style.left = this.position;
+        this.moon.style.transform = `scale(${this.scale}) rotate(${this.rotation}deg)`;
+        this.moon.style.boxShadow = `2rem 2rem 0 0 ${this.color}`;
+
+        setTimeout(() => {
+            let rand1 = randomNumI(101, 1000)
+            setInterval(() => {
+                moonSynth.triggerAttackRelease(randomNumI(200, 600), rand1 / 1000)
+                let randOneOrTwo = randomNumI(1, 2)
+                let rand = randomNumI(0, 100);
+                rand += randomNumI(-0.1, 0.1)
+                if (randOneOrTwo == 1) {
+                this.moon.style.right = `${rand}%` 
+                this.moon.style.top = `${rand}%`
+                } else {
+                this.moon.style.top = `${rand}%`
+                this.moon.style.left = `${rand}%`
+
+                }
+            }, rand1)
+        }, 10000)
+    }
+    playMoon() {
+    let isTriggered = false;
+    const baseFrequency = 440; // Set a base frequency (A4)
+
+    this.moon.addEventListener("mousemove", (e) => {
+        const rect = this.moon.getBoundingClientRect();
+        const mouseX = e.clientX; // X position in the viewport
+        const mouseY = e.clientY; // Y position in the viewport
+
+       
+        const inBoxShadow = (
+            mouseX >= (rect.left - 32) && mouseX <= (rect.right + 32) && 
+            mouseY >= (rect.top - 32) && mouseY <= (rect.bottom + 32)
+        );
+        if (inBoxShadow && !isTriggered) {
+            moonSynth.triggerAttack(this.freq); // Trigger sound
+            isTriggered = true; // Prevent retriggering
+            moonVibrato.depth.value = getRandomFloat(0, 1);
+            moonVibrato.frequency.value = getRandomFloat(0, 10)
+        }
+        if (isTriggered) {
+            const harmonicity = Math.max(0.1, Math.min(3, ((mouseX - rect.left) / rect.width) * 3)); // Limit harmonicity
+            const modulationIndex = Math.max(0.1, Math.min(10, ((mouseY - rect.top) / rect.height) * 10)); // Limit modulationIndex
+            const frequency = baseFrequency * harmonicity; // Scale frequency with harmonicity
+            moonSynth.harmonicity.value = harmonicity;
+            moonSynth.modulationIndex.value = modulationIndex;
+            moonSynth.frequency.value = frequency; // Update the frequency
+      
+
+        }
+    });
+
+    this.moon.addEventListener("mouseout", () => {
+        if (isTriggered) {
+            moonSynth.triggerRelease(); // Release sound when leaving the shadow area
+            isTriggered = false; // Reset flag
+        }
+    });
+}
+
+
+
+
+
+
+
+
 
 }
 
@@ -491,11 +630,15 @@ class timerObject {
                 this.direction = "up";
             }
         }
-
+        let num = "0"
+        if (this.date.getMinutes() >= 10) {
+            num = ""
+        }
         this.synthPanner.pan.value = this.panner;
         let displayDate = this.date.getSeconds();
-        let displayDate1 = "0" + this.date.getMinutes();
-
+        let displayDate1 = num + this.date.getMinutes();
+      
+      
         if (this.date.getSeconds() > 0) {
             this.date.setSeconds(this.date.getSeconds() - 1);
         } else {
@@ -618,6 +761,7 @@ timerButton.addEventListener("click", () => {
         }
         let displayDate = myTimerDate.getSeconds()
         let displayDate1 = "0" + myTimerDate.getMinutes()
+        
         if (myTimerDate.getSeconds() < 10) {
             displayDate = "0" + myTimerDate.getSeconds()
         }
@@ -630,6 +774,15 @@ timerButton.addEventListener("click", () => {
     setTimeout(createClock5, 16000)
     setTimeout(createClock6, 16000)
 })
+
+
+
+
+
+
+// let moon1 = new Moon("40%", "red", 0.5, 20, 400);
+// moon1.createMoon();
+// moon1.playMoon();
 
 
 </script>
@@ -649,6 +802,14 @@ timerButton.addEventListener("click", () => {
         font-family: monospace;
         left: 45%;
         top: 45%
+    }
+
+    .moonClass {
+        position: absolute;
+        width: 15rem;
+        height: 15rem;
+        border-radius: 50%;
+        /* box-shadow: 2rem 2rem 0 0 red; */
     }
 
 
