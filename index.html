@@ -199,9 +199,22 @@ let mainGain = new Tone.Gain(0).toDestination()
 let isPlaying = false
 
 let oneLonelyCricket = new Tone.Buffer("media/OneLonelyCricket.wav");
+let witchesLaugh = new Tone.Buffer("")
 let playCrick = new Tone.Player(oneLonelyCricket);
 playCrick.connect(mainGain);
 playCrick.loop = true;
+
+const reverb = new Tone.Reverb({
+  decay: 2, // Longer decay time for more echo
+  preDelay: 0.5, // Short delay before the reverb starts
+}).connect(mainGain);
+
+// Create a delay effect
+const delay = new Tone.FeedbackDelay({
+  delayTime: 0.3, // Initial delay time
+  feedback: 0.7, // Feedback level for multiple echoes
+  wet: 0.5, // Wet signal level (mix of the effect)
+}).connect(reverb);
 
 playCrick.sync().start(0);
 playCrick.sync().start(0);
@@ -349,53 +362,50 @@ halloweenButton.addEventListener("click", halloween)
 
 const halloweenEmojis = ["🎃", "👻", "🕷️", "🕸️", "🍬", "🍭", "💀", "🧟", "🧙‍♀️", "🧛‍♂️", "🧛‍♀️", "👽", "☠️", "🧹", "🦇", "🕯️", "⚰️", "🧠", "👁️"];
 
-function makeEmoji() {
-let div = document.createElement("div");
-div.classList.add("div-class")
-div.innerHTML = halloweenEmojis[Math.floor(Math.random() * halloweenEmojis.length)]
-div.style.left = `${getRandomInt(5, 95)}vw`;
-div.style.top = `${getRandomInt(10, 90)}vh`
-div.style.transform = `scale(${getRandomFloat(0.5, 5)}) rotate(${getRandomInt(0, 360)}deg)`
-document.body.appendChild(div)
+let panValue = 0; 
 
-}
 let social = document.querySelector(".social-icons");
 let hallo = 1;
 let isHalloweenActive = false; // Flag to track Halloween mode
 
-const vibrato = new Tone.Vibrato({
-  frequency: getRandomFloat(4, 8), // Random frequency for vibrato
-  depth: getRandomFloat(0.5, 1), // Random depth for vibrato
-}).toDestination();
 
-const lowPassFilter = new Tone.Filter({
-  frequency: 800, // Adjust the cutoff frequency as needed
-  type: "lowpass", // Low-pass filter type
-  rolloff: -12, // Roll-off of -12 dB/octave
-}).connect(vibrato)
 
 // Create a spooky synth in Tone.js
-const spookySynth = new Tone.Synth({
-  oscillator: {
-    type: "triangle", // Change to sine for a smoother sound
-  },
-  envelope: {
-    attack: 0.2,
-    decay: 0.5,
-    sustain: 0.5,
-    release: 1,
-  },
-}).connect(lowPassFilter)
+
 
 // Create a vibrato effect with random depth and frequency
-
+let emojiDisplayTime = 1000;
 
 // Connect the synth to the vibrato effect
 let noo = 1
 let lowP = 300;
 let highP = 350;
 function createEmoji() {
-  const emojiDisplayTime = getRandomInt(50, 1000); // Random time for the emoji to stay
+  const spookyPanner = new Tone.Panner(0).toDestination(); // Start centered
+  const vibrato = new Tone.Vibrato({
+  frequency: getRandomFloat(4, 8), // Random frequency for vibrato
+  depth: getRandomFloat(0.5, 1), // Random depth for vibrato
+}).connect(spookyPanner);
+
+spookyPanner.pan.value = panValue;
+
+const lowPassFilter = new Tone.Filter({
+  frequency: 500, // Adjust the cutoff frequency as needed
+  type: "lowpass", // Low-pass filter type
+  rolloff: -12, // Roll-off of -12 dB/octave
+}).connect(vibrato)
+  let spookySynth1 = new Tone.Synth({
+  oscillator: {
+    type: "triangle", // Change to sine for a smoother sound
+  },
+  envelope: {
+    attack: 0.5,
+    decay: 0.3,
+    sustain: 0.5,
+    release: 1,
+  },
+}).connect(lowPassFilter)
+  emojiDisplayTime = getRandomInt(200, 1000); // Random time for the emoji to stay
   const randPitch = getRandomFloat(lowP, highP) // Random pitch for the spooky synth
   setInterval(() => {
     if (noo == 1) {
@@ -435,30 +445,35 @@ function createEmoji() {
   let div = document.createElement("div");
   div.classList.add("div-class");
   div.innerHTML = halloweenEmojis[emojiIndex];
-  div.style.left = `${getRandomInt(5, 95)}vw`;
+  let randomPos = getRandomInt(5, 95)
+  div.style.left = `${randomPos}vw`;
   div.style.top = `${getRandomInt(10, 90)}vh`;
   div.style.transform = `scale(${getRandomFloat(0.5, 5)}) rotate(${getRandomInt(0, 360)}deg)`;
   document.body.appendChild(div);
 
   // Play spooky synth sound
-  spookySynth.triggerAttack(randPitch); // Start the synth sound
-  
+  spookySynth1.triggerAttackRelease(randPitch, (emojiDisplayTime / 1000) - 0.1); // Start the synth sound
+  panValue = (randomPos / 100) * 2 - 1; // Convert percentage to panning range
+spookyPanner.pan.value = panValue
+// Update panner's position
+console.log(panValue)
 
   // Release the sound and remove the emoji after display time
-  setTimeout(() => {
-    spookySynth.triggerRelease(); // Stop the synth sound
-  }, emojiDisplayTime);
+  // setTimeout(() => {
+  //   spookySynth.triggerRelease(); // Stop the synth sound
+  // }, emojiDisplayTime);
 }
 
 
 function createEmojisWithRandomInterval() {
   if (!isHalloweenActive) return; // Stop if Halloween mode is not active
 
-  const emojiCreationInterval = getRandomInt(100, 3000); // Random interval time
+  const emojiCreationInterval = getRandomInt(500, 3000); // Random interval time
 
   setTimeout(() => {
     createEmoji(); // Create an emoji
     createEmojisWithRandomInterval(); // Recursively call to create more emojis
+ 
   }, emojiCreationInterval);
 }
 
@@ -481,15 +496,19 @@ function halloween() {
     halloweenButton.style.color = "#6100b7"
     halloweenButton.style.backgroundColor = "#ffe1bc"
     halloweenButton.innerHTML = "End Halloween :'(";
+    mainImg1.src = "media/bioImgs/TH1.png"
+    linkArray = ["media/bioImgs/TH2.png","media/bioImgs/TH3.png","media/bioImgs/TH4.png","media/bioImgs/TH5.png","media/bioImgs/TH6.png","media/bioImgs/TH7.png","media/bioImgs/TH8.png","media/bioImgs/TH9.png","media/bioImgs/TH10.png","media/bioImgs/TH11.png", "media/bioImgs/TH10.png", "media/bioImgs/TH9.png","media/bioImgs/TH8.png","media/bioImgs/TH7.png","media/bioImgs/TH6.png","media/bioImgs/TH5.png","media/bioImgs/TH4.png","media/bioImgs/TH3.png","media/bioImgs/TH2.png","media/bioImgs/TH1.png"]
+    playCrick.connect(reverb)
   } else {
     // Exiting Halloween mode
     isHalloweenActive = false; // Set the flag to false
     clearEmojis(); // Remove all div-class elements
-
+    playCrick.disconnect(reverb)
+    // playCrick.connect(mainGain)
     document.body.style.backgroundColor = "white";
     social.style.backgroundColor = "white";
     x.style.backgroundImage = "linear-gradient(to right, #3a04ba, #60d44f)"
-
+    mainImg1.src = "media/bioImgs/T1.png"
     y.style.background = "-webkit-linear-gradient(#60d44f, #3a04ba)";
     halloweenButton.innerHTML = "Click for Halloween!";
     myName.id = "myName";
@@ -498,9 +517,10 @@ function halloween() {
     halloweenButton.style.color = "rgb(54, 22, 171)"
     halloweenButton.style.backgroundColor = "rgb(214, 255, 241)"
     hallo = 1; // Reset the hallo flag
+    linkArray = ["media/bioImgs/T2.png","media/bioImgs/T3.png","media/bioImgs/T4.png","media/bioImgs/T5.png","media/bioImgs/T6.png","media/bioImgs/T7.png","media/bioImgs/T8.png","media/bioImgs/T9.png","media/bioImgs/T10.png","media/bioImgs/T11.png", "media/bioImgs/T10.png", "media/bioImgs/T9.png","media/bioImgs/T8.png","media/bioImgs/T7.png","media/bioImgs/T6.png","media/bioImgs/T5.png","media/bioImgs/T4.png","media/bioImgs/T3.png","media/bioImgs/T2.png","media/bioImgs/T1.png"]
 
     // Stop the spooky synth when exiting Halloween mode
-    spookySynth.triggerRelease();
+    // spookySynth.triggerRelease();
   }
 }
 
