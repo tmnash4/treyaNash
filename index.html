@@ -45,6 +45,7 @@
       <span style="font-size:30px;cursor:pointer" onclick="openNav()" id="mySpan">&#9776; </span>
   </div>
   <div id="outsideDiv">
+    <button id="halloween-button">Click for Halloween!</button>
     <h1 id="myName" class="flex-items" onclick="startAudio()"> Treya Nash   </h1>
     <h2 id="composer" class="flex-items"> composer | creative coder</h2>
     <div class="social-icons">
@@ -82,9 +83,23 @@
     -moz-user-select:none;
     -ms-user-select:none;
     user-select:auto;
-
+    /* background-color: black; */
   }
 
+  #halloween-button {
+    font-family: inherit;
+    margin-top: 15px;
+    margin-bottom: -20px;
+    border: 2px rgb(2, 175, 117) solid;
+    color: rgb(54, 22, 171);
+    background-color: rgb(214, 255, 241)
+  }
+  #halloween-button:hover {
+    background-color: white;
+ 
+  }
+
+  
   #outsideDiv {
     display: flex;
     flex-direction: column;
@@ -93,12 +108,29 @@
 
   }
 
+  .div-class {
+    position: absolute;
+  }
+  .social-icons {
+    /* background-color: black; */
+  }
   #myName {
     margin: 0px;
     padding: 0px;
     margin-top: 20px;
     font-size: 45px;
     background: -webkit-linear-gradient(#3a04ba, #60d44f);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  #myName1 {
+    margin: 0px;
+    padding: 0px;
+    margin-top: 20px;
+    font-size: 45px;
+    background: -webkit-linear-gradient(#6100b7, #ff8a07);
     background-clip: text;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
@@ -118,6 +150,16 @@
     padding: 0px;
     font-size: 16px;
     background: -webkit-linear-gradient(#3a04ba, #60d44f);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  #composer1 {
+    margin: 0px;
+    padding: 0px;
+    font-size: 16px;
+    background: -webkit-linear-gradient(#ff8a07, #6100b7);
     background-clip: text;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
@@ -289,6 +331,200 @@ mainImg.onmouseout = () => {
   
 }
 }
+
+
+function getRandomInt(min, max) {
+  min = Math.ceil(min);
+  max = Math.floor(max);
+  return Math.floor(Math.random() * (max - min + 1)) + min;
+}
+
+function getRandomFloat(min, max) {
+  return Math.random() * (max - min) + min;
+}
+
+let halloweenButton = document.getElementById("halloween-button");
+halloweenButton.addEventListener("click", halloween)
+
+
+const halloweenEmojis = ["🎃", "👻", "🕷️", "🕸️", "🍬", "🍭", "💀", "🧟", "🧙‍♀️", "🧛‍♂️", "🧛‍♀️", "👽", "☠️", "🧹", "🦇", "🕯️", "⚰️", "🧠", "👁️"];
+
+function makeEmoji() {
+let div = document.createElement("div");
+div.classList.add("div-class")
+div.innerHTML = halloweenEmojis[Math.floor(Math.random() * halloweenEmojis.length)]
+div.style.left = `${getRandomInt(5, 95)}vw`;
+div.style.top = `${getRandomInt(10, 90)}vh`
+div.style.transform = `scale(${getRandomFloat(0.5, 5)}) rotate(${getRandomInt(0, 360)}deg)`
+document.body.appendChild(div)
+
+}
+let social = document.querySelector(".social-icons");
+let hallo = 1;
+let isHalloweenActive = false; // Flag to track Halloween mode
+
+const vibrato = new Tone.Vibrato({
+  frequency: getRandomFloat(4, 8), // Random frequency for vibrato
+  depth: getRandomFloat(0.5, 1), // Random depth for vibrato
+}).toDestination();
+
+const lowPassFilter = new Tone.Filter({
+  frequency: 800, // Adjust the cutoff frequency as needed
+  type: "lowpass", // Low-pass filter type
+  rolloff: -12, // Roll-off of -12 dB/octave
+}).connect(vibrato)
+
+// Create a spooky synth in Tone.js
+const spookySynth = new Tone.Synth({
+  oscillator: {
+    type: "triangle", // Change to sine for a smoother sound
+  },
+  envelope: {
+    attack: 0.2,
+    decay: 0.5,
+    sustain: 0.5,
+    release: 1,
+  },
+}).connect(lowPassFilter)
+
+// Create a vibrato effect with random depth and frequency
+
+
+// Connect the synth to the vibrato effect
+let noo = 1
+let lowP = 300;
+let highP = 350;
+function createEmoji() {
+  const emojiDisplayTime = getRandomInt(50, 1000); // Random time for the emoji to stay
+  const randPitch = getRandomFloat(lowP, highP) // Random pitch for the spooky synth
+  setInterval(() => {
+    if (noo == 1) {
+      lowP = 300
+      noo = 2
+      console.log("noo")
+    } else if (noo == 2) {
+      lowP = 400;
+      highP = 450;
+      noo = 3
+      console.log("woo")
+    }  else if (noo == 3) {
+      lowP = 200;
+      highP = 250;
+      noo = 4
+    }  else if (noo == 4) {
+      lowP = 200;
+      highP = 550;
+      noo = 5
+    }  else if (noo == 5) {
+      lowP = 300;
+      highP = 500;
+      noo = 6
+    }  else if (noo == 6) {
+      lowP = 200;
+      highP = 201;
+      noo = 7
+    }  else if (noo == 7) {
+      lowP = 200;
+      highP = 350;
+      noo = 1
+    }
+  }, 20000)
+  const emojiIndex = Math.floor(Math.random() * halloweenEmojis.length); // Select a random emoji
+
+  // Create the emoji
+  let div = document.createElement("div");
+  div.classList.add("div-class");
+  div.innerHTML = halloweenEmojis[emojiIndex];
+  div.style.left = `${getRandomInt(5, 95)}vw`;
+  div.style.top = `${getRandomInt(10, 90)}vh`;
+  div.style.transform = `scale(${getRandomFloat(0.5, 5)}) rotate(${getRandomInt(0, 360)}deg)`;
+  document.body.appendChild(div);
+
+  // Play spooky synth sound
+  spookySynth.triggerAttack(randPitch); // Start the synth sound
+  
+
+  // Release the sound and remove the emoji after display time
+  setTimeout(() => {
+    spookySynth.triggerRelease(); // Stop the synth sound
+  }, emojiDisplayTime);
+}
+
+
+function createEmojisWithRandomInterval() {
+  if (!isHalloweenActive) return; // Stop if Halloween mode is not active
+
+  const emojiCreationInterval = getRandomInt(100, 3000); // Random interval time
+
+  setTimeout(() => {
+    createEmoji(); // Create an emoji
+    createEmojisWithRandomInterval(); // Recursively call to create more emojis
+  }, emojiCreationInterval);
+}
+
+function halloween() {
+  if (hallo == 1) {
+    // Starting Halloween mode
+    hallo = 0; // Set the hallo flag to indicate Halloween mode is active
+    isHalloweenActive = true; // Set the flag to true
+
+    createEmojisWithRandomInterval(); // Start creating emojis with random intervals
+
+    document.body.style.backgroundColor = "black";
+    social.style.backgroundColor = "black";
+    social.style.color = "white";
+    myName.id = "myName1";
+    comp.id = "composer1";
+    x.style.backgroundImage = "linear-gradient(to right, #6100b7, #ff8a07"
+    y.style.background = "-webkit-linear-gradient(#6100b7, #ff8a07)";
+    halloweenButton.style.border = "2px #ff8a07 solid";
+    halloweenButton.style.color = "#6100b7"
+    halloweenButton.style.backgroundColor = "#ffe1bc"
+    halloweenButton.innerHTML = "End Halloween :'(";
+  } else {
+    // Exiting Halloween mode
+    isHalloweenActive = false; // Set the flag to false
+    clearEmojis(); // Remove all div-class elements
+
+    document.body.style.backgroundColor = "white";
+    social.style.backgroundColor = "white";
+    x.style.backgroundImage = "linear-gradient(to right, #3a04ba, #60d44f)"
+
+    y.style.background = "-webkit-linear-gradient(#60d44f, #3a04ba)";
+    halloweenButton.innerHTML = "Click for Halloween!";
+    myName.id = "myName";
+    comp.id = "composer";
+    halloweenButton.style.border = "2px rgb(2, 175, 117) solid";
+    halloweenButton.style.color = "rgb(54, 22, 171)"
+    halloweenButton.style.backgroundColor = "rgb(214, 255, 241)"
+    hallo = 1; // Reset the hallo flag
+
+    // Stop the spooky synth when exiting Halloween mode
+    spookySynth.triggerRelease();
+  }
+}
+
+// Function to clear all emojis
+function clearEmojis() {
+  const emojis = document.querySelectorAll('.div-class'); // Select all emojis
+  console.log(`Clearing ${emojis.length} emojis`); // Log number of emojis
+  emojis.forEach(emoji => emoji.remove()); // Remove each emoji from the DOM
+  console.log(`Emojis cleared`); // Log after clearing
+}
+
+
+// Button event listener
+
+
+
+// Function to play a spooky sound
+// function playSpookySynth() {
+//   spookySynth.triggerAttack(getRandomInt(200, 500)); // Start the synth sound
+//   setTimeout(() => {
+//     spookySynth.triggerRelease(); // Stop the synth sound before the next emoji
+//   }, intervalTime); // Duration until the next emoji is generated
+// }
+
 
 
 </script>

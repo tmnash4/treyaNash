@@ -46,13 +46,15 @@ body {
   
   /* Change the color of links on hover */
   .topnav a:hover {
-    background-color: #16c982;
+    /* background-color: #16c982; */
+    background-color: #9d98ff;
     color: rgb(255, 255, 255);
   }
   
   /* Add a color to the active/current link */
   .topnav a.active {
-    background-color: rgb(54, 153, 132);
+    background-color: rgb(40, 31, 85);
+    /* background-color: rgb(54, 153, 132); */
     color: rgb(255, 255, 255);
     /* font-weight: bold; */
   }
@@ -150,7 +152,8 @@ body {
 }
 .social-icons a{
   
-	color:#5369ad;
+	/* color:#5369ad; */
+  color:#5c53ad;
   /* line-height:30px; */
   font-size:30px;
   margin: 0 5px;
