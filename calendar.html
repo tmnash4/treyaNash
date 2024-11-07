@@ -99,8 +99,14 @@ class Entry {
 // entry.div.innerHTML = ("<b>" + entry.date.toLocaleDateString() + "</b>" + "<br>"+ entry.piece + " will be performed at the " + entry.event + " at " + entry.venue)
 // entry.addEventToDOM()
 
+
+
+let radio = new Entry(new Date(2024, 10, 24), "21:00 ET", "Interview with Tyler Kline", "<a href=https://wusf.org/classical>Classical WSMR</a>", "Nothing Motorised", "ensembleNEWSRQ", "Sam Boutris (clarinet), Luke Hsu, Christina Nam (violins), Luther Warren (viola), and Rainer Crossett (cello)")
+radio.div.innerHTML = `<b>${radio.date.toLocaleDateString()} at ${radio.eventTime}</b><br><i>${radio.piece}</i>, performed by ${radio.performers} will be broadcast on ${radio.venue} along with my interview with Tyler Kline. You can listen to it afterwards at <a href=https://www.modernnotebook.org/>Modern Notebook</a>`
+radio.addEventToDOM()
+
 let flTb = new Entry(new Date(2024, 10, 1), "20:00", "concert", "Lawrence Memorial Chapal in Lawrence, WI", "<i>College Lake</i>", "<a href=https://www.lawrence.edu/music-arts/performances-productions/performing-arts-lawrence/new-music-series>Lawrence University Flute and Trombone Ensembles</a>");
-flTb.div.innerHTML = `<b>${flTb.date.toLocaleDateString()} at ${flTb.eventTime}</b><br>${flTb.piece} will be premiered by the ${flTb.ensemble} at ${flTb.venue} as part of their collaboration with the <a href=https://www.mcicomposers.com/>Millenum Composers Initiative</a>`
+flTb.div.innerHTML = `<b>${flTb.date.toLocaleDateString()} at ${flTb.eventTime}</b><br>Premiere of ${flTb.piece} by the ${flTb.ensemble} at ${flTb.venue} as part of their collaboration with the <a href=https://www.mcicomposers.com/>Millenum Composers Initiative</a>`
 flTb.addEventToDOM()
 
 let cricket = new Entry(new Date(2024, 9, 26), "10:00 - 16:00", "<a href=https://www.atelierdelanature.org/events>Halloween Art & Nature Festival</a>", "Atelier de la Nature's", "bug")
