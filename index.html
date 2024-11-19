@@ -45,7 +45,7 @@
       <span style="font-size:30px;cursor:pointer" onclick="openNav()" id="mySpan">&#9776; </span>
   </div>
   <div id="outsideDiv">
-    <button id="halloween-button">Click for Halloween!</button>
+    <button id="thanks-button">Click for Thanksgiving!</button>
     <h1 id="myName" class="flex-items" onclick="startAudio()"> Treya Nash   </h1>
     <h2 id="composer" class="flex-items"> composer | creative coder</h2>
     <div class="social-icons">
@@ -86,7 +86,7 @@
     /* background-color: black; */
   }
 
-  #halloween-button {
+  #thanks-button {
     font-family: inherit;
     margin-top: 15px;
     margin-bottom: -20px;
@@ -94,7 +94,7 @@
     color: rgb(54, 22, 171);
     background-color: rgb(214, 255, 241)
   }
-  #halloween-button:hover {
+  #thanks-button:hover {
     background-color: white;
  
   }
@@ -130,7 +130,7 @@
     padding: 0px;
     margin-top: 20px;
     font-size: 45px;
-    background: -webkit-linear-gradient(#6100b7, #ff8a07);
+    background: -webkit-linear-gradient(#301706, #ff6f00);
     background-clip: text;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
@@ -159,7 +159,7 @@
     margin: 0px;
     padding: 0px;
     font-size: 16px;
-    background: -webkit-linear-gradient(#ff8a07, #6100b7);
+    background: -webkit-linear-gradient(#301706, #ff6f00);
     background-clip: text;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
@@ -289,7 +289,7 @@ if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(naviga
         num22 = 0
       }
       console.log("hello")
-    }, 100)
+    }, 50)
   
   }
  
@@ -356,17 +356,20 @@ function getRandomFloat(min, max) {
   return Math.random() * (max - min) + min;
 }
 
-let halloweenButton = document.getElementById("halloween-button");
-halloweenButton.addEventListener("click", halloween)
+
+///////////////
+
+let thankButton = document.getElementById("thanks-button");
+thankButton.addEventListener("click", halloween)
 
 
-const halloweenEmojis = ["🎃", "👻", "🕷️", "🕸️", "🍬", "🍭", "💀", "🧟", "🧙‍♀️", "🧛‍♂️", "🧛‍♀️", "👽", "☠️", "🧹", "🦇", "🕯️", "⚰️", "🧠", "👁️"];
+const thankEmojis = ["🦃","🥧","🍁","🍂","🍠","🥔","🌽","🍞","🍷", "🥧", "🦌", "🍎", "🍏", "🍇","🥕","🧅","🫑","🌰","🥜","🌾","🇺🇸","🏈","🍽️","🔥", "🥖"];
 
 let panValue = 0; 
 
 let social = document.querySelector(".social-icons");
-let hallo = 1;
-let isHalloweenActive = false; // Flag to track Halloween mode
+let thank = 1;
+let isThankActive = false; // Flag to track Halloween mode
 
 
 
@@ -380,31 +383,43 @@ let emojiDisplayTime = 1000;
 let noo = 1
 let lowP = 300;
 let highP = 350;
+
 function createEmoji() {
-  const spookyPanner = new Tone.Panner(0).toDestination(); // Start centered
-  const vibrato = new Tone.Vibrato({
-  frequency: getRandomFloat(4, 8), // Random frequency for vibrato
-  depth: getRandomFloat(0.5, 1), // Random depth for vibrato
-}).connect(spookyPanner);
+  const thankPanner = new Tone.Panner(0).toDestination(); // Start centered
 
-spookyPanner.pan.value = panValue;
 
-const lowPassFilter = new Tone.Filter({
-  frequency: 500, // Adjust the cutoff frequency as needed
-  type: "lowpass", // Low-pass filter type
-  rolloff: -12, // Roll-off of -12 dB/octave
-}).connect(vibrato)
-  let spookySynth1 = new Tone.Synth({
+thankPanner.pan.value = panValue;
+
+const thanksgivingSynth = new Tone.PolySynth(Tone.Synth, {
   oscillator: {
-    type: "triangle", // Change to sine for a smoother sound
+    type: "sine", // Warm and mellow tone
   },
   envelope: {
-    attack: 0.5,
-    decay: 0.3,
-    sustain: 0.5,
-    release: 1,
+    attack: 0.5, // Smooth and gradual
+    decay: 0.2,
+    sustain: 0.7,
+    release: 1.5, // Long, soft tail
   },
-}).connect(lowPassFilter)
+  detune: -5, // Subtle richness
+}).toDestination();
+
+// Add a filter for warmth
+const filter = new Tone.Filter({
+  frequency: 800, // Low-pass for a cozy tone
+  type: "lowpass",
+  rolloff: -12,
+  Q: 1,
+}).toDestination();
+thanksgivingSynth.connect(filter);
+
+// Add reverb for ambience
+const reverb = new Tone.Reverb({
+  decay: 4,
+  wet: 0.4,
+}).toDestination();
+filter.connect(reverb);
+reverb.connect(thankPanner)
+
   emojiDisplayTime = getRandomInt(200, 1000); // Random time for the emoji to stay
   const randPitch = getRandomFloat(lowP, highP) // Random pitch for the spooky synth
   setInterval(() => {
@@ -439,36 +454,56 @@ const lowPassFilter = new Tone.Filter({
       noo = 1
     }
   }, 20000)
-  const emojiIndex = Math.floor(Math.random() * halloweenEmojis.length); // Select a random emoji
+  const emojiIndex = Math.floor(Math.random() * thankEmojis.length); // Select a random emoji
 
   // Create the emoji
   let div = document.createElement("div");
   div.classList.add("div-class");
-  div.innerHTML = halloweenEmojis[emojiIndex];
+  div.innerHTML = thankEmojis[emojiIndex];
   let randomPos = getRandomInt(5, 95)
   div.style.left = `${randomPos}vw`;
   div.style.top = `${getRandomInt(10, 90)}vh`;
   div.style.transform = `scale(${getRandomFloat(0.5, 5)}) rotate(${getRandomInt(0, 360)}deg)`;
   document.body.appendChild(div);
 
+  function randomInteger(min, max) {
+    return Math.floor(Math.random() * (max - min + 1)) + min;
+}
   // Play spooky synth sound
-  spookySynth1.triggerAttackRelease(randPitch, (emojiDisplayTime / 1000) - 0.1); // Start the synth sound
+  // spookySynth1.triggerAttackRelease(randPitch, (emojiDisplayTime / 1000) - 0.1); // Start the synth sound
+  let thanksgivingChords = [
+    [440.0, 659.26, 987.77],
+    [440.0, 622.25, 987.77],
+    [440.0, 659.26, 1046.5],
+    [440.0, 622.25, 933.33],
+    [440.0, 554.37, 659.26, 987.77],
+    [440.0, 554.37, 659.26, 880.0],
+    [440.0, 554.37, 659.26, 830.61],
+    [440.0, 554.37, 659.26, 739.99],
+    [440.0, 554.37, 622.25, 739.99],
+    [440.0, 523.25, 659.26, 830.61],
+    [440.0, 587.33, 783.99, 987.77],
+    [440.0, 554.37, 659.26, 987.77, 1046.5],
+    [440.0, 622.25, 739.99, 987.77, 1046.5],
+    [440.0, 554.37, 739.99, 987.77, 830.61]
+];
+
+  thanksgivingSynth.triggerAttackRelease(thanksgivingChords[randomInteger(0, thanksgivingChords.length)],"6n");
+  
+  
+  
   panValue = (randomPos / 100) * 2 - 1; // Convert percentage to panning range
-spookyPanner.pan.value = panValue
+thankPanner.pan.value = panValue
 // Update panner's position
 console.log(panValue)
 
-  // Release the sound and remove the emoji after display time
-  // setTimeout(() => {
-  //   spookySynth.triggerRelease(); // Stop the synth sound
-  // }, emojiDisplayTime);
 }
 
 
 function createEmojisWithRandomInterval() {
-  if (!isHalloweenActive) return; // Stop if Halloween mode is not active
+  if (!isThankActive) return; // Stop if Halloween mode is not active
 
-  const emojiCreationInterval = getRandomInt(500, 3000); // Random interval time
+  const emojiCreationInterval = getRandomInt(500, 2000); // Random interval time
 
   setTimeout(() => {
     createEmoji(); // Create an emoji
@@ -478,45 +513,48 @@ function createEmojisWithRandomInterval() {
 }
 
 function halloween() {
-  if (hallo == 1) {
+  if (thank == 1) {
     // Starting Halloween mode
-    hallo = 0; // Set the hallo flag to indicate Halloween mode is active
-    isHalloweenActive = true; // Set the flag to true
+    thank = 0; // Set the thank flag to indicate Halloween mode is active
+    isThankActive = true; // Set the flag to true
 
     createEmojisWithRandomInterval(); // Start creating emojis with random intervals
 
-    document.body.style.backgroundColor = "black";
-    social.style.backgroundColor = "black";
+    document.body.style.backgroundColor = "#ffab4d";
+    social.style.backgroundColor = "#ffab4d";
     social.style.color = "white";
     myName.id = "myName1";
     comp.id = "composer1";
-    x.style.backgroundImage = "linear-gradient(to right, #6100b7, #ff8a07"
-    y.style.background = "-webkit-linear-gradient(#6100b7, #ff8a07)";
-    halloweenButton.style.border = "2px #ff8a07 solid";
-    halloweenButton.style.color = "#6100b7"
-    halloweenButton.style.backgroundColor = "#ffe1bc"
-    halloweenButton.innerHTML = "End Halloween :'(";
-    mainImg1.src = "media/bioImgs/TH1.png"
-    linkArray = ["media/bioImgs/TH2.png","media/bioImgs/TH3.png","media/bioImgs/TH4.png","media/bioImgs/TH5.png","media/bioImgs/TH6.png","media/bioImgs/TH7.png","media/bioImgs/TH8.png","media/bioImgs/TH9.png","media/bioImgs/TH10.png","media/bioImgs/TH11.png", "media/bioImgs/TH10.png", "media/bioImgs/TH9.png","media/bioImgs/TH8.png","media/bioImgs/TH7.png","media/bioImgs/TH6.png","media/bioImgs/TH5.png","media/bioImgs/TH4.png","media/bioImgs/TH3.png","media/bioImgs/TH2.png","media/bioImgs/TH1.png"]
-    playCrick.connect(reverb)
+    x.style.backgroundImage = "linear-gradient(to right, #301706, #ff6f00"
+    y.style.background = "-webkit-linear-gradient(#301706, #ff6f00)";
+    thankButton.style.border = "2px #ff6f00 solid";
+    thankButton.style.color = "#301706"
+    thankButton.style.backgroundColor = "#ffe1bc"
+    thankButton.innerHTML = "End Thanksgiving :'(";
+      mainImg1.src = "media/bioImgs/TG1.png"
+    // linkArray = ["playcrick2.png","playcrick3.png","p4.png","media/bioImgs/TH5.png","media/bioImgs/TH6.png","media/bioImgs/TH7.png","media/bioImgs/TH8.png","media/bioImgs/TH9.png","media/bioImgs/TH10.png","media/bioImgs/TH11.png", "media/bioImgs/TH10.png", "media/bioImgs/TH9.png","media/bioImgs/TH8.png","media/bioImgs/TH7.png","media/bioImgs/TH6.png","media/bioImgs/TH5.png","media/bioImgs/TH4.png","media/bioImgs/TH3.png","media/bioImgs/TH2.png","media/bioImgs/TH1.png"]
+      linkArray = ["media/bioImgs/TG2.png","media/bioImgs/TG3.png","media/bioImgs/TG4.png","media/bioImgs/TG5.png","media/bioImgs/TG6.png","media/bioImgs/TG7.png","media/bioImgs/TG6.png","media/bioImgs/TG5.png","media/bioImgs/TG4.png","media/bioImgs/TG3.png", "media/bioImgs/TG2.png", "media/bioImgs/TG1.png"]
+      playCrick.disconnect(mainGain)
+
   } else {
     // Exiting Halloween mode
-    isHalloweenActive = false; // Set the flag to false
+    isThankActive = false; // Set the flag to false
     clearEmojis(); // Remove all div-class elements
-    playCrick.disconnect(reverb)
     // playCrick.connect(mainGain)
+    playCrick.connect(mainGain)
+
     document.body.style.backgroundColor = "white";
     social.style.backgroundColor = "white";
     x.style.backgroundImage = "linear-gradient(to right, #3a04ba, #60d44f)"
     mainImg1.src = "media/bioImgs/T1.png"
     y.style.background = "-webkit-linear-gradient(#60d44f, #3a04ba)";
-    halloweenButton.innerHTML = "Click for Halloween!";
+    thankButton.innerHTML = "Click for Thanksgiving!";
     myName.id = "myName";
     comp.id = "composer";
-    halloweenButton.style.border = "2px rgb(2, 175, 117) solid";
-    halloweenButton.style.color = "rgb(54, 22, 171)"
-    halloweenButton.style.backgroundColor = "rgb(214, 255, 241)"
-    hallo = 1; // Reset the hallo flag
+    thankButton.style.border = "2px rgb(2, 175, 117) solid";
+    thankButton.style.color = "rgb(54, 22, 171)"
+    thankButton.style.backgroundColor = "rgb(214, 255, 241)"
+    thank = 1; // Reset the thank flag
     linkArray = ["media/bioImgs/T2.png","media/bioImgs/T3.png","media/bioImgs/T4.png","media/bioImgs/T5.png","media/bioImgs/T6.png","media/bioImgs/T7.png","media/bioImgs/T8.png","media/bioImgs/T9.png","media/bioImgs/T10.png","media/bioImgs/T11.png", "media/bioImgs/T10.png", "media/bioImgs/T9.png","media/bioImgs/T8.png","media/bioImgs/T7.png","media/bioImgs/T6.png","media/bioImgs/T5.png","media/bioImgs/T4.png","media/bioImgs/T3.png","media/bioImgs/T2.png","media/bioImgs/T1.png"]
 
     // Stop the spooky synth when exiting Halloween mode
@@ -532,18 +570,6 @@ function clearEmojis() {
   console.log(`Emojis cleared`); // Log after clearing
 }
 
-
-// Button event listener
-
-
-
-// Function to play a spooky sound
-// function playSpookySynth() {
-//   spookySynth.triggerAttack(getRandomInt(200, 500)); // Start the synth sound
-//   setTimeout(() => {
-//     spookySynth.triggerRelease(); // Stop the synth sound before the next emoji
-//   }, intervalTime); // Duration until the next emoji is generated
-// }
 
 
 
