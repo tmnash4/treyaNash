@@ -107,6 +107,10 @@ let lulSolo = new Entry(new Date(2025, 0, 8), "19:00", "<a href=https://www.line
 lulSolo.div.innerHTML = `<b>${lulSolo.date.toLocaleDateString()} at ${lulSolo.eventTime}</b><br>I will be performing ${lulSolo.piece} at ${lulSolo.venue} in Austin, TX as part of the ${lulSolo.event}`
 lulSolo.addEventToDOM()
 
+let cuprrnmm = new Entry(new Date(2024, 11, 2), "16:30", "Really Really New Music Marathon", "LSU School of Music Recital Hall", "<i>cup</i>")
+cuprrnmm.div.innerHTML = `<b>${cuprrnmm.date.toLocaleDateString()} at ${cuprrnmm.eventTime}</b><br>Performance of ${cuprrnmm.piece} for audience with cell phones at ${cuprrnmm.venue} as part of the ${cuprrnmm.event}`
+cuprrnmm.addEventToDOM()
+
 let radio = new Entry(new Date(2024, 10, 24), "21:00 ET", "Interview with Tyler Kline", "<a href=https://wusf.org/classical>Classical WSMR</a>", "Nothing Motorised", "ensembleNEWSRQ", "Sam Boutris (clarinet), Luke Hsu, Christina Nam (violins), Luther Warren (viola), and Rainer Crossett (cello)")
 radio.div.innerHTML = `<b>${radio.date.toLocaleDateString()} at ${radio.eventTime}</b><br><i>${radio.piece}</i>, performed by ${radio.performers} will be broadcast on ${radio.venue} along with my interview with Tyler Kline. You can listen to it afterwards at <a href=https://www.modernnotebook.org/>Modern Notebook</a>`
 radio.addEventToDOM()
