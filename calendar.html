@@ -99,7 +99,13 @@ class Entry {
 // entry.div.innerHTML = ("<b>" + entry.date.toLocaleDateString() + "</b>" + "<br>"+ entry.piece + " will be performed at the " + entry.event + " at " + entry.venue)
 // entry.addEventToDOM()
 
+let lul = new Entry(new Date(2025, 0, 11), "19:00", "<a href=https://www.lineuponlinepercussion.org/>line upon line percussion</a>", "<a href=https://rudemechs.com/crashbox/>CRASHBOX Theater</a>", "<i>Sunday Routine</i>")
+lul.div.innerHTML = `<b>${lul.date.toLocaleDateString()} at ${lul.eventTime}</b><br>Premiere of ${lul.piece} by ${lul.event}, me, and the audience at ${lul.venue}`
+lul.addEventToDOM()
 
+let lulSolo = new Entry(new Date(2025, 0, 8), "19:00", "<a href=https://www.lineuponlinepercussion.org/>line upon line percussion</a> Winter Composers Festival", "<a href=https://rudemechs.com/crashbox/>CRASHBOX Theater</a>", "a set of cell phone pieces")
+lulSolo.div.innerHTML = `<b>${lulSolo.date.toLocaleDateString()} at ${lulSolo.eventTime}</b><br>I will be performing ${lulSolo.piece} at ${lulSolo.venue} in Austin, TX as part of the ${lulSolo.event}`
+lulSolo.addEventToDOM()
 
 let radio = new Entry(new Date(2024, 10, 24), "21:00 ET", "Interview with Tyler Kline", "<a href=https://wusf.org/classical>Classical WSMR</a>", "Nothing Motorised", "ensembleNEWSRQ", "Sam Boutris (clarinet), Luke Hsu, Christina Nam (violins), Luther Warren (viola), and Rainer Crossett (cello)")
 radio.div.innerHTML = `<b>${radio.date.toLocaleDateString()} at ${radio.eventTime}</b><br><i>${radio.piece}</i>, performed by ${radio.performers} will be broadcast on ${radio.venue} along with my interview with Tyler Kline. You can listen to it afterwards at <a href=https://www.modernnotebook.org/>Modern Notebook</a>`
