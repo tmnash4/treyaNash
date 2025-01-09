@@ -98,10 +98,16 @@ class Entry {
 // let entry = new Entry(new Date(2025, 3, 2), "18:30", "concert", "place", "<i>A Piece</i>", "this ensemble", "the performers")
 // entry.div.innerHTML = ("<b>" + entry.date.toLocaleDateString() + "</b>" + "<br>"+ entry.piece + " will be performed at the " + entry.event + " at " + entry.venue)
 // entry.addEventToDOM()
+let laun = new Entry(new Date(2025, 0, 19), "18:00", "Circuit 721", "Frances Frazier Comstock Lab Theater at Concordia College", "<i>Laune</i>", "Eduard Teregulov")
+laun.div.innerHTML = `<b>${laun.date.toLocaleDateString()} at ${laun.eventTime}</b><br>Performance of ${laun.piece} by ${this.ensemble} at ${laun.venue} as part of the ${laun.event}.`
+laun.addEventToDOM()
+
+let latex = new Entry(new Date(2025, 0, 17), "", "LaTex Festival", "Bates Recital Hall", "<i>cup</i>")
+latex.div.innerHTML = `<b>${latex.date.toLocaleDateString()} </b><br>Performance of ${latex.piece} at the ${latex.venue} as part of ${latex.event} 2025 in Austin, TX`
+latex.addEventToDOM()
 
 let lul = new Entry(new Date(2025, 0, 11), "19:00", "<a href=https://www.lineuponlinepercussion.org/>line upon line percussion</a>", "<a href=https://rudemechs.com/crashbox/>CRASHBOX Theater</a>", "<i>Sunday Routine</i>")
-lul.div.innerHTML = `<b>${lul.date.toLocaleDateString()} at ${lul.eventTime}</b><br>Premiere of ${lul.piece} by ${lul.event}, me, and the audience at ${lul.venue}`
-lul.addEventToDOM()
+
 
 let lulSolo = new Entry(new Date(2025, 0, 8), "19:00", "<a href=https://www.lineuponlinepercussion.org/>line upon line percussion</a> Winter Composers Festival", "<a href=https://rudemechs.com/crashbox/>CRASHBOX Theater</a>", "a set of cell phone pieces")
 lulSolo.div.innerHTML = `<b>${lulSolo.date.toLocaleDateString()} at ${lulSolo.eventTime}</b><br>I will be performing ${lulSolo.piece} at ${lulSolo.venue} in Austin, TX as part of the ${lulSolo.event}`
