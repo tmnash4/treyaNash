@@ -99,7 +99,7 @@ class Entry {
 // entry.div.innerHTML = ("<b>" + entry.date.toLocaleDateString() + "</b>" + "<br>"+ entry.piece + " will be performed at the " + entry.event + " at " + entry.venue)
 // entry.addEventToDOM()
 let laun = new Entry(new Date(2025, 0, 19), "18:00", "Circuit 721", "Frances Frazier Comstock Lab Theater at Concordia College", "<i>Laune</i>", "Eduard Teregulov")
-laun.div.innerHTML = `<b>${laun.date.toLocaleDateString()} at ${laun.eventTime}</b><br>Performance of ${laun.piece} by ${this.ensemble} at ${laun.venue} as part of the ${laun.event}.`
+laun.div.innerHTML = `<b>${laun.date.toLocaleDateString()} at ${laun.eventTime}</b><br>Performance of ${laun.piece} by ${laun.ensemble} at ${laun.venue} as part of the ${laun.event}.`
 laun.addEventToDOM()
 
 let latex = new Entry(new Date(2025, 0, 17), "", "LaTex Festival", "Bates Recital Hall", "<i>cup</i>")
