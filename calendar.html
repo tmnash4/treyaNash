@@ -103,6 +103,10 @@ let mox = new Entry(new Date(2025, 2, 21), "16:00", "<a href=https://moxsonic.or
 mox.div.innerHTML = `<b>${mox.date.toLocaleDateString()} at ${mox.eventTime}</b><br> Performance of ${mox.piece} as part of ${mox.event} at ${mox.venue}.`
 mox.addEventToDOM()
 
+let edmek = new Entry(new Date(2025, 0, 25), "14:00", "New Music for Kids with Eugene Difficult Music Ensemble", "<a hred=https://adventurechildrensmuseum.org/calendar/new-music-for-kids-exploring-sounds-with-eugene-difficult-music-ensemble/>Adventure! Children's Museum</a> in Eugene, OR","Various cell phone pieces")
+edmek.div.innerHTML = `<b>${edmek.date.toLocaleDateString()} at ${edmek.eventTime} </b> <br> ${edmek.piece} will be presented as part of ${edmek.event} performed a ${edmek.venue}`
+edmek.addEventToDOM()
+
 let laun = new Entry(new Date(2025, 0, 19), "18:00", "Circuit 721", "Frances Frazier Comstock Lab Theater at Concordia College", "<i>Laune</i>", "Eduard Teregulov")
 laun.div.innerHTML = `<b>${laun.date.toLocaleDateString()} at ${laun.eventTime}</b><br>Performance of ${laun.piece} by ${laun.ensemble} at ${laun.venue} as part of the ${laun.event} Concert Series.`
 laun.addEventToDOM()
