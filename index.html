@@ -65,11 +65,15 @@
     <div  id="mainPic">
     <img id="mainPic1" src="media/bioImgs/T1.png" width="700px" class="flex-items" unselectable="on" onclick="{e => e.preventDefault()}" >
     
-    <p id="composer3" style="text-align: center;">Photo by <a href="https://www.teregulovcello.com/"><u>Eduard Teregulov</u></a></p>
+    <!-- <p id="composer3" style="text-align: center;">Photo by <a href="https://www.teregulovcello.com/"><u>Eduard Teregulov</u></a></p> -->
     
   </div>
   <br>
   <h2 id="composer2" class="flex-items"> "I don't know what that was but it was really fun!" - a guy at a concert</h2>
+  <h2 id="composer4" class="flex-items"> "non-musical" - review from Concerto.net<a></a></h2>
+  <h2 id="composer5" class="flex-items"> "Treya Nash’s website is delightfully interactive" - review from EarRelevant<a></a></h2>
+
+
 <br>
   </div>
 
@@ -171,6 +175,26 @@
   }
 
 
+  #composer3 {
+    margin: 0px;
+    padding: 0px;
+    font-size: 16px;
+    background: -webkit-linear-gradient(#3a04ba, #60d44f);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+  
+  #composer4 {
+    margin: 0px;
+    padding: 0px;
+    font-size: 16px;
+    background: -webkit-linear-gradient(#3a04ba, #60d44f);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+  
   #composer3 {
     margin: 0px;
     padding: 0px;
@@ -350,7 +374,7 @@ mainImg.ontouchend = () => {
       if (num2 >= linkArray.length) {
         num2 = 0
       }
-    }, 100)
+    }, 200)
 
    
 
