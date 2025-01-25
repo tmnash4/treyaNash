@@ -2,7 +2,7 @@
 <html lang="en" >
 <head>
   <meta charset="UTF-8">
-  <title> Cup </title>
+  <title> Sunday Routine </title>
   <link rel="stylesheet" href="style.css">
   <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
   <link rel="icon" href="media/favicon.ico">
@@ -37,8 +37,11 @@
 
 .flex-boxt {
   display: flex;
-  flex-direction: row; 
-  flex-wrap:wrap; 
+  flex-direction: row; /* change this to row instead of 'column' */
+  flex-wrap:wrap; /* added flex-wrap */
+  /* text-align: center */
+  /* height: 80vh */
+  
 }
 
 .flex-items1 {
@@ -293,34 +296,36 @@ img.hover-shadow {
 <form >
   <input type="button" value="back to works" onclick="history.back()" class="backButton">
 </form>
-<h1 class="headerClass">Cup</h1>
+<h1 class="headerClass">Sunday Routine</h1>
 <div class="flex-boxt">
   <div class="flex-items1" id="flex1">
     <p>
-      For audience with cell phones
+      <b>Instrumentation:</b> 2 percussionists, narrator, and audience 
     </p>
     <p>
-      <b>Year:</b> 2024 | <b>Duration: </b> 4-5 mins
+      <b>Year:</b> 2025 | <b>Duration: </b> 9-10'
     </p>
     <p>
-    Written for <a href="https://www.erindemastes.com/">Erin Demastes'</a> <i>Solo Solo Show</i>
+    Comissioned for and premiered at the <a href="https://www.lineuponlinepercussion.org/">line upon line</a> Winter Composers Festival. 
     </p>
     <p> 
-      <b>Program Note: </b>
-      <i>Cup</i> is inspired by Erin Demastes' solo cup sculptures. Audience members play virtual solo cups. Sounds come from solo cups and from Erin's sculptures. The piece was premiered at Yes We Cannibal, and has performed at the <a href="https://www.edmensemble.org/">Eugene Difficult Music Ensemble</a> Festival, <a href="https://www.lineuponlinepercussion.org/festival-faculty-fellows">the line upon line Winter Composer's Festival</a>, and LaTex 2025 at UT Austin. 
+      <b>About Piece: </b> 
+      In <i>Sunday Routine</i>, a disembodied, amplified narrator and two onstage percussionists guide the audience through a series of Sunday activities. The audience perform using a bag of objects that includes a magazine, some tinfoil with paper clips inside, a small bag of dice, two rocks, a piece of paper, and a crayon. <br><br> Thanks so much to Matt and Cullen for doing this piece justice, and to the wonderful audience that came out to CRASHBOX theater for the premiere! <br><br> Studio recording coming soon!
     </p>
   </div>
   <div class="flex-items1" id="flex2">
     <div class="iframe-container">
-        <iframe width="560" height="315" src="https://www.youtube.com/embed/m-5R2V68NE4?si=ZTbcEakfC1yKh33k" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>    </div>   
-    <figcaption class="figcap"> Performance of <i>cup</i> at <a href="https://yeswecannibal.org/">Yes We Cannibal</a></figcaption>
+      <iframe  src="https://www.youtube.com/embed/11IC550zcto?si=Gk1RL44Ile6333ln" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+    </div>   
+    <figcaption class="figcap"> Performance by line upon line percussion & audience with Treya Nash narrating</figcaption>
   </div>
 </div>
 <div class="iframe-container" id="iframe2">
-    <iframe width="560" height="315" src="https://www.youtube.com/embed/m-5R2V68NE4?si=ZTbcEakfC1yKh33k" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></div>
-<figcaption class="figcap" id="hiddenFigCap">Performance of <i>cup</i> at <a href="https://yeswecannibal.org/">Yes We Cannibal</a></figcaption>
-
-<!-- <h2 style="text-align:center" class="scoreP">Score Preview</h2>
+  <iframe  src="https://www.youtube.com/embed/11IC550zcto?si=Gk1RL44Ile6333ln" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+</div>
+<figcaption class="figcap" id="hiddenFigCap"> Performance by line upon line percussion & audience with Treya Nash narrating</figcaption>
+<!-- <hr>  </hr>
+<h2 style="text-align:center" class="scoreP">Score Preview</h2>
 <div class="row">
   <div class="column">
     <img src="media/scores/jpgs/TMS1.jpg" style="width:100%" onclick="openModal();currentSlide(1)" class="hover-shadow cursor">
@@ -387,43 +392,43 @@ img.hover-shadow {
   </div>
 </div> -->
 
-<script>
-//   function openModal() {
-//   document.getElementById("myModal").style.display = "block";
-// }
+<!-- <script>
+  function openModal() {
+  document.getElementById("myModal").style.display = "block";
+}
 
-// function closeModal() {
-//   document.getElementById("myModal").style.display = "none";
-// }
+function closeModal() {
+  document.getElementById("myModal").style.display = "none";
+}
 
-// var slideIndex = 1;
-// showSlides(slideIndex);
+var slideIndex = 1;
+showSlides(slideIndex);
 
-// function plusSlides(n) {
-//   showSlides(slideIndex += n);
-// }
+function plusSlides(n) {
+  showSlides(slideIndex += n);
+}
 
-// function currentSlide(n) {
-//   showSlides(slideIndex = n);
-// }
+function currentSlide(n) {
+  showSlides(slideIndex = n);
+}
 
-// function showSlides(n) {
-//   var i;
-//   var slides = document.getElementsByClassName("mySlides");
-//   var dots = document.getElementsByClassName("demo");
-//   var captionText = document.getElementById("caption");
-//   if (n > slides.length) {slideIndex = 1}
-//   if (n < 1) {slideIndex = slides.length}
-//   for (i = 0; i < slides.length; i++) {
-//       slides[i].style.display = "none";
-//   }
-//   for (i = 0; i < dots.length; i++) {
-//       dots[i].className = dots[i].className.replace(" active", "");
-//   }
-//   slides[slideIndex-1].style.display = "block";
-//   dots[slideIndex-1].className += " active";
-//   captionText.innerHTML = dots[slideIndex-1].alt;
-// }
+function showSlides(n) {
+  var i;
+  var slides = document.getElementsByClassName("mySlides");
+  var dots = document.getElementsByClassName("demo");
+  var captionText = document.getElementById("caption");
+  if (n > slides.length) {slideIndex = 1}
+  if (n < 1) {slideIndex = slides.length}
+  for (i = 0; i < slides.length; i++) {
+      slides[i].style.display = "none";
+  }
+  for (i = 0; i < dots.length; i++) {
+      dots[i].className = dots[i].className.replace(" active", "");
+  }
+  slides[slideIndex-1].style.display = "block";
+  dots[slideIndex-1].className += " active";
+  captionText.innerHTML = dots[slideIndex-1].alt;
+} -->
 
 </script>
 

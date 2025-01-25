@@ -99,6 +99,7 @@
 <p></p>
 <button type="button" class="collapsible" id="chamber">Chamber</button>
 <div class="content">
+  <p id="sunday"><a class="aclass" href="sunday.html"><b>Sunday Routine</b></a> for two percussionists, narrator, and audience</p>
   <p id="dl"><a class="aclass" href="dl.html"><b>The Drowned Lover</b></a> for baritone voice, trumpet in c, trombone, bass clarinet, and audience participation with cell phones</p>
   <p id="tor"> <a class="aclass" href="tor.html"> <b>Tor</b></a> for variable pierrot ensemble </p>
   <p id="soaw"> <a class="aclass" href="soaw.html"> <b>The Sound of a Weekend</b> </a> for flexible instumentation </p>
@@ -415,19 +416,20 @@ let fr = document.querySelector("#fr")
 let ainw = document.querySelector("#ainw")
 let cp = document.querySelector("#cp");
 let dl = document.querySelector("#dl");
+let sunday = document.querySelector("#sunday")
 
 
 //Categories of Pieces
 
 let pieces = {
   accordion: [ydb, yfbow],
-  cello: [laune, tor, sn, g, pd, ainw],
+  cello: [ainw, laune, tor, sn, g, pd],
   clarinet: [dl, tor, nm], 
   doubleBass: [tor, sn, tdhw, pd, ainw],
   flute: [tor, g],
   guitar: [ydb, dm],
-  percussion: [mf, tor, nm, ydb, tdhw],
-  piano: [tor, ctp, gt, ainw],
+  percussion: [sunday, mf, tor, nm, ydb, tdhw],
+  piano: [ainw, tor, ctp, gt],
   saxophone: [mf, hr, ydb, tdhw],
   viola: [tor, tms, sn, pd, nm],
   violin: [tor, nm, sn, pd],
@@ -436,7 +438,7 @@ let pieces = {
   liveE: [laune, mf, imbu],
   musicForD: [ainw],
   windE: [ttfocl],
-  audience: [dl, cp, wh, fa, fr, mf],
+  audience: [sunday, dl, cp, wh, fa, fr, mf],
   trumpet: [dl],
   trombone: [dl]
 }
