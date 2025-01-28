@@ -277,14 +277,16 @@ playCrick.sync().start(0);
   let num = 1
 
 let myName = document.getElementById("myName");
-let comp = document.getElementById("composer")
+let comp = document.getElementById("composer");
+
+let nameAnags = ["Neya Trash", "Hyena Star", "Hans Teary", "Arty Shane", "Eartha Syn", "Ayn Hearts", "Haynes Rat", "Rat Shayne", "Aryn Haste", "Ashe Taryn", "Antsy Hera", "Any Haters", "Tasha Eryn", "Ethan Rays", "Ear Shanty", "Hana Tyres", "Hyena Rats", "Ryan Haste", "Nary Hates", "Hates Yarn", "Yaren Hats", "Teary Nash", "Nea Trashy", "Rae Shanty", "Renata Shy", "Seth Rayna", "Sarah Tyne", "Tenar Shay"]
 
 if (window.screen.width >= 1024) {
 
 myName.onmouseover = () => {
   // myName.style.-webkit-background-clip: text;
   // myName.style.color = "-webkit-linear-gradient(#60d44f, #3a04ba)";
-  myName.innerHTML = "Neya Trash"
+  myName.innerHTML = nameAnags[Math.floor(Math.random() * nameAnags.length)]
   startAudio()
 }
 
@@ -314,7 +316,7 @@ if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(naviga
   mainImg.style.touchAction = "manipulation"
 
   myName.ontouchstart = () => {
-   myName.innerHTML = "Neya Trash"
+   myName.innerHTML =   myName.innerHTML = nameAnags[Math.floor(Math.random() * nameAnags.length)]
     
   console.log("hello")
   }
