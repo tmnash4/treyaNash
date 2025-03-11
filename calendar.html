@@ -99,6 +99,7 @@ class Entry {
 // entry.div.innerHTML = ("<b>" + entry.date.toLocaleDateString() + "</b>" + "<br>"+ entry.piece + " will be performed at the " + entry.event + " at " + entry.venue)
 // entry.addEventToDOM()
 
+
 let emm2025 = new Entry(new Date(2025, 3, 4), "", "<a href=https://www.emmfestival.org/index.php>Electronic Music Midwest</a>", "Kansas City Kansas Community College Performing Arts Center", "<i>Whisper</i>", "")
 emm2025.div.innerHTML = `<b>${emm2025.date.toLocaleDateString()} - 4/5/2025 </b><br> ${emm2025.piece} will be performed at ${emm2025.venue} as part of ${emm2025.event}.`
 emm2025.addEventToDOM()
@@ -114,6 +115,15 @@ btrciv.addEventToDOM()
 let mox = new Entry(new Date(2025, 2, 21), "16:00", "<a href=https://moxsonic.org/>MOXsonic</a>", "University of Central Missouri in Warrensburg, Missouri", "<i>Whisper</i>")
 mox.div.innerHTML = `<b>${mox.date.toLocaleDateString()} at ${mox.eventTime}</b><br> Performance of ${mox.piece} as part of ${mox.event} at ${mox.venue}.`
 mox.addEventToDOM()
+
+let edom = new Entry(new Date(2025, 2, 10), "19:30", "Cello + Electronics Concert", "the University of Nebraska Omaha", "<i>Laune</i>")
+edom.div.innerHTML = `<b>${mox.date.toLocaleDateString()} at ${edom.eventTime}</b><br> Performance of ${edom.piece} by Eduard Teregulov on his ${edom.event} at ${edom.venue}.`
+edom.addEventToDOM()
+
+
+let gc = new Entry(new Date(2025, 1, 14), "13:00", "Graphic Scores Competition", "LSU Library", "<i>Natural Progression</i>", "")
+gc.div.innerHTML = `<b>${gc.date.toLocaleDateString()} at ${gc.eventTime} </b><br> Performance of ${gc.piece} at the ${gc.venue} as part of ${gc.event} Winners Concert.`
+gc.addEventToDOM()
 
 let edmek = new Entry(new Date(2025, 0, 25), "14:00", "New Music for Kids with Eugene Difficult Music Ensemble", "<a hred=https://adventurechildrensmuseum.org/calendar/new-music-for-kids-exploring-sounds-with-eugene-difficult-music-ensemble/>Adventure! Children's Museum</a> in Eugene, OR","Various cell phone pieces")
 edmek.div.innerHTML = `<b>${edmek.date.toLocaleDateString()} at ${edmek.eventTime} </b> <br> ${edmek.piece} will be presented as part of ${edmek.event} performed a ${edmek.venue}`
