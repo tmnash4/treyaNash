@@ -117,7 +117,7 @@ mox.div.innerHTML = `<b>${mox.date.toLocaleDateString()} at ${mox.eventTime}</b>
 mox.addEventToDOM()
 
 let edom = new Entry(new Date(2025, 2, 10), "19:30", "Cello + Electronics Concert", "the University of Nebraska Omaha", "<i>Laune</i>")
-edom.div.innerHTML = `<b>${mox.date.toLocaleDateString()} at ${edom.eventTime}</b><br> Performance of ${edom.piece} by Eduard Teregulov on his ${edom.event} at ${edom.venue}.`
+edom.div.innerHTML = `<b>${edom.date.toLocaleDateString()} at ${edom.eventTime}</b><br> Performance of ${edom.piece} by Eduard Teregulov on his ${edom.event} at ${edom.venue}.`
 edom.addEventToDOM()
 
 
