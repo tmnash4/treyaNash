@@ -98,13 +98,15 @@ class Entry {
 // let entry = new Entry(new Date(2025, 3, 2), "18:30", "concert", "place", "<i>A Piece</i>", "this ensemble", "the performers")
 // entry.div.innerHTML = ("<b>" + entry.date.toLocaleDateString() + "</b>" + "<br>"+ entry.piece + " will be performed at the " + entry.event + " at " + entry.venue)
 // entry.addEventToDOM()
-let wming = new Entry(new Date(2025, 3, 2), "19:30", "Stephen David Beck's Residency", "BCPA Recital Hall at the University of Wyoming","<i>cup</i>", "this ensemble", "the performers")
-wming.div.innerHTML = ("<b>" + wming.date.toLocaleDateString() + "</b>" + "<br>"+ wming.piece + " will be performed at the " + wming.venue + " as part of " + wming.event + " with the UW Music Department and the UW School of Computing")
-wming.addEventToDOM()
+
 
 let emm2025 = new Entry(new Date(2025, 3, 4), "", "<a href=https://www.emmfestival.org/index.php>Electronic Music Midwest</a>", "Kansas City Kansas Community College Performing Arts Center", "<i>Whisper</i>", "")
 emm2025.div.innerHTML = `<b>${emm2025.date.toLocaleDateString()} - 4/5/2025 </b><br> ${emm2025.piece} will be performed at ${emm2025.venue} as part of ${emm2025.event}.`
 emm2025.addEventToDOM()
+
+let wming = new Entry(new Date(2025, 3, 2), "19:30", "Stephen David Beck's Residency", "BCPA Recital Hall at the University of Wyoming","<i>cup</i>", "this ensemble", "the performers")
+wming.div.innerHTML = ("<b>" + wming.date.toLocaleDateString() + "</b>" + "<br>"+ wming.piece + " will be performed at the " + wming.venue + " as part of " + wming.event + " with the UW Music Department and the UW School of Computing")
+wming.addEventToDOM()
 
 let seamus2 = new Entry(new Date(2025, 2, 23), "20:00", "<a href=https://cla.purdue.edu/academic/rueffschool/music/events/conferences-festivals/seamus-25/seamus-25.html>SEAMUS 2025</a>", "Fowler Hall at Purdue University", "<i>Cup</i>")
 seamus2.div.innerHTML = `<b>${seamus2.date.toLocaleDateString()} at ${seamus2.eventTime}</b><br> ${seamus2.piece} will be performed at ${seamus2.venue} as part of ${seamus2.event}.`
