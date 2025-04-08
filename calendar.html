@@ -99,6 +99,9 @@ class Entry {
 // entry.div.innerHTML = ("<b>" + entry.date.toLocaleDateString() + "</b>" + "<br>"+ entry.piece + " will be performed at the " + entry.event + " at " + entry.venue)
 // entry.addEventToDOM()
 
+let cups = new Entry(new Date(2025, 3, 29), "20:00", "concert", "Merrill Ellis Intermedia Theater.", "<i>cups</i> for ensemble and audience", "<a href=https://calendar.unt.edu/event/e2-electronics-ensemble>E^2 Ensemble</a>", "the performers")
+cups.div.innerHTML = ("<b>" + cups.date.toLocaleDateString() + ` at ${cups.eventTime}` + "</b><br>" + cups.piece + " will be performed by UNT's " + cups.ensemble + " at the " + cups.venue)
+cups.addEventToDOM()
 
 let emm2025 = new Entry(new Date(2025, 3, 4), "", "<a href=https://www.emmfestival.org/index.php>Electronic Music Midwest</a>", "Kansas City Kansas Community College Performing Arts Center", "<i>Whisper</i>", "")
 emm2025.div.innerHTML = `<b>${emm2025.date.toLocaleDateString()} - 4/5/2025 </b><br> ${emm2025.piece} will be performed at ${emm2025.venue} as part of ${emm2025.event}.`
