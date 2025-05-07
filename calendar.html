@@ -99,6 +99,10 @@ class Entry {
 // entry.div.innerHTML = ("<b>" + entry.date.toLocaleDateString() + "</b>" + "<br>"+ entry.piece + " will be performed at the " + entry.event + " at " + entry.venue)
 // entry.addEventToDOM()
 
+let dme = new Entry(new Date(2025, 4, 13), "19:30", "", "<a href=https://www.lsu.edu/hss/cmst/hopkins_black_box_theater/about.php>HopKins Black Box Theater</a>", "<i>D, Me, You, We</i>, a non-opera for actor, chatbot, musicians, and audience", "this ensemble", "starring Sarah Nansubuga and featuring Omar Ramirez, Roberto Mochetti, and Drew Farrar")
+dme.div.innerHTML = ("<b>" + dme.date.toLocaleDateString() + ` at ${dme.eventTime}` + "</b>" + "<br>"+ "My dissertation project, " + dme.piece + " " + dme.performers + " will be performed at the " + dme.venue)
+dme.addEventToDOM()
+
 let cups = new Entry(new Date(2025, 3, 29), "20:00", "concert", "Merrill Ellis Intermedia Theater.", "<i>cups</i> for ensemble and audience", "<a href=https://calendar.unt.edu/event/e2-electronics-ensemble>E^2 Ensemble</a>", "the performers")
 cups.div.innerHTML = ("<b>" + cups.date.toLocaleDateString() + ` at ${cups.eventTime}` + "</b><br>" + cups.piece + " will be performed by UNT's " + cups.ensemble + " at the " + cups.venue)
 cups.addEventToDOM()
