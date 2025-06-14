@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Treya Nash Portfolio</title>
+<meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<link rel="canonical" href="https://treyanash.com"/>
+<link rel="icon" href="media/favicon.ico">
+
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;800&display=swap');
+
+body {
+  font-family: 'Nunito', sans-serif;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  user-select: auto;
+  margin: 0;
+  height: 100%;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 95vh; 
+  width: 100vw;
+}
+
+#myName {
+  width: 100%;
+  margin: 10px 0 0 0; /* top, right, bottom, left */
+  font-size: 2.7rem;
+  background: -webkit-linear-gradient(#3a04ba, #60d44f);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-align: center;
+}
+
+#subtitle {
+  font-size: 1.5rem;
+}
+
+.active {
+  color: #3a04ba;
+  background-color: #c3ffba
+}
+
+.columns {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  padding: 0 20px;        /* consistent left/right spacing */
+  box-sizing: border-box;
+  width: 100%;
+  gap: 20px;              /* space between columns */
+}
+
+.column {
+  background: #ffffff;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  box-sizing: border-box;
+}
+
+#column1 {
+  width: 200px;           /* ✅ fixed width */
+  flex-shrink: 0;         /* prevent shrinking on small screens */
+}
+
+#column2 {
+  flex: 1;                /* ✅ takes remaining space */
+  min-width: 0;           /* prevents overflow issues */
+}
+
+#column3 {
+  flex: 1;
+  min-width: 0;
+}
+
+.scroll-wrapper-horizontal {
+  margin-top: 10px;
+  width: 100%;
+  height: 70px;
+  overflow: hidden;
+  position: relative;
+}
+
+.scroll-content {
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: flex;
+}
+
+.scroll-img {
+  height: 70px;
+  width: auto;
+  flex-shrink: 0;
+}
+
+i {
+  font-style: italic;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+.video-container {
+  position: relative;
+  width: 100%;
+  padding-bottom: 56.25%; /* 16:9 aspect ratio */
+  height: 0;
+  overflow: hidden;
+}
+
+.video-container iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+
+@media screen and (max-width: 1000px) {
+  .columns {
+    flex-direction: column;
+    padding: 0 20px;      /* keep same left/right margin when stacked */
+  }
+
+  .column {
+    width: 100%;
+    padding: 20px 0;
+  }
+
+  #column1,
+  #column2,
+  #column3 {
+    width: 100%;          /* stack full-width */
+  }
+}
+</style>
+</head>
+
+<body>
+  <div class="container">
+    <div id="myName"><b>Treya Nash - Portfolio</b>
+    <div id="subtitle">Hedgerow</div>
+    </div>
+    <div class="main-columns-wrapper">
+    <div class="columns">
+      <div class="column" id="column1">
+        <div id="worksDiv" class="linkClass">
+          <div><b>Work Examples</b></div>
+          <div><a href="dme.html">D, Me, You, We</a></div>
+          <div><a href="cell.html">Cell Phone Pieces</a></div>
+          <div><a href="sunday.html">Sunday Routine</a></div>
+          <div><a href="alice.html">Alice in Wonderland</a></div>
+          <div class="active"><a href="hedge.html">Hedgerow</a></div><br>
+          <div><a href="home.html">Return To Home</a></div>
+        </div>
+      </div>
+      <div class="column" id="column3">
+      <div class="video-container">
+<iframe width="560" height="315" src="https://www.youtube.com/embed/OpY011OVNN8?si=Rz9OVNRHiEaWcJiO" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+      </div>
+      </div>
+      <div class="column" id="column2">
+        <div class="bio-text">
+<i>Hedgerow</i> was the first piece I wrote after I started my PhD. Saxophone quartet is the perfect medium for exploring the minute details found in dense, homogenous textures. In coaxing out these intricacies, I was reminded of the hedgerows in Devon, my home county in the UK. Though incredibly tall and dense, and from a distance uniform, on closer inspection they reveal a multitude of plants, wildflowers, and creatures. I explored the saxophone through a focus on the physical properties of its sound. Its subtle and controllable intonational fluctuations can create wonderfully variable beating that becomes a constantly shifting secondary rhythm. <br>I worked on the piece with a wonderful quartet made up of LSU saxophone students, Preston Hernandez (soprano sax), Daniel Lynge (alto sax), Robert Fahey (tenor sax), and Matthew Gioia (baritone sax). This collaboration culminated with a performance at the 2023 North American Saxophone Alliance Biennial Conference.       </div>
+ </div>
+    </div>
+</div>
+    <div class="scroll-wrapper-horizontal">
+      <div class="scroll-content" id="scrollContent">
+        <img src="media/ForPortfolio.png" class="scroll-img" />
+        <img src="media/ForPortfolio.png" class="scroll-img" />
+        <img src="media/ForPortfolio.png" class="scroll-img" />
+        <img src="media/ForPortfolio.png" class="scroll-img" />
+      </div>
+    </div>
+  </div>
+
+  <script>
+    let scrollSpeed = 1;
+    let scrollX = 0;
+    let animationId = null;
+
+    function loopScrollRightToLeft() {
+      cancelAnimationFrame(animationId);
+      const scrollContent = document.getElementById("scrollContent");
+      const imageWidth = scrollContent.children[0].offsetWidth;
+      scrollX = 0;
+
+      function scroll() {
+        scrollX -= scrollSpeed;
+        scrollContent.style.transform = `translateX(${scrollX}px)`;
+
+        if (Math.abs(scrollX) >= imageWidth) {
+          scrollContent.appendChild(scrollContent.children[0]);
+          scrollX += imageWidth;
+          scrollContent.style.transform = `translateX(${scrollX}px)`;
+        }
+
+        animationId = requestAnimationFrame(scroll);
+      }
+
+      scroll();
+    }
+
+    window.addEventListener("load", () => {
+      setTimeout(loopScrollRightToLeft, 50);
+    });
+
+  </script>
+</body>
+</html>

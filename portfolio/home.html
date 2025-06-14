@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Treya Nash Portfolio</title>
+<meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<link rel="canonical" href="https://treyanash.com"/>
+<link rel="icon" href="media/favicon.ico">
+
+
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Quicksand&display=swap');
+  @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;800&display=swap');
+
+body {
+  font-family: 'Nunito', sans-serif;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  user-select: auto;
+  margin: 0;
+  height: 100%;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 95vh;
+  width: 100vw;
+}
+
+.main-columns-wrapper {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-top: -9.2vw;
+}
+
+#myName {
+  width: 100%;
+  margin: 10px 0 0 0; /* top, right, bottom, left */
+  font-size: 2.7rem;
+  background: -webkit-linear-gradient(#3a04ba, #60d44f);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-align: center;
+}
+
+#subtitle {
+  font-size: 1.5rem;
+}
+
+.columns {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  padding: 0 20px;        /* consistent left/right spacing */
+  box-sizing: border-box;
+  width: 100%;
+  gap: 20px;              /* space between columns */
+}
+
+.column {
+  background: #ffffff;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  box-sizing: border-box;
+}
+
+#column1 {
+  width: 200px;           /* ✅ fixed width */
+  flex-shrink: 0;         /* prevent shrinking on small screens */
+}
+
+#column2 {
+  flex: 1;                /* ✅ takes remaining space */
+  min-width: 0;           /* prevents overflow issues */
+}
+
+.scroll-wrapper-horizontal {
+  margin-top: 10px;
+  width: 100%;
+  height: 70px;
+  overflow: hidden;
+  position: relative;
+}
+
+.scroll-content {
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: flex;
+}
+
+.scroll-img {
+  height: 70px;
+  width: auto;
+  flex-shrink: 0;
+}
+
+i {
+  font-style: italic;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+@media screen and (max-width: 1000px) {
+  .columns {
+    flex-direction: column;
+    padding: 0 20px;   
+  }
+
+  .column {
+    width: 100%;
+    padding: 20px 0;
+  }
+
+  #column1,
+  #column2 {
+    width: 100%; 
+  }
+}
+
+</style>
+</head>
+
+<body>
+  <div class="container">
+    <div id="myName"><b>Treya Nash - Portfolio</b>
+    <div id="subtitle">Text</div>
+    </div>
+    <div class="main-columns-wrapper">
+    <div class="columns">
+      <div class="column" id="column1">
+        <div id="worksDiv">
+          <div><b>Work Examples</b></div>
+          <div><a href="dme.html">D, Me, You, We</a></div>
+          <div><a href="cell.html">Cell Phone Pieces</a></div>
+          <div><a href="sunday.html">Sunday Routine</a></div>
+          <div><a href="alice.html">Alice in Wonderland</a></div>
+          <div><a href="hedge.html">Hedgerow</a></div><br>
+          <div style="visibility: hidden;">Return To Home</div>
+        </div>
+      </div>
+      <div class="column" id="column2">
+        <div class="bio-text">
+          For the first part of my compositional career, I focused on acoustic chamber music, especially on texture, intonation, and acoustic beating. As I began learning about electronics, I wrote works for live electronics with MaxMSP, and started doing field recordings.
+          While learning JavaScript, I started making interactive cellphone pieces for audience participation, drawing on my experience with acoustics, digital signal processing, and often using my field recordings.
+          I began combining my audience participation practice with my chamber music background, writing pieces for performers and audience participation with cellphones and objects. Most recently, I wrote, directed, and produced a 40 minute "non-opera", <i>D, Me, You, We</i>, for actor, AI chatbot, musicians, and audience. This portfolio shows some of the different avenues of my work, including my non-opera, my cellphone pieces, and my chamber music.
+        </div>
+      </div>
+    </div>
+  </div>
+    <div class="scroll-wrapper-horizontal">
+      <div class="scroll-content" id="scrollContent">
+        <img src="media/ForPortfolio.png" class="scroll-img" />
+        <img src="media/ForPortfolio.png" class="scroll-img" />
+        <img src="media/ForPortfolio.png" class="scroll-img" />
+        <img src="media/ForPortfolio.png" class="scroll-img" />
+      </div>
+    </div>
+  </div>
+
+  <script>
+    let scrollSpeed = 1;
+    let scrollX = 0;
+    let animationId = null;
+
+    function loopScrollRightToLeft() {
+      cancelAnimationFrame(animationId);
+      const scrollContent = document.getElementById("scrollContent");
+      const imageWidth = scrollContent.children[0].offsetWidth;
+      scrollX = 0;
+      function scroll() {
+        scrollX -= scrollSpeed;
+        scrollContent.style.transform = `translateX(${scrollX}px)`;
+        if (Math.abs(scrollX) >= imageWidth) {
+          scrollContent.appendChild(scrollContent.children[0]);
+          scrollX += imageWidth;
+          scrollContent.style.transform = `translateX(${scrollX}px)`;
+        }
+        animationId = requestAnimationFrame(scroll);
+        }
+        scroll();
+      }
+
+    window.addEventListener("load", () => {
+      setTimeout(loopScrollRightToLeft, 50);
+    });
+  </script>
+</body>
+</html>
