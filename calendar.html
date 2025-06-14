@@ -107,6 +107,10 @@ let slee = new Entry(new Date(2025, 5, 7), "14:30", "", "Lippes Concert Hall", "
 slee.div.innerHTML = ("<b>" + slee.date.toLocaleDateString() + ` at ${slee.eventTime}` + "</b>" + "<br>"+ "Performance of " + slee.piece + " by " + slee.performers + " at " + slee.venue + " as part of June in Buffalo.")
 slee.addEventToDOM()
 
+let ko = new Entry(new Date(2025, 5, 5), "9:45", "", "", "<i>Tor</i>", "members of the Slee Sinfonieta", "members of the Slee Sinfonieta")
+ko.div.innerHTML = ("<b>" + ko.date.toLocaleDateString() + ` at ${ko.eventTime}` +  "</b>" + "<br>"+ "Guest Artist talk with the Baton Rouge Kids Orchestra")
+ko.addEventToDOM()
+
 let cc = new Entry(new Date(2025, 5, 1), "18:30", "", "Baird Recital Hall", "<i>cup</i>", "")
 cc.div.innerHTML = ("<b>" + cc.date.toLocaleDateString() + ` at ${cc.eventTime}` + "</b>" + "<br>"+ "Performance of, " + cc.piece + " in " + cc.venue + " as part of June in Buffalo.")
 cc.addEventToDOM()
