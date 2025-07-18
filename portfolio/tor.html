@@ -210,15 +210,13 @@ body.no-scroll {
     display: none;
   }
 }
-
-
 </style>
 </head>
 
 <body>
   <div class="container">
     <div id="myName"><b>Treya Nash - Portfolio</b>
-    <div id="subtitle">Sunday Routine</div>
+    <div id="subtitle">Tor</div>
     </div>
     <div class="main-columns-wrapper">
     <div class="columns">
@@ -227,29 +225,28 @@ body.no-scroll {
           <div><b>Work Examples</b></div>
           <div><a href="dme.html">D, Me, You, We</a></div>
           <div><a href="bar.html">Bar To Bar</a></div>
-          <div><a href="tor.html">Tor</a></div>
+          <div class="active"><a href="tor.html">Tor</a></div>
           <div><a href="cell.html">Cell Phone Pieces</a></div>
-          <div class="active"><a href="sunday.html">Sunday Routine</a></div>
+          <div><a href="sunday.html">Sunday Routine</a></div><br>
           <!-- <div><a href="alice.html">Alice in Wonderland</a></div> -->
-          <br>
           <div><a href="home.html">Return To Home</a></div>
         </div>
       </div>
       <div class="column" id="column3">
       <div class="video-container">
-<iframe width="560" height="315" src="https://www.youtube.com/embed/0G53EQAjCaY?si=cOCsqS46QG4zQ43g" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>      </div>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/sP7Lml60fhs?si=1WCNJYmHj0srLs_b" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+      </div>
       </div>
       <div class="column" id="column2">
         <div class="bio-text">
-<i>Sunday Routine</i> was written for the 2025 <a href="https://www.lineuponlinepercussion.org/">line upon line percussion</a> Winter Composers Festival. Matt and Cullen invited us to perform with them, so I wrote the piece for percussion duo and unseen narrator. The narrator and percussionists guide the audience through a sunday scene that includes storm sounds, reading magazines, and playing a dice game. The narrator introduces a theatricality that adds to the whimsy and absurdity, while also creating a clear in-performance line of communication with the audience. The musicians reinforce this communication through demonstration and collaboration, helping audience members feel comfortable in an unfamiliar situation. This helps the audience to enjoy the playfulness of the piece without focussing on performing ‘correctly’. 
-          <br><br>
-          <div id="clickFor">
-          <div>Click for Score</div>
-          <img id="tinyTor" src="media/SundayTiny.png">
-          </div>
-          </div>
-      </div>
- 
+<i>Tor</i> exists in several pierrot+ configurations. The piece explores the many indefinite shades of pitch in a semitone, in an examination of timbre, texture, and microrhythms created by beating. I named the piece “Tor” after the free-standing rock formations, stunning examples of which can be found on Dartmoor, a beautiful moor in my home county, Devon. I’m not one for mysticism, but the arcane energy of that place feels undeniable to me. 
+<br><br>
+<div id="clickFor">
+<div>Click for Score</div>
+<img id="tinyTor" src="media/TorTiny.png">
+</div>
+</div>
+    </div>
     </div>
 </div>
     <div class="scroll-wrapper-horizontal">
@@ -262,39 +259,38 @@ body.no-scroll {
     </div>
   </div>
 
-  <script>
-    let scrollSpeed = 1;
-    let scrollX = 0;
-    let animationId = null;
+<script>
+  let scrollSpeed = 1;
+  let scrollX = 0;
+  let animationId = null;
 
-    function loopScrollRightToLeft() {
-      cancelAnimationFrame(animationId);
-      const scrollContent = document.getElementById("scrollContent");
-      const imageWidth = scrollContent.children[0].offsetWidth;
-      scrollX = 0;
+  function loopScrollRightToLeft() {
+    cancelAnimationFrame(animationId);
+    const scrollContent = document.getElementById("scrollContent");
+    const imageWidth = scrollContent.children[0].offsetWidth;
+    scrollX = 0;
 
-      function scroll() {
-        scrollX -= scrollSpeed;
+    function scroll() {
+      scrollX -= scrollSpeed;
+      scrollContent.style.transform = `translateX(${scrollX}px)`;
+
+      if (Math.abs(scrollX) >= imageWidth) {
+        scrollContent.appendChild(scrollContent.children[0]);
+        scrollX += imageWidth;
         scrollContent.style.transform = `translateX(${scrollX}px)`;
-
-        if (Math.abs(scrollX) >= imageWidth) {
-          scrollContent.appendChild(scrollContent.children[0]);
-          scrollX += imageWidth;
-          scrollContent.style.transform = `translateX(${scrollX}px)`;
-        }
-
-        animationId = requestAnimationFrame(scroll);
       }
 
-      scroll();
+      animationId = requestAnimationFrame(scroll);
     }
 
-    window.addEventListener("load", () => {
-      setTimeout(loopScrollRightToLeft, 50);
-    });
+    scroll();
+  }
 
+  window.addEventListener("load", () => {
+    setTimeout(loopScrollRightToLeft, 50);
+  });
 
-      const clickFor = document.getElementById("clickFor");
+  const clickFor = document.getElementById("clickFor");
 
   clickFor.addEventListener("click", () => {
     // Hide original layout
@@ -307,14 +303,14 @@ body.no-scroll {
     const videoFixed = document.createElement("div");
     videoFixed.id = "videoWrapperFixed";
     videoFixed.innerHTML = `
-      <iframe src="https://www.youtube.com/embed/0G53EQAjCaY?si=cOCsqS46QG4zQ43g" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+      <iframe src="https://www.youtube.com/embed/sP7Lml60fhs?si=1WCNJYmHj0srLs_b" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
     `;
     document.body.appendChild(videoFixed);
 
     // PDF on right
     const pdf = document.createElement("iframe");
     pdf.id = "pdfOverlay";
-    pdf.src = "media/Sunday_Routine.pdf";
+    pdf.src = "media/Tor_Full.pdf";
     document.body.appendChild(pdf);
 
     // Back button
@@ -328,14 +324,11 @@ body.no-scroll {
       pdf.remove();
       videoFixed.remove();
       backBtn.remove();
-      document.querySelector(".main-columns-wrapper").style.display = "flex";
       originalIframe.src = originalSrc;
-
+      document.querySelector(".main-columns-wrapper").style.display = "flex";
     });
   });
 </script>
 
-
-  </script>
 </body>
 </html>

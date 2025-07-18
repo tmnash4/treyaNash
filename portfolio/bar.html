@@ -210,15 +210,13 @@ body.no-scroll {
     display: none;
   }
 }
-
-
 </style>
 </head>
 
 <body>
   <div class="container">
     <div id="myName"><b>Treya Nash - Portfolio</b>
-    <div id="subtitle">Sunday Routine</div>
+    <div id="subtitle">Bar To Bar</div>
     </div>
     <div class="main-columns-wrapper">
     <div class="columns">
@@ -226,30 +224,29 @@ body.no-scroll {
         <div id="worksDiv" class="linkClass">
           <div><b>Work Examples</b></div>
           <div><a href="dme.html">D, Me, You, We</a></div>
-          <div><a href="bar.html">Bar To Bar</a></div>
+          <div class="active"><a href="bar.html">Bar To Bar</a></div>
           <div><a href="tor.html">Tor</a></div>
           <div><a href="cell.html">Cell Phone Pieces</a></div>
-          <div class="active"><a href="sunday.html">Sunday Routine</a></div>
+          <div><a href="sunday.html">Sunday Routine</a></div><br>
           <!-- <div><a href="alice.html">Alice in Wonderland</a></div> -->
-          <br>
           <div><a href="home.html">Return To Home</a></div>
         </div>
       </div>
       <div class="column" id="column3">
       <div class="video-container">
-<iframe width="560" height="315" src="https://www.youtube.com/embed/0G53EQAjCaY?si=cOCsqS46QG4zQ43g" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>      </div>
+      <iframe width="560" height="315" src="https://www.youtube.com/embed/njBqaSi1Bqw?si=I3XFa3mu7K-NVj-k" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+      </div>
       </div>
       <div class="column" id="column2">
         <div class="bio-text">
-<i>Sunday Routine</i> was written for the 2025 <a href="https://www.lineuponlinepercussion.org/">line upon line percussion</a> Winter Composers Festival. Matt and Cullen invited us to perform with them, so I wrote the piece for percussion duo and unseen narrator. The narrator and percussionists guide the audience through a sunday scene that includes storm sounds, reading magazines, and playing a dice game. The narrator introduces a theatricality that adds to the whimsy and absurdity, while also creating a clear in-performance line of communication with the audience. The musicians reinforce this communication through demonstration and collaboration, helping audience members feel comfortable in an unfamiliar situation. This helps the audience to enjoy the playfulness of the piece without focussing on performing ‘correctly’. 
-          <br><br>
-          <div id="clickFor">
-          <div>Click for Score</div>
-          <img id="tinyTor" src="media/SundayTiny.png">
-          </div>
-          </div>
-      </div>
- 
+<i>Bar To Bar</i> takes the audience on a journey through bars 🍹🍾🍷🥃🍺 in time. The audience is guided by the time travelling entertainer, <a href="https://www.noaevenmusic.com/about">Noa Even.</a><br> The performer controls the flow and timing of the piece from their score, which consists of a google doc, a website for tablet and a web app for cellphone.<br> The piece consists of live saxophone with fixed media, digitally drawn backgrounds (by my frequent collaborator <a href="https://www.instagram.com/sarokiin/">Nick Barrett</a>), a short video, and cellphone interaction.<br> If you'd like to try the play along section at home, you can access it here: <a href="../playalong.html">playalong.treyanash.com</a>
+<br><br>
+<!-- <div id="clickFor">
+<div>Click for Score</div>
+<img id="tinyTor" src="media/TorTiny.png">
+</div> -->
+</div>
+    </div>
     </div>
 </div>
     <div class="scroll-wrapper-horizontal">
@@ -262,80 +259,72 @@ body.no-scroll {
     </div>
   </div>
 
-  <script>
-    let scrollSpeed = 1;
-    let scrollX = 0;
-    let animationId = null;
+<script>
+  let scrollSpeed = 1;
+  let scrollX = 0;
+  let animationId = null;
 
-    function loopScrollRightToLeft() {
-      cancelAnimationFrame(animationId);
-      const scrollContent = document.getElementById("scrollContent");
-      const imageWidth = scrollContent.children[0].offsetWidth;
-      scrollX = 0;
+  function loopScrollRightToLeft() {
+    cancelAnimationFrame(animationId);
+    const scrollContent = document.getElementById("scrollContent");
+    const imageWidth = scrollContent.children[0].offsetWidth;
+    scrollX = 0;
 
-      function scroll() {
-        scrollX -= scrollSpeed;
+    function scroll() {
+      scrollX -= scrollSpeed;
+      scrollContent.style.transform = `translateX(${scrollX}px)`;
+
+      if (Math.abs(scrollX) >= imageWidth) {
+        scrollContent.appendChild(scrollContent.children[0]);
+        scrollX += imageWidth;
         scrollContent.style.transform = `translateX(${scrollX}px)`;
-
-        if (Math.abs(scrollX) >= imageWidth) {
-          scrollContent.appendChild(scrollContent.children[0]);
-          scrollX += imageWidth;
-          scrollContent.style.transform = `translateX(${scrollX}px)`;
-        }
-
-        animationId = requestAnimationFrame(scroll);
       }
 
-      scroll();
+      animationId = requestAnimationFrame(scroll);
     }
 
-    window.addEventListener("load", () => {
-      setTimeout(loopScrollRightToLeft, 50);
-    });
+    scroll();
+  }
 
-
-      const clickFor = document.getElementById("clickFor");
-
-  clickFor.addEventListener("click", () => {
-    // Hide original layout
-    const originalIframe = document.querySelector(".video-container iframe");
-    const originalSrc = originalIframe.src;
-    originalIframe.src = ""; // unload it
-    document.querySelector(".main-columns-wrapper").style.display = "none";
-
-    // Fixed video on left
-    const videoFixed = document.createElement("div");
-    videoFixed.id = "videoWrapperFixed";
-    videoFixed.innerHTML = `
-      <iframe src="https://www.youtube.com/embed/0G53EQAjCaY?si=cOCsqS46QG4zQ43g" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-    `;
-    document.body.appendChild(videoFixed);
-
-    // PDF on right
-    const pdf = document.createElement("iframe");
-    pdf.id = "pdfOverlay";
-    pdf.src = "media/Sunday_Routine.pdf";
-    document.body.appendChild(pdf);
-
-    // Back button
-    const backBtn = document.createElement("button");
-    backBtn.id = "backButton";
-    backBtn.textContent = "Back";
-    document.body.appendChild(backBtn);
-    backBtn.style.display = "block";
-
-    backBtn.addEventListener("click", () => {
-      pdf.remove();
-      videoFixed.remove();
-      backBtn.remove();
-      document.querySelector(".main-columns-wrapper").style.display = "flex";
-      originalIframe.src = originalSrc;
-
-    });
+  window.addEventListener("load", () => {
+    setTimeout(loopScrollRightToLeft, 50);
   });
+
+  // const clickFor = document.getElementById("clickFor");
+
+  // clickFor.addEventListener("click", () => {
+  //   // Hide original layout
+  //   document.querySelector(".main-columns-wrapper").style.display = "none";
+
+  //   // Fixed video on left
+  //   const videoFixed = document.createElement("div");
+  //   videoFixed.id = "videoWrapperFixed";
+  //   videoFixed.innerHTML = `
+  //     <iframe src="https://www.youtube.com/embed/sP7Lml60fhs?si=1WCNJYmHj0srLs_b" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+  //   `;
+  //   document.body.appendChild(videoFixed);
+
+  //   // PDF on right
+  //   const pdf = document.createElement("iframe");
+  //   pdf.id = "pdfOverlay";
+  //   pdf.src = "media/Tor_Full_Score.pdf";
+  //   document.body.appendChild(pdf);
+
+  //   // Back button
+  //   const backBtn = document.createElement("button");
+  //   backBtn.id = "backButton";
+  //   backBtn.textContent = "Back";
+  //   document.body.appendChild(backBtn);
+  //   backBtn.style.display = "block";
+
+  //   backBtn.addEventListener("click", () => {
+  //     pdf.remove();
+  //     videoFixed.remove();
+  //     backBtn.remove();
+  //     document.querySelector(".main-columns-wrapper").style.display = "flex";
+  //   });
+  // });
 </script>
 
-
-  </script>
 </body>
 </html>
