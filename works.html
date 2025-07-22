@@ -91,6 +91,7 @@
 <br>
 <button type="button" class="collapsible" id="cell">Cell Phone Pieces</button>
 <div class="content">
+  <p id="bar"><a class="aclass" href="bar.html"><b>Bar to Bar</b></a> soprano saxophone, audience with cellphones, video/image projection, and fixed media. </p>
   <p id="dl"><a class="aclass" href="dl.html"><b>The Drowned Lover</b></a> for baritone voice, trumpet in c, trombone, bass clarinet, and audience participation with cell phones</p>
   <p id="cp"><a class="aclass" href="cup.html"><b>Cup</b></a></p>
   <p id="wh"> <a class="aclass" href="whisper1.html"> <b>Whisper</b></a></p>
@@ -119,6 +120,7 @@
 <p></p>
 <button type="button" class="collapsible" id="solo">Solo/Duo</button>
 <div class="content">
+  <p id="bar"><a class="aclass" href="bar.html"><b>Bar to Bar</b></a> soprano saxophone, audience with cellphones, video/image projection, and fixed media. </p>
   <p id="mf"> <a class="aclass" href="morefrogs.html"> <b>More Frogs</b></a> for saxophone, percussion, and live electronics </p>
   <p id="l"><a class="aclass" href="laune.html"> <b>Laune for Eduard</b></a> for cello and live electronics </p>
   <p id="ctp"> <a class="aclass" href="ctp.html"> <b>Capture the Phrase</b></a> for piano four hands</p>
@@ -131,6 +133,7 @@
 <p></p>
 <button type="button" class="collapsible" id="fixed">Mixed & Fixed Media</button>
 <div class="content">
+  <p id="bar"><a class="aclass" href="bar.html"><b>Bar to Bar</b></a> soprano saxophone, audience with cellphones, video/image projection, and fixed media. </p>
   <p id="ainw"><a  class="aclass" href="ainw1.html" ><b>Alice in Wonderland</b></a> for cello, double bass, and piano with movement and video</p>
   <p> <a class="aclass" href="dmfg.html" > <b>Dear Mother Father God</b> </a> </p>
   <p><a class="aclass" href="kith.html" > <b>Kith</b> </a></h3>
@@ -418,7 +421,8 @@ let fr = document.querySelector("#fr")
 let ainw = document.querySelector("#ainw")
 let cp = document.querySelector("#cp");
 let dl = document.querySelector("#dl");
-let sunday = document.querySelector("#sunday")
+let sunday = document.querySelector("#sunday");
+let bar = document.querySelector("#bar");
 
 
 //Categories of Pieces
@@ -432,7 +436,7 @@ let pieces = {
   guitar: [ydb, dm],
   percussion: [sunday, mf, tor, nm, ydb, tdhw],
   piano: [ainw, tor, ctp, gt],
-  saxophone: [mf, hr, ydb, tdhw],
+  saxophone: [bar, mf, hr, ydb, tdhw],
   viola: [tor, tms, sn, pd, nm],
   violin: [tor, nm, sn, pd],
   voice: [dl, tor, tms],
@@ -440,7 +444,7 @@ let pieces = {
   liveE: [laune, mf, imbu],
   musicForD: [ainw],
   windE: [ttfocl],
-  audience: [sunday, dl, cp, wh, fa, fr, mf],
+  audience: [bar, sunday, dl, cp, wh, fa, fr, mf],
   trumpet: [dl],
   trombone: [dl]
 }
