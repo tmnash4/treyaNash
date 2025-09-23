@@ -776,7 +776,19 @@ timerButton.addEventListener("click", () => {
 })
 
 
-
+setTimeout(() => {
+    let button = document.createElement("button");
+    document.body.appendChild(button);
+    button.style.position = "absolute";
+    button.style.left = "50vw";
+    button.style.fontSize = "3rem";
+    button.innerHTML = "Make it Stop!"
+    button.addEventListener("click", () => {
+        let mySynth = new Tone.PolySynth().toDestination();
+        mySynth.triggerAttackRelease([400, 405, 415], 1);
+        alert("OOPS YOU THOUGHT IT WOULD BE THAT EASY?");
+    })
+}, 30000)
 
 
 
