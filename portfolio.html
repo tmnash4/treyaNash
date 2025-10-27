@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Treya Nash Portfolio</title>
+<meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<link rel="canonical" href="https://treyanash.com"/>
+<link rel="icon" href="media/favicon.ico">
+
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;800&display=swap');
+
+body {
+  font-family: 'Nunito', sans-serif;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  user-select: auto;
+  margin: 0;
+  height: 100%;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 95vh; 
+  width: 100vw;
+}
+
+#myName {
+  width: 100%;
+  margin: 10px 0 0 0; /* top, right, bottom, left */
+  font-size: 2.7rem;
+  background: -webkit-linear-gradient(#3a04ba, #60d44f);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-align: center;
+}
+
+.pieceTitle {
+  width: 100%;
+  font-size: 1.5rem;
+    background: -webkit-linear-gradient(#3a04ba, #60d44f);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-align: center;
+}
+
+#subtitle {
+  font-size: 1.5rem;
+}
+
+.active {
+  color: #3a04ba;
+  background-color: #c3ffba
+}
+
+.columns {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  padding: 0 20px;        /* consistent left/right spacing */
+  box-sizing: border-box;
+  width: 100%;
+  gap: 20px;              /* space between columns */
+}
+
+.column {
+
+  background: #ffffff;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  box-sizing: border-box;
+}
+
+#dme-section, #bar-section {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.bio-text {
+  margin-top: 10px;
+  line-height: 1.4;
+}
+
+#column1 {
+  width: 200px;           /* ✅ fixed width */
+  flex-shrink: 0;         /* prevent shrinking on small screens */
+}
+
+
+#column2 {
+  flex: 1;                /* ✅ takes remaining space */
+  min-width: 0;           /* prevents overflow issues */
+}
+
+
+
+#column3 {
+  flex: 1;
+  min-width: 0;
+}
+
+.scroll-wrapper-horizontal {
+  margin-top: 10px;
+  width: 100%;
+  height: 70px;
+  overflow: hidden;
+  position: relative;
+}
+
+.scroll-content {
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: flex;
+}
+
+.scroll-img {
+  height: 70px;
+  width: auto;
+  flex-shrink: 0;
+}
+
+i {
+  font-style: italic;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+.video-container {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 9; 
+  overflow: hidden;
+  border-radius: 8px;
+  background: #000; 
+}
+
+.video-container iframe {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+
+
+.piece-row {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  gap: 20px;
+  width: 100%;
+}
+
+.piece-row .video-container {
+  flex: 1;
+}
+
+.piece-row .bio-text {
+  flex: 1;
+  line-height: 1.4;
+}
+
+
+@media screen and (max-width: 1000px) {
+  .columns {
+    flex-direction: column;
+    padding: 0 20px;      /* keep same left/right margin when stacked */
+  }
+
+  .column {
+    width: 100%;
+    padding: 20px 0;
+
+    
+  }
+
+  .piece-row {
+    flex-direction: column;
+  }
+
+  #column1,
+  #column2,
+  #column3,
+  #column4,
+  #column5 {
+    width: 100%;          /* stack full-width */
+  }
+}
+
+/* --- PDF Viewer Overlay --- */
+.pdf-viewer {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  width: 50vw; /* half screen */
+  background: #fff;
+  box-shadow: 0 0 20px rgba(0,0,0,0.3);
+  z-index: 999;
+  transform: translateX(100%);
+  transition: transform 0.4s ease;
+  display: flex;
+  flex-direction: column;
+}
+
+.pdf-viewer.left {
+  left: 0;
+  transform: translateX(-100%);
+}
+
+.pdf-viewer.right {
+  right: 0;
+  transform: translateX(100%);
+}
+
+.pdf-viewer.active.left {
+  transform: translateX(0);
+}
+
+.pdf-viewer.active.right {
+  transform: translateX(0);
+}
+
+.pdf-viewer iframe {
+  flex: 1;
+  width: 100%;
+  border: none;
+}
+
+/* --- Buttons --- */
+.open-pdf-btn {
+  /* margin-top: 10px;
+  padding: 8px 12px; */
+  border: none;
+  background: #3a04ba;
+  color: white;
+  font-weight: 600;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.open-pdf-btn:hover {
+  background: #5c2ff3;
+}
+
+.close-pdf-btn {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  border: none;
+  background: none;
+  font-size: 1.8rem;
+  cursor: pointer;
+  color: #444;
+}
+
+</style>
+</head>
+
+<body>
+  <div class="container">
+    <div id="myName"><b>Treya Nash - Portfolio</b>
+    </div>
+<div class="main-columns-wrapper">
+
+  <div class="columns">
+
+    <div class="column" id="dme-section">
+              <div class="pieceTitle">D, Me, You, We</div>
+
+      <div class="piece-row">
+        <div class="pdf-viewer right" id="pdf1">
+          <iframe src="media/forNewPort/full.pdf#toolbar=0&navpanes=0&scrollbar=0" title="D, Me, You, We Score"></iframe>
+          <button class="close-pdf-btn" onclick="togglePDF('pdf1')">×</button>
+        </div>
+          <div class="pdf-viewer right" id="pdf2">
+          <iframe src="media/forNewPort/actor.pdf#toolbar=0&navpanes=0&scrollbar=0" title="D, Me, You, We Score"></iframe>
+          <button class="close-pdf-btn" onclick="togglePDF('pdf2')">×</button>
+        </div>
+          <div class="pdf-viewer right" id="pdf3">
+          <iframe src="media/forNewPort/players.pdf#toolbar=0&navpanes=0&scrollbar=0" title="D, Me, You, We Score"></iframe>
+          <button class="close-pdf-btn" onclick="togglePDF('pdf3')">×</button>
+        </div>
+
+        <div class="video-container">
+
+          <iframe src="https://www.youtube.com/embed/nFhb9e8p6mI?si=XfHTieQwE_o3nxSn" 
+            title="D, Me, You, We video" frameborder="0" allowfullscreen></iframe>
+        </div>
+        
+        <div class="bio-text">
+          <i>D, Me, You, We</i> is a 40-minute “non-opera” for actor, generative AI chatbot, three musicians (on any instrument), and audience. On a rainy evening, a disembodied visitor arrives at the home of an unnamed character. The two converse through improvised dialogue. The “operatic” nature of the piece comes from the musical framing of this relationship. The musicians and audience work to create a soundworld that expresses both the physical location and the inner thoughts of the characters, often exploring exaggerated minutiae of everyday life. Audience members interact with cellphones and objects, guided through fleeting and whimsical moments by the musicians. Towards the end, audience members submit their own dialogue for the actor, shaping the conversation and revealing the real time improvisation of the chatbot. <br>
+          The score consists of various parts including a <button class="open-pdf-btn" onclick="togglePDF('pdf1')">full score/script</button>,
+          an <button class="open-pdf-btn" onclick="togglePDF('pdf2')">actor script</button>, and a <button class="open-pdf-btn" onclick="togglePDF('pdf3')">players score</button> created for the instrumentation of this performance.  
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Bottom row: Bar To Bar -->
+  <div class="columns">
+    <div class="column" id="bar-section">
+      <div class="pieceTitle">Bar To Bar</div>
+      <div class="piece-row">
+
+          <div class="pdf-viewer left" id="pdf4">
+            <iframe src="media/forNewPort/bar1.pdf" title="Bar To Bar Score"></iframe>
+            <button class="close-pdf-btn" onclick="togglePDF('pdf4')">×</button>
+          </div>
+        <div class="bio-text">
+          <i>Bar To Bar</i> takes the audience on a journey through bars 🍹🍾🍷🥃🍺 in time. The audience is guided by the time travelling entertainer, <a href="https://www.noaevenmusic.com/about">Noa Even</a>.<br> The piece includes live saxophone with fixed media, digitally drawn backgrounds (by my frequent collaborator <a href="https://www.instagram.com/sarokiin/">Nick Barrett</a>), a short video, and cellphone interaction. 
+          Communication with the audience happens through the performer, the cellphone app, and the video during the "rhythm game" section.<br>
+          The performer controls the flow and timing of the piece from their score, which consists of a website for tablet and a web app for cellphone. Click to see images of the <button class="open-pdf-btn" onclick="togglePDF('pdf4')">web score</button>.
+          <br>If you'd like to try the play along section at home, you can access it here: <a href="../playalong.html">playalong.treyanash.com</a>
+        </div>
+             <div class="video-container">
+          <iframe src="https://www.youtube.com/embed/njBqaSi1Bqw?si=I3XFa3mu7K-NVj-k" 
+            title="Bar To Bar video" frameborder="0" allowfullscreen></iframe>
+        </div>
+      </div>
+    </div>
+  </div>
+    <div class="columns">
+    <div class="column" id="bar-section">
+      <div class="pieceTitle">Cellphone Pieces</div>
+      <div class="piece-row">
+       <div class="video-container">
+          <iframe src="https://www.youtube.com/embed/sllCF-4eupk?si=7G6IT-gDtkJlsHS-" 
+            title="Bar To Bar video" frameborder="0" allowfullscreen></iframe>
+        </div>
+          <div class="bio-text">
+I’ve written and programmed various pieces for audiences and cellphones in which audience members are the sole performers. For these pieces, I create web apps that seamlessly and efficiently be connected to without breaking the aesthetic spell of the concert hall. These are intended only for collaborative, in-person performance. This demo video shows some footage from performances, though it's hard to capture the feeling of the experience on video. These pieces continue to be widely performed. <br>
+I’m particularly proud of <i>whisper</i>, in which audience members record themselves whispering lines of the Thomas Hardy poem <i>In a Whispering Gallery</i> into their cellphones and send them to a server. From there, they are played back ambisonically through speakers. <i>whisper</i> was inspired by a childhood visit to the whispering gallery in St. Paul’s Cathedral in London.
+        </div>
+      
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+  
+  <script>
+    let scrollSpeed = 1;
+    let scrollX = 0;
+    let animationId = null;
+
+    function loopScrollRightToLeft() {
+      cancelAnimationFrame(animationId);
+      const scrollContent = document.getElementById("scrollContent");
+      const imageWidth = scrollContent.children[0].offsetWidth;
+      scrollX = 0;
+
+      function scroll() {
+        scrollX -= scrollSpeed;
+        scrollContent.style.transform = `translateX(${scrollX}px)`;
+
+        if (Math.abs(scrollX) >= imageWidth) {
+          scrollContent.appendChild(scrollContent.children[0]);
+          scrollX += imageWidth;
+          scrollContent.style.transform = `translateX(${scrollX}px)`;
+        }
+
+        animationId = requestAnimationFrame(scroll);
+      }
+
+      scroll();
+    }
+
+    window.addEventListener("load", () => {
+      setTimeout(loopScrollRightToLeft, 50);
+    });
+
+
+function togglePDF(id) {
+  const pdf = document.getElementById(id);
+  pdf.classList.toggle('active');
+}
+
+function isSafari() {
+  const ua = navigator.userAgent;
+  const isSafariEngine = ua.includes("Safari") && !ua.includes("Chrome") && !ua.includes("Chromium");
+  return isSafariEngine;
+}
+
+function pdfSrc(url) {
+  // Only add UI-hiding flags on non-Safari browsers
+  if (isSafari()) return url;
+  const sep = url.includes("#") ? "&" : "#";
+  return url + sep + "toolbar=0&navpanes=0&scrollbar=0";
+}
+
+// Initialize your PDF iframes safely
+document.addEventListener("DOMContentLoaded", () => {
+  // D, Me, You, We
+  const pdf1 = document.querySelector("#pdf1 iframe");
+  if (pdf1) pdf1.src = pdfSrc("media/forNewPort/full.pdf");
+  const pdf2 = document.querySelector("#pdf2 iframe");
+  if (pdf2) pdf2.src = pdfSrc("media/forNewPort/actor.pdf");
+  const pdf3 = document.querySelector("#pdf3 iframe");
+  if (pdf3) pdf3.src = pdfSrc("media/forNewPort/players.pdf");
+
+  // Bar To Bar
+  const pdf4 = document.querySelector("#pdf4 iframe");
+  if (pdf4) pdf4.src = pdfSrc("media/forNewPort/bar1.pdf");
+
+  // Add a body class so we can do tiny CSS tweaks for Safari
+  if (isSafari()) document.body.classList.add("safari");
+});
+
+
+
+  </script>
+</body>
+</html>
