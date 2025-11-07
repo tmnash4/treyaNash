@@ -103,6 +103,10 @@ let openF = new Entry(new Date(2025, 10, 22), "18:00", "<a href=https://openform
 openF.div.innerHTML = ("<b>" + openF.date.toLocaleDateString() + ` at ${openF.eventTime}` + "</b>" + "<br>"+ openF.piece + " will be performed as part of the " + openF.event + " at " + openF.venue)
 openF.addEventToDOM()
 
+let wac25 = new Entry(new Date(2025, 10, 20), "14:00", "<a href=https://wac-2025.ircam.fr/>2025 Web Audio Conference</a>", "the ESPRO at IRCAM (Paris)", "<i>cup</i>", "this ensemble", "the performers")
+wac25.div.innerHTML = ("<b>" + wac25.date.toLocaleDateString() + ` at ${wac25.eventTime}` + "</b>" + "<br>"+ wac25.piece + " will be performed as part of the " + wac25.event + " in " + wac25.venue)
+wac25.addEventToDOM()
+
 let splice2 = new Entry(new Date(2025, 5, 28), "19:30", "Splice Institute", "Dalton Center Recital Hall", "<i>Bar to Bar</i>", "", "Noa Even")
 splice2.div.innerHTML = ("<b>" + splice2.date.toLocaleDateString() + ` at ${splice2.eventTime}` + "</b>" + "<br>"+ splice2.performers + " will premiere " + splice2.piece + ", a new multimedia work for soprano saxophone and audience at the " + splice2.venue + " as part of Splice Institute")
 splice2.addEventToDOM()
