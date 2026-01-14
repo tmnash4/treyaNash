@@ -99,6 +99,14 @@ class Entry {
 // entry.div.innerHTML = ("<b>" + entry.date.toLocaleDateString() + "</b>" + "<br>"+ entry.piece + " will be performed at the " + entry.event + " at " + entry.venue)
 // entry.addEventToDOM()
 
+//let UGA= new Entry(new Date(2026, 1, 14), "14:30", "<a href=https://music.osu.edu/events/comprov-symposium-011826/>ComProv Symposium</a>", "Timashev Room 160", "<i>Next Frog</i>", "this ensemble", "the performers")
+//UGA.div.innerHTML = ("<b>" + UGA.date.toLocaleDateString() + ` at ${UGA.eventTime}` + "</b>" + "<br>"+ UGA.piece + " will be performed as part of the " + UGA.event + " at the Ohio State University in  " + UGA.venue)
+//UGA.addEventToDOM()
+
+let compP= new Entry(new Date(2026, 0, 19), "14:30", "<a href=https://music.osu.edu/events/comprov-symposium-011826/>ComProv Symposium</a>", "Timashev Room 160", "<i>Next Frog</i>", "this ensemble", "the performers")
+compP.div.innerHTML = ("<b>" + compP.date.toLocaleDateString() + ` at ${compP.eventTime}` + "</b>" + "<br>"+ compP.piece + " will be performed as part of the " + compP.event + " at the Ohio State University in  " + compP.venue)
+compP.addEventToDOM()
+
 let openF = new Entry(new Date(2025, 10, 22), "18:00", "<a href=https://openformfestival.com/>Open Form Festival</a>", "Galleri Wärme in Copenhagen", "<i>The Sound of a Weekend</i>", "this ensemble", "the performers")
 openF.div.innerHTML = ("<b>" + openF.date.toLocaleDateString() + ` at ${openF.eventTime}` + "</b>" + "<br>"+ openF.piece + " will be performed as part of the " + openF.event + " at " + openF.venue)
 openF.addEventToDOM()
