@@ -99,11 +99,23 @@ class Entry {
 // entry.div.innerHTML = ("<b>" + entry.date.toLocaleDateString() + "</b>" + "<br>"+ entry.piece + " will be performed at the " + entry.event + " at " + entry.venue)
 // entry.addEventToDOM()
 
-//let UGA= new Entry(new Date(2026, 1, 14), "14:30", "<a href=https://music.osu.edu/events/comprov-symposium-011826/>ComProv Symposium</a>", "Timashev Room 160", "<i>Next Frog</i>", "this ensemble", "the performers")
-//UGA.div.innerHTML = ("<b>" + UGA.date.toLocaleDateString() + ` at ${UGA.eventTime}` + "</b>" + "<br>"+ UGA.piece + " will be performed as part of the " + UGA.event + " at the Ohio State University in  " + UGA.venue)
-//UGA.addEventToDOM()
+let mox26= new Entry(new Date(2026, 2, 20), "14:00", "<a href=https://moxsonic.org/>Moxsonic</a>", " Hart Recital Hall ", " cat ", "this ensemble", "<a href=https://www.jack-thorpe.com/>Jack Thorpe</a>")
+mox26.div.innerHTML = ("<b>" + mox26.date.toLocaleDateString() + " at " + mox26.eventTime + "</b>" + "<br>"+ `Premiere of ${mox26.piece} as part of ${mox26.event} in the ${mox26.venue} at the University of Central Missouri`);
+mox26.addEventToDOM()
 
-let compP= new Entry(new Date(2026, 0, 19), "14:30", "<a href=https://music.osu.edu/events/comprov-symposium-011826/>ComProv Symposium</a>", "Timashev Room 160", "<i>Next Frog</i>", "this ensemble", "the performers")
+let NASA26= new Entry(new Date(2026, 2, 12), "14:30", "<a href=https://music.osu.edu/events/biennial-nasa-saxophone-conference-031226>the 2026 North American Saxaphone Alliance Conference</a>", " Ohio State ", "<i>Fill the Meter</i>", "this ensemble", "<a href=https://www.jack-thorpe.com/>Jack Thorpe</a>")
+NASA26.div.innerHTML = ("<b>" + NASA26.date.toLocaleDateString() + " - " + new Date(2026, 2, 15).toLocaleDateString() + "</b>" + "<br>"+ `${NASA26.performers} will premiere ${NASA26.piece} as part of ${NASA26.event} at ${NASA26.venue}`);
+NASA26.addEventToDOM()
+
+let facComp= new Entry(new Date(2026, 1, 21), "16:00", "Contemporary Music Festival", " Ohio State ", "Several pieces", "this ensemble", "<a href=https://www.jack-thorpe.com/>Jack Thorpe</a>")
+facComp.div.innerHTML = ("<b>" + facComp.date.toLocaleDateString() + " at " + facComp.eventTime + "</b>" + "<br>"+ `${facComp.piece} will be performed on the Faculty Composer's Concert as part of ${facComp.event} in Timashev Recital Hall at ${facComp.venue}`);
+facComp.addEventToDOM()
+
+let UGA= new Entry(new Date(2026, 1, 13), "14:30", "<a href=https://noise.uga.edu/2026-uga-new-music-festival>UGA New Music Festival</a>", "Dancz Center for New Music ", "<i>cup</i>", "this ensemble", "the performers")
+UGA.div.innerHTML = ("<b>" + UGA.date.toLocaleDateString() + " - " + new Date(2026, 1, 14).toLocaleDateString() + "</b>" + "<br>"+ UGA.piece + " will be performed as part of the " + UGA.event + " in " + UGA.venue + " at the University of Georgia")
+UGA.addEventToDOM()
+
+let compP= new Entry(new Date(2026, 0, 18), "14:30", "<a href=https://music.osu.edu/events/comprov-symposium-011826/>ComProv Symposium</a>", "Timashev Room 160", "<i>Next Frog</i>", "this ensemble", "the performers")
 compP.div.innerHTML = ("<b>" + compP.date.toLocaleDateString() + ` at ${compP.eventTime}` + "</b>" + "<br>"+ compP.piece + " will be performed as part of the " + compP.event + " at the Ohio State University in  " + compP.venue)
 compP.addEventToDOM()
 
