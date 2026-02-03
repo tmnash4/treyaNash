@@ -9,6 +9,22 @@
   <!-- <link rel="script" href="./script.js"> -->
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Quicksand&display=swap');
+
+    .outside {
+      background-color: #3f9e8d;
+      text-align: center;
+      font-size: 1.5rem;
+      margin-bottom: 2vh;
+      color: white;
+    }
+    .pasto {
+       font-size: 1rem;
+      display: none;
+      color: black;
+      text-align: left;
+      background-color: white;
+      /* background-color: aqua; */
+    }
   </style>
 </head>
 
@@ -47,6 +63,15 @@
 <div id="pastEvents" style="width: 50%; margin: auto">
     <b>Past Events</b>
     <p id="past"></p>
+    <div id="outsidePast2025" class="outside">2025
+      <div id="past2025" class="pasto"></div>
+    </div>
+    <div id="outsidePast2024" class="outside">2024
+      <div id="past2024" class="pasto"></div>
+    </div>
+      <div id="outsidePast2023" class="outside">2023
+      <div id="past2023" class="pasto"></div>
+    </div>
 </div>
 
 
@@ -59,8 +84,24 @@ body = document.querySelector("body")
 let up = document.getElementById("upEvents");
 let pa = document.getElementById("pastEvents")
 let upComing = document.getElementById("upComing");
-let past = document.getElementById("past")
+let past = document.getElementById("past");
+let past2025 = document.getElementById("past2025");
+let past2024 = document.getElementById("past2024");
+let past2023 = document.getElementById("past2023");
+let outsidePast2025 = document.getElementById("outsidePast2025");
+let outsidePast2024 = document.getElementById("outsidePast2024");
+let outsidePast2023 = document.getElementById("outsidePast2023");
+let outsidePastArray = [outsidePast2023, outsidePast2024, outsidePast2025];
+let pastArray = [past2023, past2024, past2025];
 
+let visible = false; 
+
+for (let i = 0; i < outsidePastArray.length; i++) {
+  outsidePastArray[i].addEventListener("click", () => {
+    const el = pastArray[i];
+    el.style.display = el.style.display === "block" ? "none" : "block";
+  });
+}
 
 if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
   up.style.width = "80%"
@@ -92,7 +133,16 @@ class Entry {
     past.appendChild(this.div)
     }
   }
-  
+  addEventToPast(year) {
+    this.div.style.backgroundColor = color1
+    if (this.date.getFullYear() == "2025") {
+      pastArray[2].appendChild(this.div);
+    } else if (this.date.getFullYear() == "2024") {
+      pastArray[1].appendChild(this.div);
+    } else if (this.date.getFullYear() == "2023") {
+      pastArray[0].appendChild(this.div);
+    } 
+  }
 }
 
 // let entry = new Entry(new Date(2025, 3, 2), "18:30", "concert", "place", "<i>A Piece</i>", "this ensemble", "the performers")
@@ -121,141 +171,142 @@ compP.addEventToDOM()
 
 let openF = new Entry(new Date(2025, 10, 22), "18:00", "<a href=https://openformfestival.com/>Open Form Festival</a>", "Galleri Wärme in Copenhagen", "<i>The Sound of a Weekend</i>", "this ensemble", "the performers")
 openF.div.innerHTML = ("<b>" + openF.date.toLocaleDateString() + ` at ${openF.eventTime}` + "</b>" + "<br>"+ openF.piece + " will be performed as part of the " + openF.event + " at " + openF.venue)
-openF.addEventToDOM()
+openF.addEventToPast()
 
 let wac25 = new Entry(new Date(2025, 10, 20), "14:00", "<a href=https://wac-2025.ircam.fr/>2025 Web Audio Conference</a>", "the ESPRO at IRCAM (Paris)", "<i>cup</i>", "this ensemble", "the performers")
 wac25.div.innerHTML = ("<b>" + wac25.date.toLocaleDateString() + ` at ${wac25.eventTime}` + "</b>" + "<br>"+ wac25.piece + " will be performed as part of the " + wac25.event + " in " + wac25.venue)
-wac25.addEventToDOM()
+wac25.addEventToPast()
 
 let splice2 = new Entry(new Date(2025, 5, 28), "19:30", "Splice Institute", "Dalton Center Recital Hall", "<i>Bar to Bar</i>", "", "Noa Even")
 splice2.div.innerHTML = ("<b>" + splice2.date.toLocaleDateString() + ` at ${splice2.eventTime}` + "</b>" + "<br>"+ splice2.performers + " will premiere " + splice2.piece + ", a new multimedia work for soprano saxophone and audience at the " + splice2.venue + " as part of Splice Institute")
-splice2.addEventToDOM()
+splice2.addEventToPast()
 
 let slee = new Entry(new Date(2025, 5, 7), "14:30", "", "Lippes Concert Hall", "<i>Tor</i>", "members of the Slee Sinfonieta", "members of the Slee Sinfonieta")
 slee.div.innerHTML = ("<b>" + slee.date.toLocaleDateString() + ` at ${slee.eventTime}` + "</b>" + "<br>"+ "Performance of " + slee.piece + " by " + slee.performers + " at " + slee.venue + " as part of June in Buffalo.")
-slee.addEventToDOM()
+slee.addEventToPast()
 
 let ko = new Entry(new Date(2025, 5, 5), "9:45", "", "", "<i>Tor</i>", "members of the Slee Sinfonieta", "members of the Slee Sinfonieta")
 ko.div.innerHTML = ("<b>" + ko.date.toLocaleDateString() + ` at ${ko.eventTime}` +  "</b>" + "<br>"+ "Guest Artist talk with the Baton Rouge Kids Orchestra")
-ko.addEventToDOM()
+ko.addEventToPast()
 
 let cc = new Entry(new Date(2025, 5, 1), "18:30", "", "Baird Recital Hall", "<i>cup</i>", "")
 cc.div.innerHTML = ("<b>" + cc.date.toLocaleDateString() + ` at ${cc.eventTime}` + "</b>" + "<br>"+ "Performance of, " + cc.piece + " in " + cc.venue + " as part of June in Buffalo.")
-cc.addEventToDOM()
+cc.addEventToPast()
 
 let dme = new Entry(new Date(2025, 4, 13), "19:30", "", "<a href=https://www.lsu.edu/hss/cmst/hopkins_black_box_theater/about.php>HopKins Black Box Theater</a>", "<i>D, Me, You, We</i>, a non-opera for actor, chatbot, musicians, and audience", "this ensemble", "starring Sarah Nansubuga and featuring Omar Ramirez, Roberto Mochetti, and Drew Farrar")
 dme.div.innerHTML = ("<b>" + dme.date.toLocaleDateString() + ` at ${dme.eventTime}` + "</b>" + "<br>"+ "My dissertation project, " + dme.piece + " " + dme.performers + " will be performed at the " + dme.venue)
-dme.addEventToDOM()
+dme.addEventToPast()
 
 let cups = new Entry(new Date(2025, 3, 29), "20:00", "concert", "Merrill Ellis Intermedia Theater.", "<i>cups</i> for ensemble and audience", "<a href=https://calendar.unt.edu/event/e2-electronics-ensemble>E^2 Ensemble</a>", "the performers")
 cups.div.innerHTML = ("<b>" + cups.date.toLocaleDateString() + ` at ${cups.eventTime}` + "</b><br>" + cups.piece + " will be performed by UNT's " + cups.ensemble + " at the " + cups.venue)
-cups.addEventToDOM()
+cups.addEventToPast()
 
 let emm2025 = new Entry(new Date(2025, 3, 4), "16:30", "<a href=https://www.emmfestival.org/index.php>Electronic Music Midwest</a>", "Kansas City Kansas Community College Performing Arts Center", "<i>Whisper</i>", "")
 emm2025.div.innerHTML = `<b>${emm2025.date.toLocaleDateString()} at ${emm2025.eventTime} </b><br> Performance of ${emm2025.piece} at ${emm2025.venue} as part of ${emm2025.event}.`
-emm2025.addEventToDOM()
+emm2025.addEventToPast()
 
 let wming = new Entry(new Date(2025, 3, 2), "19:30", "Stephen David Beck's Residency", "BCPA Recital Hall at the University of Wyoming","<i>cup</i>", "this ensemble", "the performers")
 wming.div.innerHTML = ("<b>" + wming.date.toLocaleDateString() + "</b>" + "<br>"+ "performance of " + wming.piece + " at the " + wming.venue + " as part of " + wming.event + " with the UW Music Department and the UW School of Computing")
-wming.addEventToDOM()
+wming.addEventToPast()
 
 let seamus2 = new Entry(new Date(2025, 2, 23), "20:00", "<a href=https://cla.purdue.edu/academic/rueffschool/music/events/conferences-festivals/seamus-25/seamus-25.html>SEAMUS 2025</a>", "Fowler Hall at Purdue University", "<i>Cup</i>")
 seamus2.div.innerHTML = `<b>${seamus2.date.toLocaleDateString()} at ${seamus2.eventTime}</b><br> ${seamus2.piece} will be performed at ${seamus2.venue} as part of ${seamus2.event}.`
-seamus2.addEventToDOM()
+seamus2.addEventToPast()
 
 let btrciv = new Entry(new Date(2025, 2, 22), "15:00", "", "Main Library at Goodwood", "<i>Alert</i>", "<a href=https://sites.google.com/civicorchestrabr.org/civicorchbr/concerts>Civic Orchestra of Baton Rouge</a>")
 btrciv.div.innerHTML = `<b>${btrciv.date.toLocaleDateString()} at ${btrciv.eventTime}</b><br> ${btrciv.ensemble} will premiere ${btrciv.piece} for orchestra and audience with cell phones at the ${btrciv.venue}.`
-btrciv.addEventToDOM()
+btrciv.addEventToPast()
 
 let mox = new Entry(new Date(2025, 2, 21), "16:00", "<a href=https://moxsonic.org/>MOXsonic</a>", "University of Central Missouri in Warrensburg, Missouri", "<i>Whisper</i>")
 mox.div.innerHTML = `<b>${mox.date.toLocaleDateString()} at ${mox.eventTime}</b><br> Performance of ${mox.piece} as part of ${mox.event} at ${mox.venue}.`
-mox.addEventToDOM()
+mox.addEventToPast()
 
 let edom = new Entry(new Date(2025, 2, 10), "19:30", "Cello + Electronics Concert", "the University of Nebraska Omaha", "<i>Laune</i>")
 edom.div.innerHTML = `<b>${edom.date.toLocaleDateString()} at ${edom.eventTime}</b><br> Performance of ${edom.piece} by Eduard Teregulov on his ${edom.event} at ${edom.venue}.`
-edom.addEventToDOM()
+edom.addEventToPast()
 
 
 let gc = new Entry(new Date(2025, 1, 14), "13:00", "Graphic Scores Competition", "LSU Library", "<i>Natural Progression</i>", "")
 gc.div.innerHTML = `<b>${gc.date.toLocaleDateString()} at ${gc.eventTime} </b><br> Performance of ${gc.piece} at the ${gc.venue} as part of ${gc.event} Winners Concert.`
-gc.addEventToDOM()
+gc.addEventToPast()
 
 let edmek = new Entry(new Date(2025, 0, 25), "14:00", "New Music for Kids with Eugene Difficult Music Ensemble", "<a hred=https://adventurechildrensmuseum.org/calendar/new-music-for-kids-exploring-sounds-with-eugene-difficult-music-ensemble/>Adventure! Children's Museum</a> in Eugene, OR","Various cell phone pieces")
 edmek.div.innerHTML = `<b>${edmek.date.toLocaleDateString()} at ${edmek.eventTime} </b> <br> ${edmek.piece} will be presented as part of ${edmek.event} performed a ${edmek.venue}`
-edmek.addEventToDOM()
+edmek.addEventToPast()
 
 let laun = new Entry(new Date(2025, 0, 19), "18:00", "Circuit 721", "Frances Frazier Comstock Lab Theater at Concordia College", "<i>Laune</i>", "Eduard Teregulov")
 laun.div.innerHTML = `<b>${laun.date.toLocaleDateString()} at ${laun.eventTime}</b><br>Performance of ${laun.piece} by ${laun.ensemble} at ${laun.venue} as part of the ${laun.event} Concert Series.`
-laun.addEventToDOM()
+laun.addEventToPast()
 
 let latex = new Entry(new Date(2025, 0, 17), "19:30", "LaTex Festival", "Bates Recital Hall", "<i>cup</i>")
 latex.div.innerHTML = `<b>${latex.date.toLocaleDateString()} at ${latex.eventTime}</b><br>Performance of ${latex.piece} at the ${latex.venue} as part of ${latex.event} 2025 in Austin, TX`
-latex.addEventToDOM()
+latex.addEventToPast()
 
 let lul = new Entry(new Date(2025, 0, 11), "19:00", "<a href=https://www.lineuponlinepercussion.org/>line upon line percussion</a>", "<a href=https://rudemechs.com/crashbox/>CRASHBOX Theater</a>", "<i>Sunday Routine</i>")
 lul.div.innerHTML = `<b>${lul.date.toLocaleDateString()} at ${lul.eventTime}</b><br>Premiere of ${lul.piece} by ${lul.event}, me, and the audience at ${lul.venue}`
-lul.addEventToDOM()
+lul.addEventToPast()
 
 let lulSolo = new Entry(new Date(2025, 0, 8), "19:00", "<a href=https://www.lineuponlinepercussion.org/>line upon line percussion</a> Winter Composers Festival", "<a href=https://rudemechs.com/crashbox/>CRASHBOX Theater</a>", "a set of cell phone pieces")
 lulSolo.div.innerHTML = `<b>${lulSolo.date.toLocaleDateString()} at ${lulSolo.eventTime}</b><br>I will be performing ${lulSolo.piece} at ${lulSolo.venue} in Austin, TX as part of the ${lulSolo.event}`
-lulSolo.addEventToDOM()
+lulSolo.addEventToPast()
 
 let cuprrnmm = new Entry(new Date(2024, 11, 2), "16:30", "Really Really New Music Marathon", "LSU School of Music Recital Hall", "<i>cup</i>")
 cuprrnmm.div.innerHTML = `<b>${cuprrnmm.date.toLocaleDateString()} at ${cuprrnmm.eventTime}</b><br>Performance of ${cuprrnmm.piece} for audience with cell phones at ${cuprrnmm.venue} as part of the ${cuprrnmm.event}`
-cuprrnmm.addEventToDOM()
+cuprrnmm.addEventToPast()
 
 let radio = new Entry(new Date(2024, 10, 24), "21:00 ET", "Interview with Tyler Kline", "<a href=https://wusf.org/classical>Classical WSMR</a>", "Nothing Motorised", "ensembleNEWSRQ", "Sam Boutris (clarinet), Luke Hsu, Christina Nam (violins), Luther Warren (viola), and Rainer Crossett (cello)")
 radio.div.innerHTML = `<b>${radio.date.toLocaleDateString()} at ${radio.eventTime}</b><br><i>${radio.piece}</i>, performed by ${radio.performers} will be broadcast on ${radio.venue} along with my interview with Tyler Kline. You can listen to it afterwards at <a href=https://www.modernnotebook.org/>Modern Notebook</a>`
-radio.addEventToDOM()
+radio.addEventToPast()
 
 let flTb = new Entry(new Date(2024, 10, 1), "20:00", "concert", "Lawrence Memorial Chapal in Lawrence, WI", "<i>College Lake</i>", "<a href=https://www.lawrence.edu/music-arts/performances-productions/performing-arts-lawrence/new-music-series>Lawrence University Flute and Trombone Ensembles</a>");
 flTb.div.innerHTML = `<b>${flTb.date.toLocaleDateString()} at ${flTb.eventTime}</b><br>Premiere of ${flTb.piece} by the ${flTb.ensemble} at ${flTb.venue} as part of their collaboration with the <a href=https://www.mcicomposers.com/>Millenum Composers Initiative</a>`
-flTb.addEventToDOM()
+flTb.addEventToPast()
 
 let cricket = new Entry(new Date(2024, 9, 26), "10:00 - 16:00", "<a href=https://www.atelierdelanature.org/events>Halloween Art & Nature Festival</a>", "Atelier de la Nature's", "bug")
 cricket.div.innerHTML = `<b>${cricket.date.toLocaleDateString()} at ${cricket.eventTime}</b><br>LSU EMDM will be running various sound activities at ${cricket.venue} ${cricket.event}. This will include a demo of my new cell phone experience, ${cricket.piece}!`
-cricket.addEventToDOM()
+cricket.addEventToPast()
 
 let cinEars = new Entry(new Date(2024, 9, 7), "19:30", "Cinema for the Ears", "LSU Digital Media Center Theater", "<i>Dear Mother Father God</i>")
 cinEars.div.innerHTML = `<b>${cinEars.date.toLocaleDateString()} at ${cinEars.eventTime} </b> <br> ${cinEars.piece} will be performed as part of ${cinEars.event} at the <a href=https://maps.app.goo.gl/ipFSGY1Y3bAYRniSA>${cinEars.venue}</a>`
-cinEars.addEventToDOM()
+cinEars.addEventToPast()
+
 let sunCoast = new Entry(new Date(2024, 9, 7), "18:00", "Suncoast Composer Fellowship Concert", "First Congregational UCC in Sarasota, FL", "<i>Nothing Motorised</i>", "ensembleNEWSRQ")
 sunCoast.div.innerHTML = "<b>" + sunCoast.date.toLocaleDateString() + " at " + sunCoast.eventTime + "</b>" + "<br>" + sunCoast.piece + " will be performed by " + sunCoast.ensemble + " at the " + sunCoast.event + " at " + sunCoast.venue
-sunCoast.addEventToDOM()
+sunCoast.addEventToPast()
 
 let edme = new Entry(new Date(2024, 9, 4), "19:00", "<a href=https://www.edmensemble.org/selected-composers>Eugene Difficult Music Ensemble 3rd Annual New Music Festival</a>", "Kesey Square in Eugene, OR","Several of my cell phone pieces")
 edme.div.innerHTML = `<b>${edme.date.toLocaleDateString()} at ${edme.eventTime} </b> <br> I will be a guest artist at the ${edme.event}. ${edme.piece} will be performed at ${edme.venue}`
-edme.addEventToDOM()
+edme.addEventToPast()
 
 let soloShow = new Entry(new Date(2024, 8, 21), "16:30", "Erin Demastes' <i> <a href=https://artguide.artforum.com/artguide/yes-we-cannibal-23462/solo-solo-show-231964>Solo Solo Show</a></i>","Yes We Cannibal", "Cup, for cellphones and audience,") 
 soloShow.div.innerHTML = "<b>" + soloShow.date.toLocaleDateString() + " at " + soloShow.eventTime + "</b>" + "<br>" + "Premiere of" + soloShow.piece + " as part of " + soloShow.event + " at " + soloShow.venue
-soloShow.addEventToDOM()
+soloShow.addEventToPast()
 
 let mandyArt = new Entry(new Date(2024, 7, 9), "", "2024 Janet & Walter Sondheim Art Prize Semifinalists Exhibition", "<a href=https://www.mica.edu/galleries/meyerhoff-gallery/>Maryland Institute College of Art Decker and Meyerhoff Galleries</a>", "Push Me Pretty")
 mandyArt.div.innerHTML = ("<b>" + "08/02/2024-08/09/2024" + "</b>" + "<br>"+ "<i>" + mandyArt.piece + "</i>" + ", a short film by <a href=https://mandymorrisonart.com/>Mandy Morrison</a> with audio design by Treya Nash shown at the " + mandyArt.event + " at " + mandyArt.venue)
-mandyArt.addEventToDOM()
+mandyArt.addEventToPast()
 
 let spliceAlum = new Entry((new Date(2024, 5, 27)), "17:00", "SPLICE Alumnx Concert", "Western Michigan University", "<i>Whisper</i>", "n/a", "n/a");
 spliceAlum.div.innerHTML = ("<b>" + spliceAlum.date.toLocaleDateString() + " at " + spliceAlum.eventTime + "</b>" + "<br>"+ "<i>" + spliceAlum.piece + "</i>" + " performed at the " + spliceAlum.event + " at " + spliceAlum.venue)
-spliceAlum.addEventToDOM()
+spliceAlum.addEventToPast()
 
 let vimAlice = new Entry(new Date(2024, 4, 6), "19:30", "n/a", "<a href='https://www.ensemblevim.org/events/season-closer'>Museum of Contemporary Art Georgia</a>", "<i>Alice in Wonderland</i>", "<a href='https://www.ensemblevim.org/'>Ensemble Vim</a>", "<a href=https://www.petarmiloshevski.com/>Petar Miloshevski</a>");
 vimAlice.div.innerHTML = ("<b>" + vimAlice.date.toLocaleDateString() + " at " + vimAlice.eventTime + "</b>" + "<br>"+  vimAlice.ensemble + " and " + vimAlice.performers + " perform " + vimAlice.piece + " at the " + vimAlice.venue)
-vimAlice.addEventToDOM()
+vimAlice.addEventToPast()
 
 let soundScapes = new Entry(new Date(2024, 4, 5), "20:00", "Soundscapes II", "Tulane University's <a href=https://g.co/kgs/VTkmbww>Dixon Concert Hall</a>", "<i>More Frogs</i>","<a href=https://versipel.org/about/>Versipel New Music</a>",);
 soundScapes.div.innerHTML = "<b>" + soundScapes.date.toLocaleDateString()+ " at " + soundScapes.eventTime + "</b>"
         + "<br>" + "Performance of " + soundScapes.piece + " by " + soundScapes.ensemble + " at " + soundScapes.venue + " as part of their " + soundScapes.event + " concert."
-soundScapes.addEventToDOM()
+soundScapes.addEventToPast()
 
 let rrnmmSp24 = new Entry(new Date(2024, 3, 29), "18:00", "Really Really New Music Marathon", "LSU MDA Black Box Theater", "<i>Face</i>")
 rrnmmSp24.div.innerHTML = "<b>" + rrnmmSp24.date.toLocaleDateString()+ " at " + rrnmmSp24.eventTime + "</b>"
         + "<br>" + "Performance of " + rrnmmSp24.piece + " at " + rrnmmSp24.venue + " as part of the " + rrnmmSp24.event
-rrnmmSp24.addEventToDOM()
+rrnmmSp24.addEventToPast()
 
 let posterPres = new Entry(new Date(2024, 3, 15), "10:00", "LSU CMDA Research Expo", "LSU MDA Lobby", "", "", "")
 posterPres.div.innerHTML = "<b>" + posterPres.date.toLocaleDateString()+ " at " + posterPres.eventTime + "</b>" + "<br>" + "Poster presentation at the " +  posterPres.event
-posterPres.addEventToDOM()
+posterPres.addEventToPast()
 
 let faceCan = new Entry(
   new Date(2024, 3, 4), // April 4, 2024 (month is 0-based)
@@ -267,7 +318,7 @@ let faceCan = new Entry(
   ""  // No performers
 );
 faceCan.div.innerHTML = "<b>" + faceCan.date.toLocaleDateString()+ " at " + faceCan.eventTime + "</b>" + "<br>" + "Performance of " + faceCan.piece + " at " + faceCan.event + " at " + faceCan.venue
-faceCan.addEventToDOM()
+faceCan.addEventToPast()
 
 const seamus1 = new Entry(
   new Date(2024, 2, 18),
@@ -280,397 +331,223 @@ const seamus1 = new Entry(
 );
 seamus1.div.innerHTML = ("<b>" + seamus1.date.toLocaleDateString()+ " at " + seamus1.eventTime + "</b>"
         + "<br>" + "Performance of " + seamus1.piece + " at " + seamus1.event + " at " + seamus1.venue + " as part of SEAMUS 2024")
-seamus1.addEventToDOM()
+seamus1.addEventToPast()
 
 
 
-let myEvent1 = {
-   div: document.createElement("p"),
-   date: new Date(2024, 2, 14), 
-   time: function() {
-    this.date.setHours(20)
-   },
-   eventTime: "20:00",
-   event: "<a href='https://www.cla.purdue.edu/academic/rueffschool/music/events/conferences-festivals/wac-24/wac-24.html'>Web Audio Conference</a>",
-   venue: "Purdue University",
-   location: "",
-   piece: "<i>Whisper</i>",
-   linkCreation: document.createElement("a"),
-   eventText: function () {
-     this.div.innerHTML = ("<b>" + this.date.toLocaleDateString()+ "</b>"
-        + "<br>" + "Presentation of " + this.piece + " as a piece and paper at the " + this.event + " at " + this.venue)
-    },
-   addEventToDOM: function () {
-    this.div.style.backgroundColor = color1
-    if (this.date.getTime() > today.getTime()) {
-   upComing.appendChild(this.div)
-    } else {
-    past.appendChild(this.div)
-    }
-   }
-}
-myEvent1.time()
-myEvent1.eventText()
-myEvent1.addEventToDOM()
+// --- Web Audio Conference (was myEvent1)
+const wac24 = new Entry(
+  new Date(2024, 2, 14),
+  "20:00",
+  "<a href='https://www.cla.purdue.edu/academic/rueffschool/music/events/conferences-festivals/wac-24/wac-24.html'>Web Audio Conference</a>",
+  "Purdue University",
+  "<i>Whisper</i>",
+  "",
+  ""
+);
+wac24.div.innerHTML =
+  "<b>" + wac24.date.toLocaleDateString() + " at " + wac24.eventTime + "</b>" +
+  "<br>" + "Presentation of " + wac24.piece + " as a piece and paper at the " + wac24.event + " at " + wac24.venue;
+wac24.addEventToPast();
 
 
-let myEvent = {
-   div: document.createElement("p"),
-   date: new Date(2024, 2, 1), 
-   time: function() {
-    myEvent.date.setHours(20)
-   },
-   eventTime: "20:00",
-   event: "<a href='https://www.emmfestival.org/concerts.php'>Electronic Music Midwest</a>",
-   venue: "Philip Lynch Theatre",
-   location: "",
-   piece: "<i>Frog</i>",
-   linkCreation: document.createElement("a"),
-   eventText: function () {
-     myEvent.div.innerHTML = ("<b>" + myEvent.date.toLocaleDateString()+ " at "+ myEvent.eventTime + "</b>"
-        + "<br>" + "performance of " + myEvent.piece + " at " + myEvent.event + " at Lewis University")
-    },
-   addEventToDOM: function () {
-    myEvent.div.style.backgroundColor = color1
-    if (myEvent.date.getTime() > today.getTime()) {
-   upComing.appendChild(myEvent.div)
-    } else {
-    past.appendChild(myEvent.div)
-    }
-   }
-}
-myEvent.time()
-myEvent.eventText()
-myEvent.addEventToDOM()
-
-let myEvent4 = {
-   div: document.createElement("p"),
-   date: new Date(2024, 1, 29), 
-   time: function() {
-    this.date.setHours(18)
-   },
-   eventTime: "18:00",
-   event: "<a href='https://www.lsumoa.org/calendar-1/rozinreception'>Mirror Mirror Closing Reception & Artist Talk</a>",
-   venue: "<a href='https://www.lsumoa.org/'>LSU Museum of Art</a>",
-   location: "",
-   piece: "<i>Face</i>",
-   linkCreation: document.createElement("a"),
-   eventText: function () {
-     this.div.innerHTML = ("<b>" + this.date.toLocaleDateString()+ " at " + this.eventTime + "</b>"
-        + "<br>" + "Premiere of " + this.piece + " at the " + this.venue + " as part of the " + this.event)
-    },
-   addEventToDOM: function () {
-    this.div.style.backgroundColor = color1
-    if (this.date.getTime() > today.getTime()) {
-   upComing.appendChild(this.div)
-    } else {
-    past.appendChild(this.div)
-    }
-   }
-}
-myEvent4.time()
-myEvent4.eventText()
-myEvent4.addEventToDOM()
-
-let myEvent5 = {
-   div: document.createElement("p"),
-   date: new Date(2024, 0, 27), 
-   time: function() {
-    this.date.setHours(18)
-   },
-   eventTime: "18:00",
-   event: "<a href='https://emdm.cct.lsu.edu/happenings/electric-latex-festival-23/electric-latex-2023-2024-concert-4-saturday-january-27-600-pm-digital-media-center-theatre/'>Electric LaTex 2024</a>",
-   venue: "LSU Digital Media Center Theater",
-   piece: "<i>Whisper</i>",
-   linkCreation: document.createElement("a"),
-   eventText: function () {
-     this.div.innerHTML = ("<b>" + this.date.toLocaleDateString()+ " at " + this.eventTime + "</b>"
-        + "<br>" + "Premiere of " + this.piece + " at the " + this.venue + " as part of " + this.event)
-    },
-   addEventToDOM: function () {
-    this.div.style.backgroundColor = color1
-    if (this.date.getTime() > today.getTime()) {
-    upComing.appendChild(this.div)
-    } else {
-    past.appendChild(this.div)
-    }
-   }
-}
-myEvent5.time()
-myEvent5.eventText()
-myEvent5.addEventToDOM()
-
-let myEvent6 = {
-   div: document.createElement("p"),
-   date: new Date(2023, 10, 27), 
-   time: function() {
-    this.date.setHours(19)
-    this.date.setMinutes(30)
-   },
-   eventTime: "19:30",
-   event: "Really New Music Marathon",
-   venue: "LSU School of Music Recital Hall",
-   piece: "<i>String Improv</i>",
-   performers: "<a href=https://drewmfarrar.wixsite.com/home>Drew Farrar</a> and Wagner Duarte",
-   linkCreation: document.createElement("a"),
-   eventText: function () {
-     this.div.innerHTML = ("<b>" + this.date.toLocaleDateString()+ " at " + this.eventTime + "</b>"
-        + "<br>" + "Performance of " + this.piece + " with " + this.performers + " at the " + this.venue + " as part of the " + this.event)
-    },
-   addEventToDOM: function () {
-    this.div.style.backgroundColor = color1
-    if (this.date.getTime() > today.getTime()) {
-    upComing.appendChild(this.div)
-    } else {
-    past.appendChild(this.div)
-    }
-   }
-}
-myEvent6.time()
-myEvent6.eventText()
-myEvent6.addEventToDOM()
-
-let myEvent7 = {
-   div: document.createElement("p"),
-   date: new Date(2023, 10, 27), 
-   time: function() {
-    this.date.setHours(19)
-    this.date.setMinutes(30)
-   },
-   eventTime: "19:30",
-   event: "Really New Music Marathon",
-   venue: "LSU School of Music Recital Hall",
-   piece: "<i>Pitch Pipes</i>",
-   composer: "<a href=https://www.erindemastes.com/>Erin Demastes</a>",
-   performers: "Erin Demastes, Drew Farrar, and Dylan Burchett",
-   linkCreation: document.createElement("a"),
-   eventText: function () {
-     this.div.innerHTML = ("<b>" + this.date.toLocaleDateString()+ " at " + this.eventTime + "</b>"
-        + "<br>" + "Performance of " + this.piece + " by " + this.composer + " with " + this.performers + " at the " + this.venue + " as part of the " + this.event)
-    },
-   addEventToDOM: function () {
-    this.div.style.backgroundColor = color1
-    if (this.date.getTime() > today.getTime()) {
-    upComing.appendChild(this.div)
-    } else {
-    past.appendChild(this.div)
-    }
-   }
-}
-myEvent7.time()
-myEvent7.eventText()
-myEvent7.addEventToDOM()
-
-let myEvent8 = {
-   div: document.createElement("p"),
-   date: new Date(2023, 10, 24), 
-   time: function() {
-    this.date.setHours(19)
-   },
-   eventTime: "19:00 CST",
-   event: "<a href=https://youtu.be/p9D8289m2vs?si=fMSqmCfu0dkwVA1Q&t=244>Timbre Vol. 3</a>",
-   venue: "LSU School of Music Recital Hall",
-   piece: "<i>Cursory Glance</i>",
-   ensemble: "<a href=https://nmmosaic.wixsite.com/new-music-mosaic>New Music Mosaic's</a>",
-   performers: "<a href=https://www.matchstickpercussion.com/about-us>Malcolm Taylor</a>",
-   linkCreation: document.createElement("a"),
-   eventText: function () {
-     this.div.innerHTML = ("<b>" + this.date.toLocaleDateString()+ " at " + this.eventTime + "</b>"
-        + "<br>" + "Online premiere of " + this.piece + " created in collaboration with " + this.performers + " for " + this.ensemble + " event " + this.event)
-    },
-   addEventToDOM: function () {
-    this.div.style.backgroundColor = color1
-    if (this.date.getTime() > today.getTime()) {
-    upComing.appendChild(this.div)
-    } else {
-    past.appendChild(this.div)
-    }
-   }
-}
-myEvent8.time()
-myEvent8.eventText()
-myEvent8.addEventToDOM()
+// --- Electronic Music Midwest (was myEvent)
+const emm24 = new Entry(
+  new Date(2024, 2, 1),
+  "20:00",
+  "<a href='https://www.emmfestival.org/concerts.php'>Electronic Music Midwest</a>",
+  "Philip Lynch Theatre",
+  "<i>Frog</i>",
+  "",
+  ""
+);
+emm24.div.innerHTML =
+  "<b>" + emm24.date.toLocaleDateString() + " at " + emm24.eventTime + "</b>" +
+  "<br>" + "performance of " + emm24.piece + " at " + emm24.event + " at Lewis University";
+emm24.addEventToPast();
 
 
-let myEvent9 = {
-   div: document.createElement("p"),
-   date: new Date(2023, 10, 1), 
-   time: function() {
-    this.date.setHours(19)
-    this.date.setMinutes(30)
-   },
-   eventTime: "19:30",
-   event: "LSU Experimental Music Ensemble",
-   venue: "Digital Media Center Theater",
-   piece: "<i>Cursory Glance</i>",
-   linkCreation: document.createElement("a"),
-   eventText: function () {
-     this.div.innerHTML = ("<b>" + this.date.toLocaleDateString()+ " at " + this.eventTime + "</b>"
-        + "<br>" + "Performance as part of the " + this.event + " at the " + this.venue)
-    },
-   addEventToDOM: function () {
-    this.div.style.backgroundColor = color1
-    if (this.date.getTime() > today.getTime()) {
-    upComing.appendChild(this.div)
-    } else {
-    past.appendChild(this.div)
-    }
-   }
-}
-myEvent9.time()
-myEvent9.eventText()
-myEvent9.addEventToDOM()
-
-let myEvent10 = {
-   div: document.createElement("p"),
-   date: new Date(2023, 9, 28), 
-   time: function() {
-    this.date.setHours(19)
-    this.date.setMinutes(30)
-   },
-   event: "Halloween Art and Nature Festival",
-   venue: "<a href=https://www.atelierdelanature.org>Atelier de la Nature</a>",
-   eventText: function () {
-     this.div.innerHTML = ("<b>" + this.date.toLocaleDateString()+ "</b>"
-        + "<br>" + "Running sound activities with the LSU EMDM department at the " + this.event + " at " + this.venue)
-    },
-   addEventToDOM: function () {
-    myEvent10.time()
-    myEvent10.eventText()
-    this.div.style.backgroundColor = color1
-    if (this.date.getTime() > today.getTime()) {
-    upComing.appendChild(this.div)
-    } else {
-    past.appendChild(this.div)
-    }
-   }
-}
-
-myEvent10.addEventToDOM()
-
-let myEvent11 = {
-   div: document.createElement("p"),
-   date: new Date(2023, 9, 9), 
-   time: function() {
-    this.date.setHours(19)
-    this.date.setMinutes(30)
-   },
-   eventTime: "19:30",
-   event: "<a href=https://www.une.edu.au/about-une/faculty-of-humanities-arts-social-sciences-and-education/hass/news-and-events/australasian-computer-music-conference-2023>Australasian Computer Music Conference 2023</a>",
-   venue: "University of New England, Parramatta",
-   piece: "<i>Whisper</i>",
-   linkCreation: document.createElement("a"),
-   eventText: function () {
-     this.div.innerHTML = ("<b>" + this.date.toLocaleDateString()+ "</b>"
-        + "<br>" + "Presentation of " + this.piece + " at the " + this.event + " at the " + this.venue)
-    },
-   addEventToDOM: function () {
-    this.time()
-    this.eventText()
-    this.div.style.backgroundColor = color1
-    if (this.date.getTime() > today.getTime()) {
-    upComing.appendChild(this.div)
-    } else {
-    past.appendChild(this.div)
-    }
-   }
-}
-myEvent11.addEventToDOM()
-
-let myEvent12 = {
-   div: document.createElement("p"),
-   date: new Date(2023, 6, 15), 
-   time: function() {
-    this.date.setHours(19)
-    this.date.setMinutes(30)
-   },
-   eventTime: "19:30",
-   event: "",
-   venue: "HopKins Black Box Theater at LSU",
-   piece: "<i>Horde</i>",
-   composer: "<a href=https://austinfranklinmusic.com/>Austin Franklin</a>",
-   performers: "Austin Franklin and Drew Farrar",
-   linkCreation: document.createElement("a"),
-   eventText: function () {
-     this.div.innerHTML = ("<b>" + this.date.toLocaleDateString()+ " at " + this.eventTime + "</b>"
-        + "<br>" + "Performance of " + this.piece + " by " + this.composer + " with "+ this.performers + " at the " + this.venue)
-    },
-   addEventToDOM: function () {
-    this.time()
-    this.eventText()
-    this.div.style.backgroundColor = color1
-    if (this.date.getTime() > today.getTime()) {
-    upComing.appendChild(this.div)
-    } else {
-    past.appendChild(this.div)
-    }
-   }
-}
-myEvent12.addEventToDOM()
-
-let myEvent13 = {
-   div: document.createElement("p"),
-   date: new Date(2023, 5, 30), 
-   time: function() {
-    this.date.setHours(18)
-    // this.date.setMinutes(30)
-   },
-   eventTime: "19:30",
-   event: "<a href=https://splicemusic.org/calendar/institute/23/participant-concert1> SPLICE Institute 2023 </a> ",
-   piece: "<i>More Frogs</i>",
-   ensemble: "<a href=https://popebama.com/>Popebama</a>",
-   performers: "Erin Rogers, saxophone; Dennis Sullivan, percussion",
-   linkCreation: document.createElement("a"),
-   eventText: function () {
-     this.div.innerHTML = ("<b>" + this.date.toLocaleDateString()+ " at " + this.eventTime + "</b>"
-        + "<br>" + this.piece + " performed by " + this.ensemble + " ("+ this.performers + ") at " + this.event)
-    },
-   addEventToDOM: function () {
-    this.time()
-    this.eventText()
-    this.div.style.backgroundColor = color1
-    if (this.date.getTime() > today.getTime()) {
-    upComing.appendChild(this.div)
-    } else {
-    past.appendChild(this.div)
-    }
-   }
-}
-myEvent13.addEventToDOM()
+// --- Mirror Mirror Closing Reception & Artist Talk (was myEvent4)
+const mirrorMirror = new Entry(
+  new Date(2024, 1, 29),
+  "18:00",
+  "<a href='https://www.lsumoa.org/calendar-1/rozinreception'>Mirror Mirror Closing Reception & Artist Talk</a>",
+  "<a href='https://www.lsumoa.org/'>LSU Museum of Art</a>",
+  "<i>Face</i>",
+  "",
+  ""
+);
+mirrorMirror.div.innerHTML =
+  "<b>" + mirrorMirror.date.toLocaleDateString() + " at " + mirrorMirror.eventTime + "</b>" +
+  "<br>" + "Premiere of " + mirrorMirror.piece + " at the " + mirrorMirror.venue + " as part of the " + mirrorMirror.event;
+mirrorMirror.addEventToPast();
 
 
+// --- Electric LaTex 2024 (was myEvent5)
+const electricLatex24 = new Entry(
+  new Date(2024, 0, 27),
+  "18:00",
+  "<a href='https://emdm.cct.lsu.edu/happenings/electric-latex-festival-23/electric-latex-2023-2024-concert-4-saturday-january-27-600-pm-digital-media-center-theatre/'>Electric LaTex 2024</a>",
+  "LSU Digital Media Center Theater",
+  "<i>Whisper</i>",
+  "",
+  ""
+);
+electricLatex24.div.innerHTML =
+  "<b>" + electricLatex24.date.toLocaleDateString() + " at " + electricLatex24.eventTime + "</b>" +
+  "<br>" + "Premiere of " + electricLatex24.piece + " at the " + electricLatex24.venue + " as part of " + electricLatex24.event;
+electricLatex24.addEventToPast();
 
 
-let myEvent15 = {
-   div: document.createElement("p"),
-   date: new Date(2023, 5, 30), 
-   time: function() {
-    this.date.setHours(18)
-    // this.date.setMinutes(30)
-   },
-   eventTime: "19:30",
-   event: "<a href=https://www.ipsemusic.com/concerts>Ensemble Ipse 2023 Call for Scores</a> ",
-   venue: "<a href=https://dimennacenter.org/>Dimenna Center</a>",
-   piece: "<i>Tor</i>",
-   ensemble: "<a href=https://www.ipsemusic.com/>Ensemble Ipse</a>",
-   performers: "Erin Rogers, saxophone; Dennis Sullivan, percussion",
-   linkCreation: document.createElement("a"),
-   eventText: function () {
-     this.div.innerHTML = ("<b>" + this.date.toLocaleDateString()+ " at " + this.eventTime + "</b>"
-        + "<br>" + "US Premiere of " + this.piece + " performed by " + this.ensemble + " at the " + this.venue + " as a winner of the " + this.event)
-    },
-   addEventToDOM: function () {
-    this.time()
-    this.eventText()
-    this.div.style.backgroundColor = color1
-    if (this.date.getTime() > today.getTime()) {
-    upComing.appendChild(this.div)
-    } else {
-    past.appendChild(this.div)
-    }
-   }
-}
-myEvent15.addEventToDOM()
+// --- Really New Music Marathon - String Improv (was myEvent6)
+const rrnmmStringImprov = new Entry(
+  new Date(2023, 10, 27),
+  "19:30",
+  "Really New Music Marathon",
+  "LSU School of Music Recital Hall",
+  "<i>String Improv</i>",
+  "",
+  "<a href=https://drewmfarrar.wixsite.com/home>Drew Farrar</a> and Wagner Duarte"
+);
+rrnmmStringImprov.div.innerHTML =
+  "<b>" + rrnmmStringImprov.date.toLocaleDateString() + " at " + rrnmmStringImprov.eventTime + "</b>" +
+  "<br>" + "Performance of " + rrnmmStringImprov.piece + " with " + rrnmmStringImprov.performers +
+  " at the " + rrnmmStringImprov.venue + " as part of the " + rrnmmStringImprov.event;
+rrnmmStringImprov.addEventToPast();
+
+
+// --- Really New Music Marathon - Pitch Pipes (was myEvent7)
+const rrnmmPitchPipes = new Entry(
+  new Date(2023, 10, 27),
+  "19:30",
+  "Really New Music Marathon",
+  "LSU School of Music Recital Hall",
+  "<i>Pitch Pipes</i>",
+  "",
+  "Erin Demastes, Drew Farrar, and Dylan Burchett"
+);
+rrnmmPitchPipes.div.innerHTML =
+  "<b>" + rrnmmPitchPipes.date.toLocaleDateString() + " at " + rrnmmPitchPipes.eventTime + "</b>" +
+  "<br>" + "Performance of " + rrnmmPitchPipes.piece + " by " +
+  "<a href=https://www.erindemastes.com/>Erin Demastes</a>" + " with " + rrnmmPitchPipes.performers +
+  " at the " + rrnmmPitchPipes.venue + " as part of the " + rrnmmPitchPipes.event;
+rrnmmPitchPipes.addEventToPast();
+
+
+// --- Timbre Vol. 3 (was myEvent8)
+const timbreVol3 = new Entry(
+  new Date(2023, 10, 24),
+  "19:00 CST",
+  "<a href=https://youtu.be/p9D8289m2vs?si=fMSqmCfu0dkwVA1Q&t=244>Timbre Vol. 3</a>",
+  "LSU School of Music Recital Hall",
+  "<i>Cursory Glance</i>",
+  "<a href=https://nmmosaic.wixsite.com/new-music-mosaic>New Music Mosaic's</a>",
+  "<a href=https://www.matchstickpercussion.com/about-us>Malcolm Taylor</a>"
+);
+timbreVol3.div.innerHTML =
+  "<b>" + timbreVol3.date.toLocaleDateString() + " at " + timbreVol3.eventTime + "</b>" +
+  "<br>" + "Online premiere of " + timbreVol3.piece + " created in collaboration with " + timbreVol3.performers +
+  " for " + timbreVol3.ensemble + " event " + timbreVol3.event;
+timbreVol3.addEventToPast();
+
+
+// --- LSU Experimental Music Ensemble (was myEvent9)
+const lsuExpEnsemble = new Entry(
+  new Date(2023, 10, 1),
+  "19:30",
+  "LSU Experimental Music Ensemble",
+  "Digital Media Center Theater",
+  "<i>Cursory Glance</i>",
+  "",
+  ""
+);
+lsuExpEnsemble.div.innerHTML =
+  "<b>" + lsuExpEnsemble.date.toLocaleDateString() + " at " + lsuExpEnsemble.eventTime + "</b>" +
+  "<br>" + "Performance as part of the " + lsuExpEnsemble.event + " at the " + lsuExpEnsemble.venue;
+lsuExpEnsemble.addEventToPast();
+
+
+// --- Halloween Art and Nature Festival (was myEvent10)
+const halloweenFest = new Entry(
+  new Date(2023, 9, 28),
+  "", // no time in your original display string
+  "Halloween Art and Nature Festival",
+  "<a href=https://www.atelierdelanature.org>Atelier de la Nature</a>",
+  "",
+  "",
+  ""
+);
+halloweenFest.div.innerHTML =
+  "<b>" + halloweenFest.date.toLocaleDateString() + "</b>" +
+  "<br>" + "Running sound activities with the LSU EMDM department at the " + halloweenFest.event + " at " + halloweenFest.venue;
+halloweenFest.addEventToPast();
+
+
+// --- Australasian Computer Music Conference 2023 (was myEvent11)
+const acmc23 = new Entry(
+  new Date(2023, 9, 9),
+  "19:30",
+  "<a href=https://www.une.edu.au/about-une/faculty-of-humanities-arts-social-sciences-and-education/hass/news-and-events/australasian-computer-music-conference-2023>Australasian Computer Music Conference 2023</a>",
+  "University of New England, Parramatta",
+  "<i>Whisper</i>",
+  "",
+  ""
+);
+acmc23.div.innerHTML =
+  "<b>" + acmc23.date.toLocaleDateString() + "</b>" +
+  "<br>" + "Presentation of " + acmc23.piece + " at the " + acmc23.event + " at the " + acmc23.venue;
+acmc23.addEventToPast();
+
+
+// --- Hopkins Black Box Theater performance (was myEvent12)
+const hordePerf = new Entry(
+  new Date(2023, 6, 15),
+  "19:30",
+  "",
+  "HopKins Black Box Theater at LSU",
+  "<i>Horde</i>",
+  "",
+  "<a href=https://austinfranklinmusic.com/>Austin Franklin</a>" + " with Austin Franklin and Drew Farrar"
+);
+hordePerf.div.innerHTML =
+  "<b>" + hordePerf.date.toLocaleDateString() + " at " + hordePerf.eventTime + "</b>" +
+  "<br>" + "Performance of " + hordePerf.piece + " by " +
+  "<a href=https://austinfranklinmusic.com/>Austin Franklin</a>" +
+  " with Austin Franklin and Drew Farrar at the " + hordePerf.venue;
+hordePerf.addEventToPast();
+
+
+// --- SPLICE Institute 2023 (was myEvent13)
+const splice23 = new Entry(
+  new Date(2023, 5, 30),
+  "19:30",
+  "<a href=https://splicemusic.org/calendar/institute/23/participant-concert1> SPLICE Institute 2023 </a>",
+  "",
+  "<i>More Frogs</i>",
+  "<a href=https://popebama.com/>Popebama</a>",
+  "Erin Rogers, saxophone; Dennis Sullivan, percussion"
+);
+splice23.div.innerHTML =
+  "<b>" + splice23.date.toLocaleDateString() + " at " + splice23.eventTime + "</b>" +
+  "<br>" + splice23.piece + " performed by " + splice23.ensemble + " (" + splice23.performers + ") at " + splice23.event;
+splice23.addEventToPast();
+
+
+// --- Ensemble Ipse 2023 Call for Scores (was myEvent15)
+const ipseUSPremiere = new Entry(
+  new Date(2023, 5, 30),
+  "19:30",
+  "<a href=https://www.ipsemusic.com/concerts>Ensemble Ipse 2023 Call for Scores</a> ",
+  "<a href=https://dimennacenter.org/>Dimenna Center</a>",
+  "<i>Tor</i>",
+  "<a href=https://www.ipsemusic.com/>Ensemble Ipse</a>",
+  "Erin Rogers, saxophone; Dennis Sullivan, percussion"
+);
+ipseUSPremiere.div.innerHTML =
+  "<b>" + ipseUSPremiere.date.toLocaleDateString() + " at " + ipseUSPremiere.eventTime + "</b>" +
+  "<br>" + "US Premiere of " + ipseUSPremiere.piece + " performed by " + ipseUSPremiere.ensemble +
+  " at the " + ipseUSPremiere.venue + " as a winner of the " + ipseUSPremiere.event;
+ipseUSPremiere.addEventToPast();
 
 
 
