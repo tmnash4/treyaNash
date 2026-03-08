@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Meter Score</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tone/14.5.44/Tone.js"></script>
+</head>
+<body>
+    
+<div id="container">
+  <div id="title"><b>Fill the Meter - Score</b></div><br>
+  <button onclick="resetScore()" id="reset">Reset Score</button>
+  <button id="button3">Play Ending Cue (for practice)</button>
+  <div class="textDivs" id="div1">You will start the piece sitting motionless in your chair, looking at the floor. When you're ready to start, press the button below:</div>
+      <button id="button1">Show QR Code</button> 
+  <div class="textDivs" id="div2">Wait for the audience to 'fill the meter'. Your cue to stand up and start playing is a rooster call. </div>
+  <img class="scoreImg" id="win1" src="media/meterMedia/win1.png">
+  <div class="textDivs" id="div3">As soon as you've sat down, press the button below to move to the next section.</div>
+  <div id="countdown"></div>
+  <button id="button2">Next Section</button>
+</div>
+<style>
+  html, body {
+  margin: 0;
+  padding: 5px;
+  height: 100dvh; /* dynamic height for iOS Safari */
+  width: 100vw;
+  overflow: hidden; /* prevent scrolling */
+  font-family: 'Trebuchet MS', sans-serif;
+  background: white;
+  display: flex;
+  flex-direction: column;
+}
+
+#countdown {
+  position: absolute;
+  font-size: 4rem;
+  right: 10vw;
+  bottom: 10vh;
+}
+
+#container {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center; 
+  text-align: center;
+  padding: 1vh 2vw;
+  margin-bottom: 10vh;
+}
+
+#title {
+  font-size: 2.5rem;
+}
+
+button {
+  font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  font-size: 1.5rem;
+}
+.textDivs {
+  font-size: 1.3rem;
+  margin: 2vh 0;
+  }
+
+  .scoreImg {
+    width: 80vw;
+    height: auto;
+    margin-top: 2vh;
+  }
+
+  #reset {
+    position: fixed;
+    top: 5px;
+    right: 5px;
+    font-size: 1rem;
+  }
+</style>
+<script>
+   
+
+    let div1 = document.getElementById("div1");
+    let div2 = document.getElementById("div2");
+    let div3 = document.getElementById("div3");
+    let button2 = document.getElementById("button2");
+    let button1 = document.getElementById("button1");
+    let button3 = document.getElementById("button3");
+    let scoreImg1 = document.getElementById("win1");
+    let sections = ["opening", "sax", "dies", "bird", "clock", "malfunction"];
+    let sectionName = sections[0];
+    let countdown = document.getElementById("countdown");
+
+    let ending1 = new Tone.Player("media/meterMedia/ending1.mp3").toDestination();
+    let saxEnding = new Tone.Player("media/meterMedia/saxEnding.mp3").toDestination();
+    let diesEnding = new Tone.Player("media/meterMedia/diesEnding.mp3").toDestination();
+    let birdEnding = new Tone.Player("media/meterMedia/birdEnding.mp3").toDestination();
+    let malEnding = new Tone.Player("media/meterMedia/malEnding.mp3").toDestination();
+    let clockEnding = new Tone.Player("media/meterMedia/clockEnding.mp3").toDestination();
+
+    let endingArray = [ending1, saxEnding, diesEnding, birdEnding, clockEnding, malEnding];
+    console.log(endingArray);
+
+    function section(sec) {
+      if (sec == "opening") {
+        console.log("sent");
+        resetScore()
+      } 
+    }
+
+
+    function section1(sec) {
+        if (sec == "opening") {
+        console.log("sent");
+        sectionName = sections[1];
+        saxScore();
+      } else if (sec == "sax") {
+        diesScore();
+        sectionName = sections[2];
+      } else if (sec == "dies") {
+        birdScore();
+        sectionName = sections[3];
+      } else if (sec == "bird") {
+        clockScore();
+        sectionName = sections[4];
+      } else if (sec == "reset") {
+      } else if (sec == "clock") {
+        malfunctionScore();
+        sectionName = sections[5];
+      } 
+  }
+
+
+  let correctEnding = 0;
+  button2.addEventListener("click", () => {
+    section1(sectionName);
+      if (correctEnding > 0) {
+        stopEnding(correctEnding); 
+    }
+  });
+
+  button3.addEventListener("click", () => {
+    playEnding(correctEnding); // Play ending1
+  });
+ 
+  function playEnding(section) {
+    endingArray[section].start();
+  }
+
+  function stopEnding(section) {
+    endingArray[section - 1].stop();
+  }
+
+
+  function saxScore() {
+    correctEnding = 1;
+    button1.style.display = "none";
+    div1.innerHTML = "";
+    div2.style.display = "none";
+    scoreImg1.src = "media/meterMedia/sax.png";
+    scoreImg1.style.width = "100vw"
+    
+  }
+
+  function diesScore() {
+    correctEnding = 2;
+    button1.style.display = "none";
+    div1.innerHTML = "Your cue to stand is the bell sound. Make sure you're ready to play in time.";
+    div2.style.display = "none";
+    scoreImg1.src = "media/meterMedia/dies.png";
+    scoreImg1.style.width = "90vw"
+    
+  }
+
+  function birdScore() {
+    correctEnding = 3;
+    button1.style.display = "none";
+    div1.innerHTML = "Your cue to stand is a single stopwatch ring";
+    div2.style.display = "none";
+    scoreImg1.src = "media/meterMedia/bird.png";
+     scoreImg1.style.width = "100vw"
+  }
+
+ 
+
+  function clockScore() {
+    correctEnding = 4;
+    button1.style.display = "none";
+    div1.innerHTML = "";
+    div2.style.display = "none";
+    scoreImg1.src = "media/meterMedia/clock.png";
+    scoreImg1.style.width = "90vw"
+    div3.innerHTML = "Keep standing for this cue. You can press the button for the next one. In the actual piece, this transition happens automatically."
+  }
+
+
+  function malfunctionScore() {
+    correctEnding = 5;
+    button1.style.display = "none";
+    div1.innerHTML = "";
+    div2.style.display = "none";
+     scoreImg1.src = "media/meterMedia/mal.png";
+     div3.innerHTML = "";
+     button2.style.display = "none";
+  }
+
+  function stopAllEndings() {
+  endingArray.forEach(player => {
+    try {
+      player.stop();
+    } catch (e) {
+      console.log(e);
+    }
+  });
+}
+
+   function resetScore() {
+    stopAllEndings();
+    button1.style.display = "block";
+    scoreImg1.style.display = "block";
+    button2.style.display = "block";
+    div2.style.display = "block";
+    div1.innerHTML = "You will start the piece sitting motionless in your chair, looking at the floor. When you're ready to start, press the button below:";
+    div2.innerHTML = "Wait for the audience to 'fill the meter'. Your cue to stand up and start playing is a rooster call."
+    div3.innerHTML = "As soon as you've sat down, press the button below to move to the next section.";
+    sectionName = sections[0];
+    scoreImg1.src = "media/meterMedia/win1.png";
+    section1("reset");
+    scoreImg1.style.width = "80vw"
+    stopEnding(correctEnding)
+   
+
+  }
+
+</script> 
+</body>
+</html>
