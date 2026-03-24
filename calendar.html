@@ -149,17 +149,21 @@ class Entry {
 // entry.div.innerHTML = ("<b>" + entry.date.toLocaleDateString() + "</b>" + "<br>"+ entry.piece + " will be performed at the " + entry.event + " at " + entry.venue)
 // entry.addEventToDOM()
 
+let heid= new Entry(new Date(2026, 2, 27), "12:30", "<a href=https://www.heidelberg.edu/events/2026/2026-heidelberg-new-music-association-new-music-festival-and-symposium>Heidelberg New Music Festival & Symposium</a>", "Trinity United Church of Christ", "<i>cup</i>", "this ensemble", "")
+heid.div.innerHTML = ("<b>" + heid.date.toLocaleDateString() + " at " + heid.eventTime + "</b>" + "<br>"+ "Performance of " + heid.piece + " as part of " + heid.event + " at the " + heid.venue + " in Tiffin, Ohio");
+heid.addEventToDOM();
+
 let mox26= new Entry(new Date(2026, 2, 20), "14:00", "<a href=https://moxsonic.org/>Moxsonic</a>", " Hart Recital Hall ", " cat ", "this ensemble", "<a href=https://www.jack-thorpe.com/>Jack Thorpe</a>")
 mox26.div.innerHTML = ("<b>" + mox26.date.toLocaleDateString() + " at " + mox26.eventTime + "</b>" + "<br>"+ `Premiere of ${mox26.piece} as part of ${mox26.event} in the ${mox26.venue} at the University of Central Missouri`);
-mox26.addEventToDOM()
+mox26.addEventToDOM();
 
 let NASA26= new Entry(new Date(2026, 2, 12), "14:30", "<a href=https://music.osu.edu/events/biennial-nasa-saxophone-conference-031226>the 2026 North American Saxaphone Alliance Conference</a>", " Ohio State ", "<i>Fill the Meter</i>", "this ensemble", "<a href=https://www.jack-thorpe.com/>Jack Thorpe</a>")
 NASA26.div.innerHTML = ("<b>" + NASA26.date.toLocaleDateString() + " - " + new Date(2026, 2, 15).toLocaleDateString() + "</b>" + "<br>"+ `${NASA26.performers} will premiere ${NASA26.piece} as part of ${NASA26.event} at ${NASA26.venue}`);
-NASA26.addEventToDOM()
+NASA26.addEventToDOM();
 
 let facComp= new Entry(new Date(2026, 1, 21), "16:00", "Contemporary Music Festival", " Ohio State ", "Several pieces", "this ensemble", "<a href=https://www.jack-thorpe.com/>Jack Thorpe</a>")
 facComp.div.innerHTML = ("<b>" + facComp.date.toLocaleDateString() + " at " + facComp.eventTime + "</b>" + "<br>"+ `${facComp.piece} will be performed on the Faculty Composer's Concert as part of ${facComp.event} in Timashev Recital Hall at ${facComp.venue}`);
-facComp.addEventToDOM()
+facComp.addEventToDOM();
 
 let UGA= new Entry(new Date(2026, 1, 13), "14:30", "<a href=https://noise.uga.edu/2026-uga-new-music-festival>UGA New Music Festival</a>", "Dancz Center for New Music ", "<i>cup</i>", "this ensemble", "the performers")
 UGA.div.innerHTML = ("<b>" + UGA.date.toLocaleDateString() + " - " + new Date(2026, 1, 14).toLocaleDateString() + "</b>" + "<br>"+ UGA.piece + " will be performed as part of the " + UGA.event + " in " + UGA.venue + " at the University of Georgia")
