@@ -149,6 +149,27 @@ class Entry {
 // entry.div.innerHTML = ("<b>" + entry.date.toLocaleDateString() + "</b>" + "<br>"+ entry.piece + " will be performed at the " + entry.event + " at " + entry.venue)
 // entry.addEventToDOM()
 
+let miseEn = new Entry(new Date(2026, 5, 18), "19:30", "<a href='https://www.mise-en.org/'>Mise-en Festival</a>", "MISE-EN_PLACE", "<i>whisper</i>", "this ensemble", "the performers")    
+miseEn.div.innerHTML = ("<b>" + miseEn.date.toLocaleDateString() + " at " + miseEn.eventTime + "</b>" + "<br>"+ miseEn.piece + " will be performed as part of the " + miseEn.event + " at " + miseEn.venue + " in New York City.")
+miseEn.addEventToDOM();
+
+let vcca = new Entry(
+    new Date(2026, 5, 16),
+    "",
+    "<a href='https://www.vcca.com/'>Virginia Center for the Creative Arts Residency</a>",
+    "Virginia Center for the Creative Arts",
+    "",
+    "",
+    ""
+);
+
+vcca.div.innerHTML =
+    "<b>05/28–06/16/2026</b><br>" +
+    "Residency at the " + vcca.venue +
+    " in Amherst, Virginia.";
+
+vcca.addEventToDOM();
+
 let heid= new Entry(new Date(2026, 2, 27), "12:30", "<a href=https://www.heidelberg.edu/events/2026/2026-heidelberg-new-music-association-new-music-festival-and-symposium>Heidelberg New Music Festival & Symposium</a>", "Trinity United Church of Christ", "<i>cup</i>", "this ensemble", "")
 heid.div.innerHTML = ("<b>" + heid.date.toLocaleDateString() + " at " + heid.eventTime + "</b>" + "<br>"+ "Performance of " + heid.piece + " as part of " + heid.event + " at the " + heid.venue + " in Tiffin, Ohio");
 heid.addEventToDOM();
