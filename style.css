@@ -210,17 +210,17 @@ body {
 }
 
 #solo {
-  background-image: linear-gradient(to right, rgb(75, 14, 208), rgb(56, 226, 110));
-  color: white
+   background-image: linear-gradient(to right , rgb(56, 226, 110), rgb(75, 14, 208));
+
 }
 
 #fixed {
-  background-image: linear-gradient(to right , rgb(56, 226, 110), rgb(75, 14, 208));
+  background-image: linear-gradient(to right, rgb(75, 14, 208), rgb(56, 226, 110));
+  color: white
 }
 
 #large {
-  background-image: linear-gradient(to right, rgb(75, 14, 208), rgb(56, 226, 110));
-  color: white
+   background-image: linear-gradient(to right , rgb(56, 226, 110), rgb(75, 14, 208));
 }
 
 #cell {
