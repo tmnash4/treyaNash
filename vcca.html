@@ -69,7 +69,7 @@
             <input type="range" value="1" min="0" max="2" step="0.01" id="slider4">
             🔊..
         </div> 
-        <img src="media/pics/water5.jpg" id="image2Inside">
+        <img src="media/vcca/pics/water5.jpg" id="image2Inside">
         <input type="range" value="0" min="0" max="1" step="0.01" class="slider">
          <p></p>
         <input type="range" value="0" min="0" max="50" step="0.01" class="slider">
@@ -104,7 +104,7 @@ body::before {
     position: fixed;
     inset: 0;
 
-    background-image: url('media/pics/IMG_1595.jpg');
+    background-image: url('media/vcca/pics/IMG_1595.jpg');
     background-size: cover;
     background-position: center;
 
@@ -185,7 +185,7 @@ body::before {
     scale: 0.8;
     background-image: 
     linear-gradient(rgba(255, 136, 31, 0), rgba(255, 136, 31, 0)), 
-    url('media/pics/IMG_1595.jpg');
+    url('media/vcca/pics/IMG_1595.jpg');
     background-size: cover;
     background-position: center;
     }
@@ -286,13 +286,13 @@ input {
     let gain5 = new Tone.Gain(1).toDestination();
 
     let audioArray = [
-        new Tone.Player("media/audio/bug2.mp3").connect(gain2),
-        new Tone.Player("media/audio/bug2.mp3").connect(gain2),
-        new Tone.Player("media/audio/percussion.mp3"),
-        new Tone.Player("media/audio/singing2.mp3").connect(gain3),
-        new Tone.Player("media/audio/water_frog.mp3").connect(gain4),
-        new Tone.Player("media/audio/water_frog1.mp3").connect(gain4),
-        new Tone.Player("media/audio/frog.mp3").connect(gain1)
+        new Tone.Player("media/vcca/audio/bug2.mp3").connect(gain2),
+        new Tone.Player("media/vcca/audio/bug2.mp3").connect(gain2),
+        new Tone.Player("media/vcca/audio/percussion.mp3"),
+        new Tone.Player("media/vcca/audio/singing2.mp3").connect(gain3),
+        new Tone.Player("media/vcca/audio/water_frog.mp3").connect(gain4),
+        new Tone.Player("media/vcca/audio/water_frog1.mp3").connect(gain4),
+        new Tone.Player("media/vcca/audio/frog.mp3").connect(gain1)
     ];
 
 
@@ -367,21 +367,21 @@ input {
         scaleInterval = setInterval(() => {
             if (scaleDirection === 1) {
                 scaleDirection = -1;
-                image1Inside.style.backgroundImage = "linear-gradient(rgba(255, 136, 31, 0), rgba(255, 136, 31, 0)), url('media/pics/IMG_1595.jpg')";
+                image1Inside.style.backgroundImage = "linear-gradient(rgba(255, 136, 31, 0), rgba(255, 136, 31, 0)), url('media/vcca/pics/IMG_1595.jpg')";
             } else if (scaleDirection === -1) {
-                image1Inside.style.backgroundImage = "linear-gradient(rgba(255, 136, 31, 0.4), rgba(255, 136, 31, 0.2)), url('media/pics/IMG_1595.jpg')";
+                image1Inside.style.backgroundImage = "linear-gradient(rgba(255, 136, 31, 0.4), rgba(255, 136, 31, 0.2)), url('media/vcca/pics/IMG_1595.jpg')";
                 scaleDirection = 2;
             } else if (scaleDirection === 2) {
-                image1Inside.style.backgroundImage = "linear-gradient(rgba(255, 136, 31, 0.4), rgba(255, 136, 31, 0.4)), url('media/pics/IMG_1595.jpg')";
+                image1Inside.style.backgroundImage = "linear-gradient(rgba(255, 136, 31, 0.4), rgba(255, 136, 31, 0.4)), url('media/vcca/pics/IMG_1595.jpg')";
                 scaleDirection = 3;
             } else if (scaleDirection === 3) {
-                image1Inside.style.backgroundImage = "linear-gradient(rgba(255, 136, 31, 0.1), rgba(255, 136, 31, 0.6)), url('media/pics/IMG_1595.jpg')";
+                image1Inside.style.backgroundImage = "linear-gradient(rgba(255, 136, 31, 0.1), rgba(255, 136, 31, 0.6)), url('media/vcca/pics/IMG_1595.jpg')";
                 scaleDirection = 4;
             } else if (scaleDirection === 4) {
-                image1Inside.style.backgroundImage = "linear-gradient(rgba(255, 136, 31, 0.2), rgba(255, 136, 31, 0.4)), url('media/pics/IMG_1595.jpg')";
+                image1Inside.style.backgroundImage = "linear-gradient(rgba(255, 136, 31, 0.2), rgba(255, 136, 31, 0.4)), url('media/vcca/pics/IMG_1595.jpg')";
                 scaleDirection = 5;
             } else if (scaleDirection === 5) {
-                image1Inside.style.backgroundImage = "linear-gradient(rgba(255, 136, 31, 0.2), rgba(255, 136, 31, 0.2)), url('media/pics/IMG_1595.jpg')";
+                image1Inside.style.backgroundImage = "linear-gradient(rgba(255, 136, 31, 0.2), rgba(255, 136, 31, 0.2)), url('media/vcca/pics/IMG_1595.jpg')";
                 scaleDirection = 1;
             }
             
@@ -392,7 +392,7 @@ input {
         // audioArray[1].stop();
         image1Flag = false;
         clearInterval(scaleInterval);
-        image1Inside.style.backgroundImage = "linear-gradient(rgba(255, 136, 31, 0), rgba(255, 136, 31, 0)), url('media/pics/IMG_1595.jpg')";
+        image1Inside.style.backgroundImage = "linear-gradient(rgba(255, 136, 31, 0), rgba(255, 136, 31, 0)), url('media/vcca/pics/IMG_1595.jpg')";
         } 
     });
 
@@ -452,7 +452,7 @@ input {
     ////////// Water //////////
 
     for (i=5; i<=11; i++) {
-        imgArray.push(`media/pics/water${i}.jpg`);
+        imgArray.push(`media/vcca/pics/water${i}.jpg`);
     }
 
     image2Inside.addEventListener("click", () => {
