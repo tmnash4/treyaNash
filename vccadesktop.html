@@ -1,0 +1,651 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VCCA Sampler</title>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/tone/14.5.44/Tone.js'></script>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Rampart+One&display=swap');
+</style>
+</head>
+<body>
+<div id="titleDiv">
+    <h1>VCCA Sampler</h1>
+</div>
+<div class="outsideDiv">
+       <div id="image4" class="insideDiv">
+        <div class="sliderRow">
+            ..🔈
+            <input type="range" value="1" min="0" max="2" step="0.01" id="slider1">
+            🔊..
+        </div>
+        <div id="image4Inside">🐸</div>
+        <input type="range" value="1" min="0.01" max="10" step="0.01">
+        <!-- <input type="range" value="0" min="0" max="30" step="0.01"> -->
+        <input type="range" value="0" min="0" max="3.3" step="0.01">
+    </div>
+    <div id="image1" class="insideDiv">
+        <div class="sliderRow">
+            ..🔈
+            <input type="range" value="1.5" min="0" max="3" step="0.01" id="slider2">
+            🔊..
+        </div> 
+        <div id="image1Inside">
+        </div>
+        <input type="range" value="1" min="0.01" max="1.5" step="0.01">
+        <!-- <input type="range" value="1" min="0.01" max="100" step="0.01"> -->
+        <input type="range" value="0" min="0" max="20" step="0.01">
+    </div>
+    <div id="image5" class="insideDiv">
+          <div class="sliderRow">
+            ..🔈
+            <input type="range" value="1" min="0" max="2" step="0.01" id="slider3">
+            🔊..
+        </div> 
+        <div id="image5Inside">🎵</div>
+        <input type="range" value="1" min="0.01" max="2" step="0.01">
+        <!-- <input type="range" value="0" min="0" max="20" step="0.01"> -->
+        <input type="range" value="0" min="0" max="1" step="0.01">
+    </div>
+     <div id="image2" class="insideDiv">
+          <div class="sliderRow">
+            ..🔈
+            <input type="range" value="1" min="0" max="2" step="0.01" id="slider4">
+            🔊..
+        </div> 
+        <img src="media/pics/water5.jpg" id="image2Inside">
+        <input type="range" value="0" min="0" max="1" step="0.01">
+        <input type="range" value="0" min="0" max="50" step="0.01">
+    </div>
+    <div id="image3" class="insideDiv">
+          <div class="sliderRow">
+            ..🔈
+            <input type="range" value="1" min="0" max="2" step="0.01" id="slider5">
+            🔊..
+        </div> 
+        <div id="image3Inside">🥁</div>
+        <input type="range" value="1" min="0.01" max="5" step="0.01">
+        <input type="range" value="0" min="0" max="30" step="0.01">
+        <input type="range" value="0" min="0" max="1" step="0.01">
+    </div>
+</div>
+<style>
+
+ body {
+    margin: 0;
+    position: relative;
+    background-color: #15514e8b;
+}
+
+
+
+body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+
+    background-image: url('media/pics/IMG_1595.jpg');
+    background-size: cover;
+    background-position: center;
+
+    opacity: 0.3; /* input this */
+    z-index: -1;
+}
+
+    #titleDiv {
+        width: 100%;
+        display: flex;
+        height: -10vh;
+        justify-content: center;
+        align-items: center;
+        font-family: "Rampart One", sans-serif;
+        font-size: 2rem;
+        color: #61ff419c;
+        background-color: #15514e8b;
+    }
+    img {
+        width: 40%;
+        height: auto;
+    }
+    .outsideDiv {
+        width: 100%;
+        height: 70vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        overflow: hidden;
+    }
+
+    .insideDiv {
+        width: 50%;
+        height: 80%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    #image1 {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 10px;
+    }
+
+    #image1Inside {
+    width: 100%;
+    height: 200px;
+    scale: 0.8;
+    background-image: 
+    linear-gradient(rgba(255, 136, 31, 0), rgba(255, 136, 31, 0)), 
+    url('media/pics/IMG_1595.jpg');
+    background-size: cover;
+    background-position: center;
+    }
+    #image2 {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 10px;
+    }
+
+    #image4 {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 10px;
+    }
+
+    #image4Inside {
+        font-size: 10rem;
+    }
+    #image5 {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 10px;
+    }
+
+    #image5Inside {
+        font-size: 10rem;
+    }
+ 
+    #image3 {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 10px;
+    }
+
+    #image3Inside {
+        font-size: 10rem;
+    }
+
+    .sliderRow {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background-color: #010301;
+}
+
+input {
+   accent-color: #61ff41;
+}
+
+@media (max-width: 768px) {
+
+    .outsideDiv {
+        flex-direction: column;
+        overflow-y: auto;
+        height: auto;
+    }
+
+    .insideDiv {
+        height: auto;
+        min-height: 300px;
+    }
+
+    #image4Inside {
+        line-height: 1;
+        padding-top: 20px;
+    }
+
+}
+
+</style>
+<script>
+    let hasBeenCalled = false;
+
+    async function startAudio() {  
+        if (!hasBeenCalled) {
+            await Tone.start()
+            console.log("ready")
+            hasBeenCalled = true
+        } else {
+            console.log("well")
+        }
+    }
+    let gain1 = new Tone.Gain(1).toDestination();
+    let gain2 = new Tone.Gain(1).toDestination();
+    let gain3 = new Tone.Gain(1).toDestination();
+    let gain4 = new Tone.Gain(1).toDestination();
+    let gain5 = new Tone.Gain(1).toDestination();
+
+    let audioArray = [
+        new Tone.Player("media/audio/bug2.mp3").connect(gain2),
+        new Tone.Player("media/audio/bug2.mp3").connect(gain2),
+        new Tone.Player("media/audio/percussion.mp3"),
+        new Tone.Player("media/audio/singing2.mp3").connect(gain3),
+        new Tone.Player("media/audio/water_frog.mp3").connect(gain4),
+        new Tone.Player("media/audio/water_frog1.mp3").connect(gain4),
+        new Tone.Player("media/audio/frog.mp3").connect(gain1)
+    ];
+
+
+    let image1 = document.getElementById("image1");
+    let image1Inside = document.getElementById("image1Inside");
+    let inputs1 = image1.getElementsByTagName("input");
+    let image2Inside = document.getElementById("image2Inside");
+    let image2 = document.getElementById("image2");
+    let inputs2 = image2.getElementsByTagName("input");
+    let image3 = document.getElementById("image3");
+    let image3Inside = document.getElementById("image3Inside");
+    let inputs3 = image3.getElementsByTagName("input");
+    let image4 = document.getElementById("image4");
+    let image4Inside = document.getElementById("image4Inside");
+    let inputs4 = image4.getElementsByTagName("input");
+    let image5 = document.getElementById("image5");
+    let image5Inside = document.getElementById("image5Inside");
+    let inputs5 = image5.getElementsByTagName("input");
+    let slider1 = document.getElementById("slider1");
+    let slider2 = document.getElementById("slider2");
+    let slider3 = document.getElementById("slider3");
+    let slider4 = document.getElementById("slider4");
+    let slider5 = document.getElementById("slider5");
+
+    let image1Flag = false;
+    let image2Flag = false;
+    let image3Flag = false;
+    let image4Flag = false;
+    let image5Flag = false;
+    let scaleInterval;
+    let scaleDirection = 1;
+    let imageInterval;
+    let imgArray = [];
+    let imagePosition = 0;
+    let frogInterval;
+    let frogPosition = 0;
+    let singInterval;
+    let singPosition = 0;
+    let drumInterval;
+
+    ////////Bugs/////////
+
+    function fadeOut(gainNode, duration, player) {
+        setTimeout(() => {
+            gainNode.gain.linearRampTo(0, duration);
+            setTimeout(() => {
+                player.stop();
+            }, duration * 1000);
+        })
+    }
+
+    function fadeIn(gainNode, duration, player) {
+        gainNode.gain.linearRampTo(1, duration);
+        player.start();
+    }
+
+    image1Inside.addEventListener("click", () => {
+        image1Inside.style.transition = "background-image 0.3s ease";
+        if (!image1Flag) {
+        startAudio();
+        fadeIn(gain2, 0.1, audioArray[0]);
+        audioArray[0].loop = true;
+        // audioArray[1].start();
+        // audioArray[1].loop = true;
+        image1Flag = true;
+        scaleInterval = setInterval(() => {
+            if (scaleDirection === 1) {
+                scaleDirection = -1;
+                image1Inside.style.backgroundImage = "linear-gradient(rgba(255, 136, 31, 0), rgba(255, 136, 31, 0)), url('media/pics/IMG_1595.jpg')";
+            } else if (scaleDirection === -1) {
+                image1Inside.style.backgroundImage = "linear-gradient(rgba(255, 136, 31, 0.4), rgba(255, 136, 31, 0.2)), url('media/pics/IMG_1595.jpg')";
+                scaleDirection = 2;
+            } else if (scaleDirection === 2) {
+                image1Inside.style.backgroundImage = "linear-gradient(rgba(255, 136, 31, 0.4), rgba(255, 136, 31, 0.4)), url('media/pics/IMG_1595.jpg')";
+                scaleDirection = 3;
+            } else if (scaleDirection === 3) {
+                image1Inside.style.backgroundImage = "linear-gradient(rgba(255, 136, 31, 0.1), rgba(255, 136, 31, 0.6)), url('media/pics/IMG_1595.jpg')";
+                scaleDirection = 4;
+            } else if (scaleDirection === 4) {
+                image1Inside.style.backgroundImage = "linear-gradient(rgba(255, 136, 31, 0.2), rgba(255, 136, 31, 0.4)), url('media/pics/IMG_1595.jpg')";
+                scaleDirection = 5;
+            } else if (scaleDirection === 5) {
+                image1Inside.style.backgroundImage = "linear-gradient(rgba(255, 136, 31, 0.2), rgba(255, 136, 31, 0.2)), url('media/pics/IMG_1595.jpg')";
+                scaleDirection = 1;
+            }
+            
+        }, 100)
+        } else {
+        // audioArray[0].stop();
+        fadeOut(gain2, 0.3, audioArray[0]);
+        // audioArray[1].stop();
+        image1Flag = false;
+        clearInterval(scaleInterval);
+        image1Inside.style.backgroundImage = "linear-gradient(rgba(255, 136, 31, 0), rgba(255, 136, 31, 0)), url('media/pics/IMG_1595.jpg')";
+        } 
+    });
+
+   let frequencyShifter1 = new Tone.FrequencyShifter(0).connect(gain2);
+   frequencyShifter1.wet.value = 1;
+   audioArray[0].connect(frequencyShifter1);
+    let tremolo1 = new Tone.Tremolo(0, 0).connect(gain2).start();
+    audioArray[0].connect(tremolo1);
+
+
+    inputs1[1].addEventListener("input", () => {
+        audioArray[0].playbackRate = inputs1[1].value;
+    })
+
+    //   inputs1[2].addEventListener("input", () => {
+    //     console.log(frequencyShifter1.frequency.value);
+    //     if (inputs1[2].value > 0.01) {
+    //     frequencyShifter1.frequency.value = parseFloat(inputs1[2].value);
+    //     } else {
+    //     frequencyShifter1.frequency.value = 0;
+    //     }
+    // })
+
+    inputs1[2].addEventListener("input", () => {
+        // tremolo1.frequency.value = parseFloat(inputs1[3].value);
+        if (inputs1[2].value > 0.01) {
+        tremolo1.depth.value = 1
+         tremolo1.frequency.value = parseFloat(inputs1[2].value);
+        } else {
+        tremolo1.depth.value = 0;
+         tremolo1.frequency.value = 0;
+        }
+    })
+    
+
+    ////////// Water //////////
+
+    for (i=5; i<=11; i++) {
+        imgArray.push(`media/pics/water${i}.jpg`);
+    }
+
+    image2Inside.addEventListener("click", () => {
+        if (!image2Flag) {
+        startAudio();
+        fadeIn(gain4, 0.1, audioArray[5]);
+        // audioArray[5].start();
+        audioArray[5].loop = true;
+        image2Flag = true;
+        imageInterval = setInterval(() => {
+            image2Inside.src = imgArray[imagePosition];
+            imagePosition = (imagePosition + 1) % imgArray.length;
+        }, 100)
+        } else {
+        fadeOut(gain4, 0.5, audioArray[5]);
+        // audioArray[5].stop();
+        image2Flag = false;
+        clearInterval(imageInterval);
+        }
+    })
+
+
+let filter1 = new Tone.Filter(200, "highpass").connect(gain4);
+let frequencyShifter = new Tone.FrequencyShifter(0).connect(filter1);
+filter1.Q.value = 6;
+
+audioArray[5].connect(filter1);
+
+inputs2[1].addEventListener("input", () => {
+    const value = parseFloat(inputs2[1].value);
+        const maxFreq = 20000;
+        const minFreq = 200;
+        filter1.frequency.value =
+            minFreq * Math.pow(maxFreq / minFreq, value);
+});
+
+inputs2[2].addEventListener("input", () => {
+    frequencyShifter.frequency.value = parseFloat(inputs2[2].value);
+     if (inputs2[2].value > 0.01) {
+            audioArray[5].disconnect();
+            audioArray[5].connect(frequencyShifter);
+        
+        } else {
+            audioArray[5].disconnect();
+            audioArray[5].connect(gain4);
+            frequencyShifter.frequency.value = 0;
+        }
+
+});
+
+
+
+    ////////// Percussion //////////
+
+    let speedUp = new Tone.PitchShift(0).connect(gain5);
+    speedUp.wet.value = 0;
+    audioArray[2].connect(speedUp);
+    let feedback = new Tone.PingPongDelay(0, 0).connect(gain5);
+    audioArray[2].connect(feedback);
+
+    image3Inside.addEventListener("click", () => {
+        image3Inside.style.transition = "opacity 0.6s ease";
+       if (!image3Flag) {
+        startAudio();
+        fadeIn(gain5, 0.1, audioArray[2]);
+        audioArray[2].loop = true;
+        image3Flag = true;
+        drumInterval = setInterval(() => {
+            image3Inside.style.opacity = 0;
+            setTimeout(() => {
+                image3Inside.style.opacity = 1;
+            }, 300)
+        }, 600)
+       } else {
+        fadeOut(gain5, 0.5, audioArray[2]);
+        image3Flag = false;
+        clearInterval(drumInterval);
+       }
+       feedback.feedback.value = 0;
+    })
+
+    inputs3[1].addEventListener("input", () => {
+        audioArray[2].playbackRate = inputs3[1].value;
+    })
+
+    inputs3[2].addEventListener("input", () => {
+        speedUp.pitch = inputs3[2].value;
+        if (inputs3[1].value > 0) {
+            speedUp.pitch = parseFloat(inputs3[2].value);
+            speedUp.wet.value = 1;
+        } else {
+           speedUp.pitch = 0;
+            speedUp.wet.value = 0;
+        }
+    })
+
+    inputs3[3].addEventListener("change", () => {
+    
+        if (inputs3[3].value > 0) {
+            feedback.delayTime.value = 1 - parseFloat(inputs3[3].value);
+            feedback.feedback.value = 0.9;
+        } else {
+            feedback.feedback.value = 0;
+            feedback.delayTime.value = 0;
+        }
+    })
+
+    ///////// Frog //////////
+
+    let feedbackFrog = new Tone.PingPongDelay(0, 0.9).connect(gain1);
+
+    image4Inside.addEventListener("click", () => {
+        if (!image4Flag) {
+        feedbackFrog.feedback.value = 0.9;
+        startAudio();
+        fadeIn(gain1, 0.1, audioArray[6]);
+        audioArray[6].loop = true;
+        image4Flag = true;
+        image4Inside.style.transition = "scale 0.5s ease";
+        frogInterval = setInterval(() => {
+            if (frogPosition === 0) {
+            image4Inside.style.scale = 0.8
+            frogPosition = 1
+            } else {
+                image4Inside.style.scale = 1
+                frogPosition = 0
+            }
+      
+        }, 500)
+     
+       } else {
+        // audioArray[6].stop();
+        fadeOut(gain1, 0.5, audioArray[6]);
+        image4Flag = false;
+        clearInterval(frogInterval);
+       }
+       feedbackFrog.feedback.value = 0;
+    })
+
+audioArray[6].connect(feedbackFrog);
+    inputs4[1].addEventListener("input", () => {
+        audioArray[6].playbackRate = inputs4[1].value;
+    })
+    inputs4[2].addEventListener("change", () => {
+         feedbackFrog.feedback.value = 0.9;
+        console.log(inputs4[2].value);
+        const max = 3.3;
+        feedbackFrog.delayTime.value = max - parseFloat(inputs4[2].value);
+        if (inputs4[2].value > 0.01) {
+            // audioArray[6].disconnect();
+            // 
+            feedbackFrog.feedback.value = 0.9;  
+            feedbackFrog.delayTime.value = max - parseFloat(inputs4[2].value);
+
+        } else {
+            // audioArray[6].disconnect();
+            // audioArray[6].connect(gain1);
+            console.log("should have disconnected")
+            feedbackFrog.feedback.value = 0;
+            feedbackFrog.delayTime.value = 0;
+
+        }
+    })
+
+    slider1.addEventListener("input", () => {
+        gain1.gain.value = parseFloat(slider1.value);
+    })
+    slider2.addEventListener("input", () => {
+        gain2.gain.value = parseFloat(slider2.value);
+    })
+    slider3.addEventListener("input", () => {
+        gain3.gain.value = parseFloat(slider3.value);
+    })
+    slider4.addEventListener("input", () => {
+        gain4.gain.value = parseFloat(slider4.value);
+    })
+    slider5.addEventListener("input", () => {
+        gain5.gain.value = parseFloat(slider5.value);
+    })
+
+      ////////// Singing //////////
+
+
+    // let tremolo = new Tone.Tremolo(0, 0.9).connect(gain3).start();
+    let panner = new Tone.Panner(0).connect(gain3);
+    let pingPong = new Tone.PingPongDelay(0, 0).connect(gain3);
+    // let chorus = new Tone.Chorus(4, 2.5, 0.5).connect(gain3).start();
+    // audioArray[3].connect(tremolo);
+    // audioArray[3].connect(chorus);
+    audioArray[3].connect(pingPong);
+
+    let targetPan = 0;
+
+    setInterval(() => {
+        targetPan = Math.random() * 2 - 1;
+    }, 800);
+
+    function animatePan() {
+        panner.pan.value += (targetPan - panner.pan.value) * 0.05;
+        requestAnimationFrame(animatePan);
+    }
+
+    animatePan();
+
+    image5Inside.addEventListener("click", () => {
+        if (!image5Flag) {
+        startAudio();
+        fadeIn(gain3, 0.1, audioArray[3]);
+        audioArray[3].loop = true;
+        image5Flag = true;
+        singInterval = setInterval(() => {
+            image5Inside.innerHTML = "🎶";
+            setTimeout(() => {
+                image5Inside.innerHTML = "🎵";
+            }, 400)
+        }, 800)
+       } else {
+        fadeOut(gain3, 0.5, audioArray[3]);
+        pingPong.feedback.rampTo(0, 1);
+        image5Flag = false;
+        clearInterval(singInterval);
+       }
+    })
+
+    inputs5[1].addEventListener("input", () => {
+        audioArray[3].playbackRate = inputs5[1].value;
+    })
+
+    // inputs5[2].addEventListener("input", () => {
+    //     tremolo.frequency.value = parseFloat(inputs5[2].value);
+    //     chorus.frequency.value = parseFloat(inputs5[2].value) / 2;
+    //     if (inputs5[2].value > 0.01) {
+    //         // audioArray[3].disconnect();
+    //         // audioArray[3].connect(tremolo);
+    //         // audioArray[3].connect(chorus);
+    //     tremolo.frequency.value = parseFloat(inputs5[2].value);
+    //     chorus.frequency.value = parseFloat(inputs5[2].value) / 2;
+    //     } else {
+    //         // audioArray[3].disconnect();
+    //         // audioArray[3].connect(gain3);
+    //         // audioArray[3].disconnect(chorus);
+    //         chorus.frequency.value = 0;
+    //         tremolo.frequency.value = 0;
+    //     }
+    // })
+
+    inputs5[2].addEventListener("change", () => {
+        pingPong.delayTime.value = 1 - parseFloat(inputs5[2].value);
+        console.log(pingPong.delayTime.value);
+        if (inputs5[2].value > 0.01) {
+        pingPong.delayTime.value = 1 - parseFloat(inputs5[2].value);
+        pingPong.feedback.value = 0.9;
+        } else {
+        pingPong.delayTime.value = 0;
+        pingPong.feedback.value = 0;
+        }
+    })
+
+function checkIfMobile() {
+  return /Mobi|Android|iPhone/i.test(navigator.userAgent);
+}
+
+if (checkIfMobile()) {
+  location.href = "index1.html";
+} else {
+  console.log("The user is on a desktop.");
+}
+
+</script>
+</body>
+</html>
