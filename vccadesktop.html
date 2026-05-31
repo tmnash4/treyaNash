@@ -33,9 +33,13 @@
         </div> 
         <div id="image1Inside">
         </div>
-        <input type="range" value="1" min="0.01" max="1.5" step="0.01">
+                <!-- BUG SLIDERS -->
+        <input type="range" value="1" min="0.0001" max="1.3" step="0.01" class="slider">
         <!-- <input type="range" value="1" min="0.01" max="100" step="0.01"> -->
-        <input type="range" value="0" min="0" max="20" step="0.01">
+        <input type="range" value="0" min="0" max="20" step="0.01" class="slider">
+        <input type="range" value="1" min="0.0001" max="1.3" step="0.01" class="slider">
+        <!-- <input type="range" value="1" min="0.01" max="100" step="0.01"> -->
+        <input type="range" value="0" min="0" max="20" step="0.01" class="slider">
     </div>
     <div id="image5" class="insideDiv">
           <div class="sliderRow">
@@ -232,6 +236,7 @@ input {
         }
     }
     let gain1 = new Tone.Gain(1).toDestination();
+    let gain6 = new Tone.Gain(1).toDestination();
     let gain2 = new Tone.Gain(1).toDestination();
     let gain3 = new Tone.Gain(1).toDestination();
     let gain4 = new Tone.Gain(1).toDestination();
@@ -239,7 +244,7 @@ input {
 
     let audioArray = [
         new Tone.Player("media/vcca/audio/bug2.mp3").connect(gain2),
-        new Tone.Player("media/vcca/audio/bug2.mp3").connect(gain2),
+        new Tone.Player("media/vcca/audio/bug2.mp3").connect(gain6),
         new Tone.Player("media/vcca/audio/percussion.mp3"),
         new Tone.Player("media/vcca/audio/singing2.mp3").connect(gain3),
         new Tone.Player("media/vcca/audio/water_frog.mp3").connect(gain4),
@@ -306,7 +311,9 @@ input {
         if (!image1Flag) {
         startAudio();
         fadeIn(gain2, 0.1, audioArray[0]);
+        fadeIn(gain6, 0.1, audioArray[1]);
         audioArray[0].loop = true;
+        audioArray[1].loop = true;
         // audioArray[1].start();
         // audioArray[1].loop = true;
         image1Flag = true;
@@ -334,7 +341,8 @@ input {
         }, 100)
         } else {
         // audioArray[0].stop();
-        fadeOut(gain2, 0.3, audioArray[0]);
+        fadeOut(gain2, 0.5, audioArray[0]);
+        fadeOut(gain6, 0.5, audioArray[1]);
         // audioArray[1].stop();
         image1Flag = false;
         clearInterval(scaleInterval);
@@ -342,37 +350,66 @@ input {
         } 
     });
 
-   let frequencyShifter1 = new Tone.FrequencyShifter(0).connect(gain2);
-   frequencyShifter1.wet.value = 1;
-   audioArray[0].connect(frequencyShifter1);
-    let tremolo1 = new Tone.Tremolo(0, 0).connect(gain2).start();
-    audioArray[0].connect(tremolo1);
 
 
-    inputs1[1].addEventListener("input", () => {
+
+  inputs1[1].addEventListener("input", () => {
         audioArray[0].playbackRate = inputs1[1].value;
     })
 
-    //   inputs1[2].addEventListener("input", () => {
-    //     console.log(frequencyShifter1.frequency.value);
-    //     if (inputs1[2].value > 0.01) {
-    //     frequencyShifter1.frequency.value = parseFloat(inputs1[2].value);
-    //     } else {
-    //     frequencyShifter1.frequency.value = 0;
-    //     }
-    // })
 
-    inputs1[2].addEventListener("input", () => {
-        // tremolo1.frequency.value = parseFloat(inputs1[3].value);
-        if (inputs1[2].value > 0.01) {
-        tremolo1.depth.value = 1
-         tremolo1.frequency.value = parseFloat(inputs1[2].value);
-        } else {
-        tremolo1.depth.value = 0;
-         tremolo1.frequency.value = 0;
-        }
+    inputs1[3].addEventListener("input", () => {
+        audioArray[1].playbackRate = inputs1[3].value;
     })
-    
+
+
+let bugPulseInterval;
+
+inputs1[2].addEventListener("input", () => {
+    clearInterval(bugPulseInterval);
+    const value = parseFloat(inputs1[2].value);
+    if (value > 0.01) {
+        const period = 1000 - (value / 20) * 950;
+        bugPulseInterval = setInterval(() => {
+            gain2.gain.rampTo(0, 0.03); // fade out over 30ms
+            setTimeout(() => {
+                gain2.gain.rampTo(
+                    parseFloat(slider2.value),
+                    0.03 // fade back in over 30ms
+                );
+            }, period * 0.3);
+
+        }, period);
+
+    } else {
+
+        gain2.gain.rampTo(parseFloat(slider2.value), 0.05);
+    }
+});
+
+let bugPulseInterval1;
+
+inputs1[4].addEventListener("input", () => {
+    clearInterval(bugPulseInterval1);
+    const value = parseFloat(inputs1[4].value);
+    if (value > 0.01) {
+        const period = 1000 - (value / 20) * 950;
+        bugPulseInterval1 = setInterval(() => {
+            gain6.gain.rampTo(0, 0.03); // fade out over 30ms
+            setTimeout(() => {
+                gain6.gain.rampTo(
+                    parseFloat(slider2.value),
+                    0.03 // fade back in over 30ms
+                );
+            }, period * 0.3);
+
+        }, period);
+
+    } else {
+        gain6.gain.rampTo(parseFloat(slider2.value), 0.05);
+    }
+});
+
 
     ////////// Water //////////
 
@@ -547,6 +584,7 @@ audioArray[6].connect(feedbackFrog);
     })
     slider2.addEventListener("input", () => {
         gain2.gain.value = parseFloat(slider2.value);
+        gain6.gain.value = parseFloat(slider2.value);
     })
     slider3.addEventListener("input", () => {
         gain3.gain.value = parseFloat(slider3.value);
