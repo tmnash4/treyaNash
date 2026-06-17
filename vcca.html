@@ -13,7 +13,9 @@
 <div id="titleDiv">
     <h1>VCCA Sampler</h1>
 </div>
+  
 <div id="reloadDiv">
+      <h3 id="click">Click on icon to make sound</h3>
 <button id="reloadButton">Press for new instrument</button>
 </div>
 <div class="outsideDiv">
@@ -125,6 +127,14 @@ html, body {
     touch-action: manipulation;
 }
 
+#click {
+    position: absolute;
+    top: 17%;
+    width: 100dvw;
+    text-align: center;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    color: rgb(23, 78, 23)
+}
 body::before {
     content: "";
     position: fixed;

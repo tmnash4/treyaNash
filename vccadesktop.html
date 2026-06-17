@@ -13,6 +13,7 @@
 <div id="titleDiv">
     <h1>VCCA Sampler</h1>
 </div>
+    <h3 id="click">Click on icons to play sound</h3>
 <div class="outsideDiv">
        <div id="image4" class="insideDiv">
         <div class="sliderRow">
@@ -58,7 +59,8 @@
             <input type="range" value="1" min="0" max="2" step="0.01" id="slider4">
             🔊..
         </div> 
-        <img src="media/vcca/pics/water5.jpg" id="image2Inside">
+        <!-- <img src="media/vcca/pics/water5.jpg" id="image2Inside"> -->
+         <video src = media/vcca/pics/water.mp4 id="image2Inside"></video>
         <input type="range" value="0" min="0" max="1" step="0.01">
         <input type="range" value="0" min="0" max="50" step="0.01">
     </div>
@@ -97,6 +99,14 @@ body::before {
     z-index: -1;
 }
 
+#click {
+    position: absolute;
+    width: 100dvw;
+    text-align: center;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    color: rgb(23, 78, 23)
+}
+
     #titleDiv {
         width: 100%;
         display: flex;
@@ -107,6 +117,7 @@ body::before {
         font-size: 2rem;
         color: #61ff419c;
         background-color: #15514e8b;
+        flex-direction: column;
     }
     img {
         width: 40%;
@@ -135,6 +146,10 @@ body::before {
         justify-content: center;
         align-items: center;
         gap: 10px;
+    }
+
+     #image2Inside {
+        width: 50%;
     }
 
     #image1Inside {
@@ -424,15 +439,15 @@ inputs1[4].addEventListener("input", () => {
         // audioArray[5].start();
         audioArray[5].loop = true;
         image2Flag = true;
-        imageInterval = setInterval(() => {
-            image2Inside.src = imgArray[imagePosition];
-            imagePosition = (imagePosition + 1) % imgArray.length;
-        }, 100)
+        image2Inside.play()
+        image2Inside.loop = true;
         } else {
         fadeOut(gain4, 0.5, audioArray[5]);
         // audioArray[5].stop();
         image2Flag = false;
-        clearInterval(imageInterval);
+        // clearInterval(imageInterval);
+        image2Inside.pause()
+        //  image2.loop = false;
         }
     })
 
