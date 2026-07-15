@@ -40,6 +40,7 @@
     <a href="rnp.html" >Research and Projects</a>
     <a href="bio.html">Bio</a>
     <a href="calendar.html" class="active">Calendar</a>
+      <a href="shop.html">Shop</a>
     <a href="contact.html">Contact</a>
   </div>
   <div id="mySidenav" class="sidenav">
@@ -49,6 +50,7 @@
     <a href="rnp.html">Research and Projects</a>
     <a href="bio.html">Bio</a>
     <a href="calendar.html">Calendar</a>
+      <a href="shop.html">Shop</a>
     <a href="contact.html">Contact</a>
   </div>
   <div id="main">
@@ -148,6 +150,17 @@ class Entry {
 // let entry = new Entry(new Date(2025, 3, 2), "18:30", "concert", "place", "<i>A Piece</i>", "this ensemble", "the performers")
 // entry.div.innerHTML = ("<b>" + entry.date.toLocaleDateString() + "</b>" + "<br>"+ entry.piece + " will be performed at the " + entry.event + " at " + entry.venue)
 // entry.addEventToDOM()
+let click = new Entry(new Date(2026, 8, 18), "19:30", "Click Fest", "MISE-EN_PLACE", "<i>cat</i>", "this ensemble", "the performers")    
+click.div.innerHTML = ("<b>" + click.date.toLocaleDateString() + "-9/19/2026 " + "</b>" + "<br>"+ click.piece + " will be performed at " + click.event + " at Ohio University.")
+click.addEventToDOM();
+
+let ism = new Entry(new Date(2026, 8, 11), "19:40", "<a href=https://ismoly.art/>ism</a>", "<a href=https://wildgoosecreative.org/>Wild Goose Creative</a>", "<i>whisper</i>", "this ensemble", "the performers")    
+ism.div.innerHTML = ("<b>" + ism.date.toLocaleDateString() + "-9/13/2026" + "</b>" + "<br>"+  "I will be presenting a cellphone set at " + ism.event + ", an experimental art and music festival in Olympia, WA.")
+ism.addEventToDOM();
+
+let wf = new Entry(new Date(2026, 7, 14), "19:40", "<a href='https://www.franklintonartsdistrict.com/events/franklinton-fridays'>Franklintown Fridays</a>", "<a href=https://wildgoosecreative.org/>Wild Goose Creative</a>", "<i>whisper</i>", "this ensemble", "the performers")    
+wf.div.innerHTML = ("<b>" + wf.date.toLocaleDateString() + " from " + wf.eventTime + "-21:00" + "</b>" + "<br>"+  "I will be premiering my new cellphone piece, <i>fruit</i>, in two 40 minute sets as part of " + wf.event + " at " + wf.venue + " in Columbus, OH.")
+wf.addEventToDOM();
 
 let miseEn = new Entry(new Date(2026, 5, 18), "19:30", "<a href='https://www.mise-en.org/'>Mise-en Festival</a>", "MISE-EN_PLACE", "<i>whisper</i>", "this ensemble", "the performers")    
 miseEn.div.innerHTML = ("<b>" + miseEn.date.toLocaleDateString() + " at " + miseEn.eventTime + "</b>" + "<br>"+ miseEn.piece + " will be performed as part of the " + miseEn.event + " at " + miseEn.venue + " in New York City.")
