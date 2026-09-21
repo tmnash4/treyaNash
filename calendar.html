@@ -151,9 +151,21 @@ class Entry {
 // entry.div.innerHTML = ("<b>" + entry.date.toLocaleDateString() + "</b>" + "<br>"+ entry.piece + " will be performed at the " + entry.event + " at " + entry.venue)
 // entry.addEventToDOM()
 
-let wgf = new Entry(new Date(2026, 9, 3), "18:00", "Made By Us", "<a href=https://wildgoosecreative.org/>Wild Goose Creative</a>", "<i>A Piece</i>", "this ensemble", "the performers")
+let ff = new Entry(new Date(2026, 9, 3), "20:00", "<a href=https://thefusefactory.org/event/december-2026-frequency-fridays/>Frequency Fridays</a>", "<a href=https://thefusefactory.org/>Fuse Factory</a>", "<i>A Piece</i>", "this ensemble", "the performers")
+ff.div.innerHTML = ("<b>" + ff.date.toLocaleDateString() + "</b>" + "<br>"+ `I will be performing a cellphone set at the ${ff.venue}'s monthly concert series, ${ff.event}.`)
+ff.addEventToDOM();
+
+let sb = new Entry(new Date(2026, 9, 5), "", "", "Stony Brook Staller Center", "<i>cups</i>", "Stony Brook Laptop Orchestra", "the performers")
+sb.div.innerHTML = ("<b>" + sb.date.toLocaleDateString() + "</b>" + "<br>"+ sb.ensemble + " will be performing " + sb.piece + " at the " + sb.venue + ".")
+sb.addEventToDOM();
+
+let wgf = new Entry(new Date(2026, 9, 3), "20:00", "Made By Us", "<a href=https://wildgoosecreative.org/>Wild Goose Creative</a>", "<i>A Piece</i>", "this ensemble", "the performers")
 wgf.div.innerHTML = ("<b>" + wgf.date.toLocaleDateString() + "</b>" + "<br>"+ "I will be performing a short cellphone set at '" + wgf.event + "', " + wgf.venue + "'s annual fundraiser.")
-wgf.addEventToDOM()
+wgf.addEventToDOM();
+
+let voth = new Entry(new Date(2026, 9, 2), "18:00", "Room Noise")
+voth.div.innerHTML = ("<b>" + voth.date.toLocaleDateString() + "</b>" + "<br>"+ "<i>Dear Mother Father God</i> will be performed as part of " + voth.event + ", an evening of multichannel works that will close out <a href=https://www.alissavoth.com/>Alysa Voth's</a> exhibition <i>My First House Was Red</i> at <a href=https://www.instagram.com/yesprojectspace/>Yes Project Space</a>")
+voth.addEventToDOM();
 
 let click = new Entry(new Date(2026, 8, 18), "19:30", "Click Fest", "MISE-EN_PLACE", "<i>cat</i>", "this ensemble", "the performers")    
 click.div.innerHTML = ("<b>" + click.date.toLocaleDateString() + "-9/19/2026 " + "</b>" + "<br>"+ click.piece + " will be performed at " + click.event + " at Ohio University.")
